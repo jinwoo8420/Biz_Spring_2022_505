@@ -1,12 +1,12 @@
-package com.callor.student.service.impl;
+package com.callor.school.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.callor.student.domain.StudentVO;
-import com.callor.student.service.StudentService;
+import com.callor.school.domain.StudentVO;
+import com.callor.school.service.StudentService;
 
 @Service
 public class StudentServiceImplV1 implements StudentService {

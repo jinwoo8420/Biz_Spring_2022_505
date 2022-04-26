@@ -1,4 +1,4 @@
-package com.callor.student.controller;
+package com.callor.school.controller;
 
 import java.util.Locale;
 

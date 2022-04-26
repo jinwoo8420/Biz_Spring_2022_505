@@ -1,4 +1,4 @@
-package com.callor.student.controller;
+package com.callor.school.controller;
 
 import java.util.List;
 
@@ -7,8 +7,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.callor.student.domain.StudentVO;
-import com.callor.student.service.StudentService;
+import com.callor.school.domain.StudentVO;
+import com.callor.school.service.StudentService;
 
 @Controller
 public class StudentController {
@@ -43,9 +43,9 @@ public class StudentController {
 		return "student/detail";
 	}
 
-	@RequestMapping(value = "/student/insert", method = RequestMethod.GET)
+	@RequestMapping(value = "/student/input", method = RequestMethod.GET)
 	public String insert() {
-		return "student/insert";
+		return "student/input";
 	}
 
 }

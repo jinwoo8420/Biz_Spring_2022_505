@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const stNum = target.dataset.num;
 
       if (className === "name") {
-        document.location.href = "/app/student/detail?stNum=" + stNum;
+        document.location.href = "/school/student/detail?stNum=" + stNum;
       }
     });
   }

@@ -1,4 +1,4 @@
-package com.callor.student.domain;
+package com.callor.school.domain;
 
 public class StudentVO {
 	private String stNum;

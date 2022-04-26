@@ -72,7 +72,7 @@ div.button-box a:hover {
 	box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.6);
 }
 </style>
-<script src=${rootPath}/static/js/student.js></script>
+<script src="${rootPath}/static/js/student.js?ver=2022-04-26-001"></script>
 <body>
 	<%@ include file="/WEB-INF/views/include/include_header.jsp"%>
 	<%@ include file="/WEB-INF/views/include/include_nav.jsp"%>
@@ -96,7 +96,7 @@ div.button-box a:hover {
 		</table>
 
 		<div class="button-box">
-			<a href="${rootPath}/student/insert">학생정보 등록</a>
+			<a href="${rootPath}/student/input">학생정보 등록</a>
 		</div>
 	</section>
 	<%@ include file="/WEB-INF/views/include/include_footer.jsp"%>
