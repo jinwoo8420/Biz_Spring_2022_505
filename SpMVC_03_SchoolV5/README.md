@@ -1,9 +1,13 @@
 # Spring Mybatis Project
-* SpringMVC Project와 Oracle, MySQL 등 DBMS와 연동하는 Project
+
+- SpringMVC Project와 Oracle, MySQL 등 DBMS와 연동하는 Project
 
 ## Dependency 설정
+
 ### spring-jdbc
-* spring-jdbc는 spring-webmvc와 ```version이 일치```해야함
+
+- spring-jdbc는 spring-webmvc와 `version이 일치`해야함
+
 ```
 <!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
 		<dependency>
@@ -12,8 +16,11 @@
 			<version>${org.springframework-version}</version>
 		</dependency>
 ```
+
 ### mybatis
-* 현재(2022-05-04) 3.5.9 최신버전
+
+- 현재(2022-05-04) 3.5.9 최신버전
+
 ```
 <!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
 		<dependency>
@@ -22,8 +29,11 @@
 			<version>3.5.9</version>
 		</dependency>
 ```
+
 ### mybatis-spring
-* 현재(2022-05-04) 2.0.7 최신버전
+
+- 현재(2022-05-04) 2.0.7 최신버전
+
 ```
 <!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring -->
 		<dependency>
@@ -32,9 +42,12 @@
 			<version>2.0.7</version>
 		</dependency>
 ```
+
 ### commons-dbcp2
-* 현재(2022-05-04) 2.9.0 최신버전
-* DBMS와 연결 할 때 Connection Pool을 관리하는 도구
+
+- 현재(2022-05-04) 2.9.0 최신버전
+- DBMS와 연결 할 때 Connection Pool을 관리하는 도구
+
 ```
 <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-dbcp2 -->
 		<dependency>
@@ -43,10 +56,13 @@
 			<version>2.9.0</version>
 		</dependency>
 ```
+
 ### ojdbc 또는 mysql-connector/j
-* 각 DBMS Vender 별로 제공하는 JDBC
-* Oracle은 ```ojdbc8```을 사용하며 ```21.5.0.0```을 현재 사용
-* maven repository에서 ```oracle```로 검색
+
+- 각 DBMS Vender 별로 제공하는 JDBC
+- Oracle은 `ojdbc8`을 사용하며 `21.5.0.0`을 현재 사용
+- maven repository에서 `oracle`로 검색
+
 ```
 <!-- https://mvnrepository.com/artifact/com.oracle.database.jdbc/ojdbc8 -->
 		<dependency>
@@ -55,9 +71,12 @@
 			<version>21.5.0.0</version>
 		</dependency>
 ```
+
 ### mysql
-* mysql은 DBMS 버전에 따라 다른 connector를 사용한다
-* 5.7.x는 5.x.x를 사용하고 8.x.x는 현재(2022-05-04) 8.0.29를 사용한다
+
+- mysql은 DBMS 버전에 따라 다른 connector를 사용한다
+- 5.7.x는 5.x.x를 사용하고 8.x.x는 현재(2022-05-04) 8.0.29를 사용한다
+
 ```
 <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
 		<dependency>
@@ -65,4 +84,16 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>8.0.29</version>
 		</dependency>
+```
+
+### lombok
+
+```
+<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+<dependency>
+    <groupId>org.projectlombok</groupId>
+    <artifactId>lombok</artifactId>
+    <version>1.18.24</version>
+    <scope>provided</scope>
+</dependency>
 ```
