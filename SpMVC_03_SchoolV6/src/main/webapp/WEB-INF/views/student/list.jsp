@@ -21,7 +21,7 @@ div.btn_box {
 }
 </style>
 
-<script src="${rootPath}/static/js/list.js?ver=2022-05-09"></script>
+<script src="${rootPath}/static/js/std_list.js?ver=2022-05-10"></script>
 
 <table>
 	<tr>
@@ -34,5 +34,5 @@ div.btn_box {
 </table>
 
 <div class="btn_box">
-	<button class="btn_green std_input">학생정보 등록</button>
+	<button class="btn_green std_input">학생정보 등록</button>	
 </div>

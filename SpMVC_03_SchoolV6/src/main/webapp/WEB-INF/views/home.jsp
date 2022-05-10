@@ -116,7 +116,7 @@ button.btn_orange {
 <script>
 	const rootPath = "${rootPath}" // JSP의 속성(변수) 값을 JS로 보내기 위해 JS 변수로 선언
 </script>
-<script src="${rootPath}/static/nav.js?ver=2022-05-09-001"></script>
+<script src="${rootPath}/static/js/nav.js?ver=2022-05-10-001"></script>
 </head>
 <body>
 	<header>
