@@ -21,7 +21,7 @@ div.btn_box {
 }
 </style>
 
-<script src="${rootPath}/static/js/std_list.js?ver=2022-05-10"></script>
+<script src="${rootPath}/static/js/std_list.js?ver=2022-05-10-001"></script>
 
 <table>
 	<tr>

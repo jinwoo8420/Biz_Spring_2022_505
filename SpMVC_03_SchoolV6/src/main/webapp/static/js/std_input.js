@@ -8,15 +8,9 @@ const std_num_check_cb = () => {
   }
 
   // alert("입력한 학번 : " + st_num.value);
-  fetch(`${rootPath}/student/st_num_check?st_num=${st_num.value}`)
-    .then((res) => res.text())
-    .then((result) => {
-      if (result === "USE") {
-        alert("이미 등록된 학번\n 다시 입력");
-      } else {
-        alert("사용 가능한 학번");
-      }
-    });
+  if (!std_num_check_cb(st_num.value)) {
+    st_num.focus();
+  }
 };
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -24,7 +18,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /*
   std_num_check click event handler를
-  std_num_check_cb 함수로 별도 선언하고 handler
+  std_num_check_cb 이라는 함수로 별도 선언하고
+  handler 에는 함수 이름을 매개변수로 전달하였다
+  이때 함수이름에는 절대 () 를 붙이지 않는다
   */
 
   if (std_num_check) {
