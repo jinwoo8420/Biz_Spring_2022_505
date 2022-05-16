@@ -70,12 +70,12 @@ form div:first-of-type button {
 }
 </style>
 
-<script>
+<!-- <script>
 	const rootPath = "${rootPath}"
-</script>
+</script> -->
 
-<script src="${rootPath}/static/js/std_input_save.js?ver=2022-05-13-002"></script>
-<script src="${rootPath}/static/js/std_input.js?ver=2022-05-13-003"></script>
+<script src="${rootPath}/static/js/std_input_save.js?ver=2022-05-16-007"></script>
+<script src="${rootPath}/static/js/std_input.js?ver=2022-05-16-002"></script>
 
 <fieldset>
 	<legend>학생정보 등록</legend>

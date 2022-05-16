@@ -111,6 +111,11 @@ button.btn_orange {
 	background-color: orange;
 	color: white;
 }
+
+article.st-list {
+	overflow:auto;
+	max-height: 65vh;
+}
 </style>
 
 <script>
@@ -147,7 +152,9 @@ button.btn_orange {
 			</c:when>
 
 			<c:otherwise>
-				<article></article>
+				<article class="st-list">
+					<%@ include file="/WEB-INF/views/student/list.jsp"%>
+				</article>
 				<article></article>
 				<article></article>
 			</c:otherwise>

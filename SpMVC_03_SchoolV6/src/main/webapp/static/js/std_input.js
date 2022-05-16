@@ -8,7 +8,7 @@ const std_num_check_cb = () => {
   }
 
   // alert("입력한 학번 : " + st_num.value);
-  if (!std_num_check_cb(st_num.value)) {
+  if (!st_num_fetch(st_num.value)) {
     st_num.focus();
   }
 };
