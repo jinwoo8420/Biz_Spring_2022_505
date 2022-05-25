@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>인기 관광지</title>
+    <link rel="stylesheet" href="../css/popular-view.css" />
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const IMAGE_WIDTH = 600;
+        const prevBtn = document.querySelector("button.prev");
+        const nextBtn = document.querySelector("button.next");
+        const images = document.querySelector("div.images");
+        const imgCount = document.querySelectorAll("div.images img").length;
+
+        let position = 0;
+        let curPosition = 0;
+        if (prevBtn) {
+          prevBtn.addEventListener("click", () => {
+            if (curPosition > 0) {
+              position += IMAGE_WIDTH;
+              images.style.transform = `translateX(${position}px)`;
+              curPosition--;
+            }
+          });
+        }
+        if (nextBtn) {
+          nextBtn.addEventListener("click", () => {
+            if (curPosition < imgCount - 1) {
+              position -= IMAGE_WIDTH;
+              images.style.transform = `translateX(${position}px)`;
+              curPosition++;
+            }
+          });
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <section>
+      <div class="view">
+        <h4 class="view_title">인기 관광지</h4>
+        <div id="area_container">
+          <ul>
+            <li><a>서울</a></li>
+            <li><a>인천</a></li>
+            <li><a>대전</a></li>
+            <li><a>대구</a></li>
+            <li><a>광주</a></li>
+            <li><a>부산</a></li>
+            <li><a>울산</a></li>
+            <li><a>세종</a></li>
+            <li><a>경기</a></li>
+            <li><a>강원</a></li>
+            <li><a>충북</a></li>
+            <li><a>충남</a></li>
+            <li><a>경북</a></li>
+            <li><a>경남</a></li>
+            <li><a>전북</a></li>
+            <li><a>전남</a></li>
+            <li><a>제주</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="view">
+        <h4 class="attraction">명소 관광지</h4>
+        <div class="out">
+          <div class="window">
+            <div class="btn prev">
+              <button class="">&#10094;</button>
+            </div>
+            <div class="slides">
+              <div class="container">
+                <span class="img">
+                  <img src="/images/img1.jpg" />
+                </span>
+                <span>[명소] &nbsp; <b>관광지 이름</b></span>
+                <span
+                  >관광지 소개입니다. 소개는 간략하게 하는게 좋죠. 왜냐면 잘
+                  안읽거든요.</span
+                >
+              </div>
+              <div class="container">
+                <span class="img">
+                  <img src="/images/img1.jpg" />
+                </span>
+                <span>[명소] &nbsp; <b>관광지 이름</b></span>
+                <span
+                  >관광지 소개입니다. 소개는 간략하게 하는게 좋죠. 왜냐면 잘
+                  안읽거든요.</span
+                >
+              </div>
+              <div class="container">
+                <span class="img">
+                  <img src="/images/img1.jpg" />
+                </span>
+                <span>[명소] &nbsp; <b>관광지 이름</b></span>
+                <span
+                  >관광지 소개입니다. 소개는 간략하게 하는게 좋죠. 왜냐면 잘
+                  안읽거든요.</span
+                >
+              </div>
+              <div class="container">
+                <span class="img">
+                  <img src="/images/img1.jpg" />
+                </span>
+                <span>[명소] &nbsp; <b>관광지 이름</b></span>
+                <span
+                  >관광지 소개입니다. 소개는 간략하게 하는게 좋죠. 왜냐면 잘
+                  안읽거든요.</span
+                >
+              </div>
+              <div class="container">
+                <span class="img">
+                  <img src="/images/img2.jpg" />
+                </span>
+                <span>[명소] &nbsp; <b>관광지 이름</b></span>
+                <span
+                  >관광지 소개입니다. 소개는 간략하게 하는게 좋죠. 왜냐면 잘
+                  안읽거든요.</span
+                >
+              </div>
+              <div class="container">
+                <span class="img">
+                  <img src="/images/img2.jpg" />
+                </span>
+                <span>[명소] &nbsp; <b>관광지 이름</b></span>
+                <span
+                  >관광지 소개입니다. 소개는 간략하게 하는게 좋죠. 왜냐면 잘
+                  안읽거든요.</span
+                >
+              </div>
+              <div class="container">
+                <span class="img">
+                  <img src="/images/img2.jpg" />
+                </span>
+                <span>[명소] &nbsp; <b>관광지 이름</b></span>
+                <span
+                  >관광지 소개입니다. 소개는 간략하게 하는게 좋죠. 왜냐면 잘
+                  안읽거든요.</span
+                >
+              </div>
+              <div class="container">
+                <span class="img">
+                  <img src="/images/img2.jpg" />
+                </span>
+                <span>[명소] &nbsp; <b>관광지 이름</b></span>
+                <span
+                  >관광지 소개입니다. 소개는 간략하게 하는게 좋죠. 왜냐면 잘
+                  안읽거든요.</span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="btn next">
+            <button class="">&#10095;</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
