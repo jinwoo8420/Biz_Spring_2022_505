@@ -3,8 +3,11 @@ package com.callor.school.controller;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.callor.school.model.UserVO;
 import com.callor.school.service.UserService;
@@ -58,13 +61,44 @@ public class UserController {
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) {
 		session.removeAttribute("USER");
-		
+
 		/*
 		 * 로그아웃이 끝나면 web browser의 주소창에 /user/login을 입력하고
 		 * Enter 누르기
 		 */
-		
+
 		return "redirect:login";
+	}
+
+	@RequestMapping(value = "/join", method = RequestMethod.GET)
+	public String join() {
+
+		/* 
+		 * 이 method를 요청하는 url은 /user/join이다
+		 * 
+		 * return null을 실행하면
+		 * return user/join을 실행한 것과 같다
+		 * views/user/join.jsp를 rendering 하라는 의미
+		 */
+
+		return null;
+	}
+
+	/*
+	 * fetch(`${rootPath}/user/idcheck/${username.value}`)
+	 * 
+	 * 만약 username을 입력했으면
+	 * /user/idcheck/입력값 처럼 요청 url을 만들어서 요청 수행
+	 */
+
+	@ResponseBody
+	@RequestMapping(value = "/idcheck/{username}", method = RequestMethod.GET)
+	public String idcheck(@PathVariable("username") String username) {
+		if (username.equals("jinwoo8420")) {
+			return "FAIL";
+		} else {
+			return "OK";
+		}
 	}
 
 }

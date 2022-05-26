@@ -6,9 +6,6 @@
   text-decoration: none;
 }
 
-body {
-  width: 100vw;
-}
 header {
   width: 100vw;
   height: 80px;
@@ -39,7 +36,7 @@ nav {
   justify-content: center;
 }
 #menu > li {
-  margin: 0 30px 0;
+  padding: 0 30px 0;
 }
 #menu > li:first-child {
   padding: 0;
@@ -52,16 +49,13 @@ nav {
   position: absolute;
   left: 0;
 }
-#logo img {
-  width: 80px;
-}
 #menu > li > a:after {
   display: block;
   width: 100%;
   content: "";
   border-bottom: solid 3px #fff;
   transform: scaleX(0);
-  transition: transform 0.6s ease-in-out;
+  transition: transform 1s ease-in-out;
   padding-bottom: 5px;
 }
 #menu > li > a:hover {
@@ -100,6 +94,7 @@ ul.drop-soccer {
   min-height: 0px;
   visibility: hidden;
   opacity: 0;
+  z-index: -1;
   transition: 1s;
   transform: translateY(-2rem);
   margin-left: 20px;
@@ -119,6 +114,7 @@ ul.drop-baseball {
   min-height: 0px;
   visibility: hidden;
   opacity: 0;
+  z-index: -1;
   transition: 1s;
   transform: translateY(-2rem);
   margin-left: 20px;
@@ -195,6 +191,7 @@ ul.drop-baseball {
   min-height: 0px;
   visibility: hidden;
   opacity: 0;
+  z-index: -1;
   transition: 0.6s;
   transform: translateY(-2rem);
   position: absolute;
@@ -211,6 +208,7 @@ ul.drop-baseball {
   min-height: 0px;
   visibility: hidden;
   opacity: 0;
+  z-index: -1;
   transition: 0.6s;
   transform: translateY(-2rem);
   position: absolute;

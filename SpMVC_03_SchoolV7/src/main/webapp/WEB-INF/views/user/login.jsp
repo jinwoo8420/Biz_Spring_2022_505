@@ -43,6 +43,8 @@ form input, form button {
 		</fieldset>
 	</form>
 
+	<a href="${rootPath}/user/join">회원가입</a>
+
 	<div class="login_info">
 		<c:if test="${not empty USER }">
 			<div>
