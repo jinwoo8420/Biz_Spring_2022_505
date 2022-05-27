@@ -26,42 +26,35 @@ public int insert(Student VO vo)
 
 <mapper namespace="com.callor.school.pesistance.StudentDao">
 	<select id="selectAll" resultType="StudentVO">
-	SELECET * FROM tbl_student
+		SELECT * FROM tbl_student
 	</select>
 	
 	<select id="findById" resultType="StudentVO">
-	SELECT * FROM tbl_student WHERE st_num = #{st_num}
+		SELECT * FROM tbl_student WHERE st_num = #{st_num}
 	</select>
 	
 	<insert id="insert" parameterType="StudentVO">
-	INSERT INTO tbl_student
-		(
-			st_num,
-			st_name,
-			st_grade,
-			st_addr,
-			st_tel
-		) VALUES (
-			#{st_num},
-			#{st_name},
-			#{st_grade},
-			#{st_addr},
-			#{st_tel}
-		)	
+		INSERT INTO tbl_student
+			(
+				st_num,	st_name, 
+				st_grade, st_addr,
+				st_tel
+			) VALUES (
+				#{st_num}, #{st_name}, 
+				#{st_grade}, #{st_addr},
+				#{st_tel}
+			)
 	</insert>
-	
 	<update id="update" parameterType="StudentVO">
-	UPDATE tbl_student SET
-			st_name = #{st_name},
-			st_grade = #{st_grade},
-			st_addr = #{st_addr},
-			st_tel = #{st_tel}
-			
-	WHERE st_num = #{st_num}
+		UPDATE tbl_student SET
+				st_name = #{st_name}, 
+				st_grade = #{st_grade}, 
+				st_addr = #{st_addr},
+				st_tel = #{st_tel}
+		WHERE st_num = #{st_num} 
 	</update>
-	
 	<delete id="delete">
-	DELETE FROM tbl_student WHERE st_num = #{st_num}	
+		DELETE FROM tbl_student WHERE st_num = #{st_num}
 	</delete>
 	
 </mapper>

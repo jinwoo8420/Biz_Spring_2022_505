@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -28,7 +31,7 @@
 			<div id="drop">
 				<ul id="menu">
 					<li id="logo"><a href="main.html"><img
-							src="../images/logo.png"></a></a></li>
+							src="images/logo.png"></a></a></li>
 					<li id="soccer"><a href="../html/soccer-seoul.html">축구</a>
 						<ul class="drop-menu drop-soccer">
 							<li><a href="#">김천 상무</a></li>

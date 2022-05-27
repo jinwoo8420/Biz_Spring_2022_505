@@ -1,21 +1,25 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta charset="UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Season + ing ㅣ soccer-incheon</title>
+<title>Season + ing ㅣ soccer-seoul</title>
 <link rel="stylesheet" href="css/nav.css" />
 <link rel="stylesheet" href="css/k-league-box.css" />
 <link rel="stylesheet" href="css/popular-view.css" />
+<script type="text/javascript"
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b801ddbd49c9b14fef4051c9f7807b4f"></script>
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
 <script
 	scr="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js"></script>
-<script type="text/javascript"
-	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b801ddbd49c9b14fef4051c9f7807b4f"></script>
 <script src="js/popular-view.js"></script>
-<script src="js/soccer-incheon.js"></script>
+<script src="js/soccer-seoul.js"></script>
+
 </head>
 <body>
 	<header>
@@ -27,7 +31,7 @@
 			</ul>
 			<div id="drop">
 				<ul id="menu">
-					<li id="logo"><a href="main.html"><img
+					<li id="logo"><a href="../html/main.html"><img
 							src="../images/logo.png"></a></a></li>
 					<li id="soccer"><a href="../html/soccer-seoul.html">축구</a>
 						<ul class="drop-menu drop-soccer">
@@ -44,7 +48,7 @@
 							<li><a href="#">울산 현대</a></li>
 							<li><a href="#">포항 스틸러스</a></li>
 						</ul></li>
-					<li id="baseball"><a href="../html/baseball-kia.html">야구</a>
+					<li id="baseball"><a href="baseball-kia.html">야구</a>
 						<ul class="drop-menu drop-baseball">
 							<li><a href="#">KT 위즈</a></li>
 							<li><a href="#">두산 베어스</a></li>
@@ -97,9 +101,9 @@
 				</div>
 				<div id="ticket-book">
 					<p>
-						인천UNT 홈구장: <span>인천 축구전용경기장</span>
+						FC서울 홈구장: <span>서울 월드컵 경기장</span>
 					</p>
-					<img src="../img/incheon.jpg" />
+					<img src="../img/seoul.jpg" />
 					<div id="match-text">
 						<a href="#"><i class="fa-solid fa-chevron-left"></i></a>
 						<p>5월 경기 일정</p>
@@ -116,57 +120,50 @@
 							<td>R11 K리그1</td>
 							<td>05.08(일)</td>
 							<td>16:30</td>
-							<td>인천UNT &nbsp; VS &nbsp; 수원FC</td>
+							<td>FC서울 &nbsp; VS &nbsp; 수원FC</td>
 						</tr>
 						<tr>
 							<td>R12 K리그1</td>
-							<td>05.14토)</td>
-							<td>19:00</td>
-							<td>인천UNT &nbsp; VS &nbsp; 울산 현대</td>
-						</tr>
-						<tr>
-							<td>R13 K리그1</td>
-							<td>05.17(화)</td>
+							<td>05.15(일)</td>
 							<td>19:30</td>
-							<td>인천UNT &nbsp; VS &nbsp; 성남FC</td>
+							<td>FC서울 &nbsp; VS &nbsp; 포항 스틸러스</td>
 						</tr>
 						<tr>
 							<td>R14 K리그1</td>
 							<td>05.21(토)</td>
-							<td>18:00</td>
-							<td>인천UNT &nbsp; VS &nbsp; 포항 스틸러스</td>
+							<td>16:30</td>
+							<td>FC서울 &nbsp; VS &nbsp; 성남FC</td>
+						</tr>
+						<tr>
+							<td>4라운드 FA컵</td>
+							<td>05.25(수)</td>
+							<td>19:30</td>
+							<td>FC서울 &nbsp; VS &nbsp; 제주UNT</td>
 						</tr>
 						<tr>
 							<td>R15 K리그1</td>
-							<td>05.29(일)</td>
+							<td>05.28(토)</td>
 							<td>16:30</td>
-							<td>인천UNT &nbsp; VS &nbsp; 성남FC</td>
+							<td>FC서울 &nbsp; VS &nbsp; 김천 상무</td>
 						</tr>
 					</table>
 					<a href="https://www.fcseoul.com/tickets/reserveSingleTicket"><div
 							id="ticket-link">티켓 예매하러 가기</div></a>
 				</div>
 			</div>
-			<a href="../html/soccer-seoul.html"><div class="map-point seoul">FC
-					서울</div></a> <a href="../html/soccer-seoul.html"><div
-					class="map-point gangwon1">강원 FC</div></a> <a
-				href="../html/soccer-seoul.html"><div class="map-point gangwon2">강원
-					FC</div></a> <a href="../html/soccer-seoul.html"><div
-					class="map-point gimcheon">김천 상무</div></a> <a
-				href="../html/soccer-seoul.html"><div class="map-point deagu">대구
-					FC</div></a> <a href="../html/soccer-seoul.html"><div
-					class="map-point seongnam">성남 FC</div></a> <a
-				href="../html/soccer-seoul.html"><div class="map-point suwon1">수원
-					삼성</div></a> <a href="../html/soccer-seoul.html"><div
-					class="map-point suwon2">수원 FC</div></a> <a
-				href="../html/soccer-seoul.html"><div class="map-point ulsan">울산
-					현대</div></a> <a href="../html/soccer-seoul.html"><div
-					class="map-point incheon"
-					style="font-size: 18px; background-color: rgb(0, 24, 65);">인천
-					UNT</div></a> <a href="../html/soccer-seoul.html"><div
-					class="map-point jeonbuk">전북 현대</div></a> <a
-				href="../html/soccer-seoul.html"><div class="map-point jeju">제주
-					UNT</div></a> <a href="../html/soccer-seoul.html"><div
+			<a href="#"><div class="map-point seoul"
+					style="font-size: 18px; background-color: rgb(0, 24, 65);">FC
+					서울</div></a> <a href="#"><div class="map-point gangwon1">강원 FC</div></a> <a
+				href="#"><div class="map-point gangwon2">강원 FC</div></a> <a href="#"><div
+					class="map-point gimcheon">김천 상무</div></a> <a href="#"><div
+					class="map-point deagu">대구 FC</div></a> <a href="#"><div
+					class="map-point seongnam">성남 FC</div></a> <a href="#"><div
+					class="map-point suwon1">수원 삼성</div></a> <a href="#"><div
+					class="map-point suwon2">수원 FC</div></a> <a href="#"><div
+					class="map-point ulsan">울산 현대</div></a> <a
+				href="html/soccer-incheon.jsp"><div class="map-point incheon">인천
+					UNT</div></a> <a href="#"><div class="map-point jeonbuk">전북 현대</div></a> <a
+				href="#"><div class="map-point jeju">제주 UNT</div></a> <a href="#"><div
 					class="map-point pohang">포항 스틸러스</div></a>
 		</article>
 		<article>
@@ -177,8 +174,8 @@
 					var container = document.getElementById("map"); //지도를 담을 영역의 DOM 레퍼런스
 					var options = {
 						//지도를 생성할 때 필요한 기본 옵션
-						center : new kakao.maps.LatLng(37.46606384423695,
-								126.64303637821799), //지도의 중심좌표.
+						center : new kakao.maps.LatLng(37.5682320566392,
+								126.89728895889323), //지도의 중심좌표.
 						level : 5, //지도의 레벨(확대, 축소 정도)
 					};
 
@@ -189,7 +186,7 @@
 					});
 					// 마커가 표시될 위치입니다
 					var markerPosition = new kakao.maps.LatLng(
-							37.46606384423695, 126.64303637821799);
+							37.5682320566392, 126.89728895889323);
 
 					// 마커를 생성합니다
 					var marker = new kakao.maps.Marker({
@@ -325,8 +322,10 @@
 								<p>
 									아주 으리으리하게 가고싶은 <br /> 숙소 너무 멋졍
 								</p>
-								<a href="../html/tour-detail.html"><div class="detail-watch">자세히
-										보러가기</div></a>
+								<a href="../html/tour-detail.html"><div class="detail-watch">
+										</href>
+										자세히 보러가기
+									</div></a>
 							</div>
 						</div>
 						<div class="tour-detail">
@@ -351,9 +350,8 @@
 								<p>
 									아주 으리으리하게 가고싶은 <br /> 숙소 너무 멋졍
 								</p>
-								<href href="../html/tour-detail.html">
-								<div class="detail-watch">자세히 보러가기</div>
-								</href>
+								<a href="../html/tour-detail.html"><div class="detail-watch">자세히
+										보러가기</div></a>
 							</div>
 						</div>
 						<div class="tour-detail">
@@ -378,7 +376,8 @@
 								<p>
 									아주 으리으리하게 가고싶은 <br /> 숙소 너무 멋졍
 								</p>
-								<div class="detail-watch">자세히 보러가기</div>
+								<a href="../html/tour-detail.html"><div class="detail-watch">자세히
+										보러가기</div></a>
 							</div>
 						</div>
 						<div class="tour-detail">

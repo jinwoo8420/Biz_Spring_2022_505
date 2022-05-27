@@ -44,18 +44,30 @@ public class UserController {
 	 */
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String login(UserVO userVO, HttpSession session) {
+	public String login(UserVO userVO, HttpSession session, Model model) {
 		log.debug(userVO.toString());
 
-		userVO = userService.login(userVO);
+		String loginMessage = null;
+		UserVO loginUserVO = userService.findById(userVO.getUsername());
 
-		if (userVO == null) {
-			session.removeAttribute("USER");
-		} else {
-			session.setAttribute("USER", userVO);
+		if (loginUserVO == null) { // 가입 된 적 없을 때
+			loginMessage = "USERNAME FAIL";
 		}
 
-		return null;
+		// username은 있지만 password가 다른 경우
+		if (!loginUserVO.getPassword().equals(userVO.getPassword())) {
+			loginMessage = "PASSWORD FAIL";
+		}
+
+		if (loginMessage == null) {
+			session.setAttribute("USER", loginUserVO);
+		} else {
+			session.removeAttribute("USER");
+		}
+
+		model.addAttribute("Login_message", loginMessage);
+
+		return "user/login_ok";
 	}
 
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
@@ -67,7 +79,7 @@ public class UserController {
 		 * Enter 누르기
 		 */
 
-		return "redirect:login";
+		return "redirect:/user/login";
 	}
 
 	@RequestMapping(value = "/join", method = RequestMethod.GET)
@@ -84,6 +96,24 @@ public class UserController {
 		return null;
 	}
 
+	@RequestMapping(value = "/join", method = RequestMethod.POST)
+	public String join(UserVO userVO) {
+		log.debug("JOIN");
+		log.debug(userVO.toString());
+		userService.join(userVO);
+
+		/*
+		 * return "문자열" : Forwarding
+		 * => views/문자열.jsp rendering
+		 * 
+		 * return "redirect:/url" : pass, toss, redirect
+		 * => 서버의 localhost:8080/url을 다시 request
+		 * => web browse 주소창에 localhost:8080/url을 입력하고 Enter를 누르는 것과 같은 효과
+		 */
+
+		return "redirect:/user/login";
+	}
+
 	/*
 	 * fetch(`${rootPath}/user/idcheck/${username.value}`)
 	 * 
@@ -91,13 +121,29 @@ public class UserController {
 	 * /user/idcheck/입력값 처럼 요청 url을 만들어서 요청 수행
 	 */
 
+	/*
+	 * id를 email 주소로 사용 할 때 PathVarriable로 받을 경우
+	 * dot(.) 이후의 문자열을 잘라버리는 현상이 있다
+	 * 이때는 정규식(Rexp)를 사용하여 dot(.) 이후 문자열을 포함하여
+	 * 변수에 저장하도록 변수를 수정
+	 * 		{username:.+} 형식으로 지정 
+	 */
+
 	@ResponseBody
-	@RequestMapping(value = "/idcheck/{username}", method = RequestMethod.GET)
-	public String idcheck(@PathVariable("username") String username) {
-		if (username.equals("jinwoo8420")) {
-			return "FAIL";
-		} else {
+	@RequestMapping(value = "/idcheck/{username:.+}", method = RequestMethod.GET)
+	public String idcheck(@PathVariable String username) {
+		UserVO userVO = userService.findById(username);
+
+//		if (userVO.getUsername().equalsIgnoreCase(username)) {
+//			return "FAIL";
+//		} else {
+//			return "OK";
+//		}
+
+		if (userVO == null) {
 			return "OK";
+		} else {
+			return "FAIL";
 		}
 	}
 
