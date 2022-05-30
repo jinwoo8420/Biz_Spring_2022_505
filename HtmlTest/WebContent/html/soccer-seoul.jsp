@@ -8,17 +8,17 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Season + ing ㅣ soccer-seoul</title>
-<link rel="stylesheet" href="css/nav.css" />
-<link rel="stylesheet" href="css/k-league-box.css" />
-<link rel="stylesheet" href="css/popular-view.css" />
+<link rel="stylesheet" href="../css/nav.css" />
+<link rel="stylesheet" href="../css/k-league-box.css" />
+<link rel="stylesheet" href="../css/popular-view.css" />
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b801ddbd49c9b14fef4051c9f7807b4f"></script>
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
 <script
 	scr="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js"></script>
-<script src="js/popular-view.js"></script>
-<script src="js/soccer-seoul.js"></script>
+<script src="../js/popular-view.js"></script>
+<script src="../js/soccer-seoul.js"></script>
 
 </head>
 <body>
@@ -31,16 +31,16 @@
 			</ul>
 			<div id="drop">
 				<ul id="menu">
-					<li id="logo"><a href="../html/main.html"><img
+					<li id="logo"><a href="html/main.jsp"><img
 							src="../images/logo.png"></a></a></li>
-					<li id="soccer"><a href="../html/soccer-seoul.html">축구</a>
+					<li id="soccer"><a href="html/soccer-seoul.jsp">축구</a>
 						<ul class="drop-menu drop-soccer">
 							<li><a href="#">김천 상무</a></li>
-							<li><a href="../html/soccer-incheon.html">인천 UNT</a></li>
+							<li><a href="html/soccer-incheon.jsp">인천 UNT</a></li>
 							<li><a href="#">전북 현대</a></li>
 							<li><a href="#">수원 삼성</a></li>
 							<li><a href="#">성남 FC</a></li>
-							<li><a href="../html/soccer-seoul.html">FC 서울</a></li>
+							<li><a href="html/soccer-seoul.jsp">FC 서울</a></li>
 							<li><a href="#">제주 UNT</a></li>
 							<li><a href="#">대구 FC</a></li>
 							<li><a href="#">강원 FC</a></li>
@@ -48,7 +48,7 @@
 							<li><a href="#">울산 현대</a></li>
 							<li><a href="#">포항 스틸러스</a></li>
 						</ul></li>
-					<li id="baseball"><a href="baseball-kia.html">야구</a>
+					<li id="baseball"><a href="baseball-kia.jsp">야구</a>
 						<ul class="drop-menu drop-baseball">
 							<li><a href="#">KT 위즈</a></li>
 							<li><a href="#">두산 베어스</a></li>
@@ -58,7 +58,7 @@
 							<li><a href="#">SSG 랜더스</a></li>
 							<li><a href="#">NC 다이노스</a></li>
 							<li><a href="#">롯데 자이언츠</a></li>
-							<li><a href="../html/baseball-kia.html">KIA 타이거즈</a></li>
+							<li><a href="html/baseball-kia.jsp">KIA 타이거즈</a></li>
 							<li><a href="#">한화 이글스</a></li>
 						</ul></li>
 					<li id="volleyball"><a href="#">배구</a>
@@ -322,7 +322,7 @@
 								<p>
 									아주 으리으리하게 가고싶은 <br /> 숙소 너무 멋졍
 								</p>
-								<a href="../html/tour-detail.html"><div class="detail-watch">
+								<a href="html/tour-detail.jsp"><div class="detail-watch">
 										</href>
 										자세히 보러가기
 									</div></a>
@@ -337,33 +337,33 @@
 								<p>
 									아주 맛나게 가고싶은 <br /> 식당 너무 멋졍
 								</p>
-								<a href="../html/tour-detail.html"><div class="detail-watch">자세히
+								<a href="html/tour-detail.jsp"><div class="detail-watch">자세히
 										보러가기</div></a>
 							</div>
 						</div>
 						<div class="tour-detail">
 							<div class="detail-img">
-								<img src="../img/tour (2).jpg" />
+								<img src="../img/tour(2).jpg" />
 							</div>
 							<div>
 								<p>[숙박]럭셔리한 호텔</p>
 								<p>
 									아주 으리으리하게 가고싶은 <br /> 숙소 너무 멋졍
 								</p>
-								<a href="../html/tour-detail.html"><div class="detail-watch">자세히
+								<a href="html/tour-detail.jsp"><div class="detail-watch">자세히
 										보러가기</div></a>
 							</div>
 						</div>
 						<div class="tour-detail">
 							<div class="detail-img">
-								<img src="../img/tour (4).jpg" />
+								<img src="../img/tour(4).jpg" />
 							</div>
 							<div>
 								<p>[식당]아주나이스</p>
 								<p>
 									아주 으리으리하게 가고싶은 <br /> 식당 너무 멋졍
 								</p>
-								<a href="../html/tour-detail.html"><div class="detail-watch">자세히
+								<a href="html/tour-detail.jsp"><div class="detail-watch">자세히
 										보러가기</div></a>
 							</div>
 						</div>

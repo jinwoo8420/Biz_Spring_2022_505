@@ -1,0 +1,526 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Season + ingㅣtour-detail</title>
+<link rel="stylesheet" href="../css/nav.css" />
+<link rel="stylesheet" href="../css/k-league-box.css" />
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+<style>
+#around-tour-box {
+	width: 1220px;
+	height: 600px;
+	display: flex;
+	margin: 40px auto 50px;
+	justify-content: space-between;
+}
+
+#tour-list {
+	width: 420px;
+	height: inherit;
+}
+
+#choice-tour-menu {
+	width: inherit;
+	/* display: block; */
+	flex-direction: column;
+}
+
+#list-detail {
+	width: inherit;
+	height: 160px;
+	background-color: white;
+}
+
+/* 여기부터 하단 슬라이드 */
+div.out {
+	width: 1220px;
+	margin: 0 auto;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-top: 2px solid red;
+}
+
+div.window {
+	display: flex;
+	overflow: hidden;
+	position: relative;
+}
+
+div.slides {
+	display: flex;
+}
+
+div.attr_container {
+	align-items: flex-start;
+	width: 300px;
+	/* border: 1px solid #ccc; */
+	display: flex;
+	flex-direction: column;
+	/* word-break: keep-all; */
+	padding: 1.7em 1em;
+	transition: opacity 0.6s ease-in-out;
+	cursor: pointer;
+}
+
+div.attr_container:hover {
+	opacity: 0.6;
+}
+
+div.attr_container span {
+	text-align: left;
+	display: flex;
+	letter-spacing: -0.05em;
+	padding: 0.5em;
+}
+
+span img {
+	max-width: 100%;
+	width: 250px;
+	height: 170px;
+}
+
+/* 관광지 정보 말줄임하는거 */
+#content {
+	height: 75px;
+	white-space: revert;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+div.btn {
+	display: flex;
+	align-items: center;
+	z-index: 1;
+}
+
+button {
+	border: none;
+	margin: none;
+	background-color: #eee;
+	border-radius: 5px;
+	padding: 3px 5px;
+	cursor: pointer;
+}
+
+/* 여기까지 하단 슬라이드 */
+div.detail-container {
+	width: 420px;
+}
+
+div.detail-box {
+	flex-direction: column;
+	display: flex;
+}
+
+.maininfo li {
+	line-height: 1.9rem;
+}
+
+.detailtext {
+	height: 157px;
+	margin-top: 10px;
+	padding-bottom: 4px;
+	line-height: 1.9rem;
+}
+
+#mainpic-con {
+	width: 780px;
+	height: 600px;
+	display: flex;
+	justify-content: space-between;
+	position: relative;
+}
+
+.mainpic {
+	position: absolute;
+	width: inherit;
+	height: inherit;
+}
+
+.ht1 {
+	z-index: 50;
+}
+
+.maintext1, .maintext2 {
+	font-size: 25px;
+	margin: 20px 0;
+	padding: 10px 0;
+	border-bottom: 2px solid red;
+}
+
+h1.maintext1 {
+	margin-top: 0;
+	padding-top: 0;
+}
+
+.detailpics {
+	margin-top: auto;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+.detailpic {
+	float: left;
+	width: 133px;
+	height: 80px;
+	margin-top: 10px;
+	position: relative;
+}
+
+.more1:hover+#pic1 {
+	filter: brightness(50%);
+	transition-duration: 0.6s;
+}
+
+.more1:hover {
+	opacity: 1;
+	transition-duration: 0.6s;
+}
+
+.more2:hover+#pic2 {
+	filter: brightness(50%);
+	transition-duration: 0.6s;
+}
+
+.more2:hover {
+	opacity: 1;
+	transition-duration: 0.6s;
+}
+
+.more3:hover+#pic3 {
+	filter: brightness(50%);
+	transition-duration: 0.6s;
+}
+
+.more3:hover {
+	opacity: 1;
+	transition-duration: 0.6s;
+}
+
+.more4:hover+#pic4 {
+	filter: brightness(50%);
+	transition-duration: 0.6s;
+}
+
+.more4:hover {
+	opacity: 1;
+	transition-duration: 0.6s;
+}
+
+.more5:hover+#pic5 {
+	filter: brightness(50%);
+	transition-duration: 0.6s;
+}
+
+.more5:hover {
+	opacity: 1;
+	transition-duration: 0.6s;
+}
+
+.more6:hover+#pic6 {
+	filter: brightness(50%);
+	transition-duration: 0.6s;
+}
+
+.more6:hover {
+	opacity: 1;
+	transition-duration: 0.6s;
+}
+
+.more {
+	cursor: pointer;
+	margin-top: 10px;
+	text-align: center;
+	line-height: 80px;
+	width: 133px;
+	height: 80px;
+	position: absolute;
+	color: white;
+	font-weight: 600;
+	opacity: 0;
+	z-index: 100;
+}
+
+.more2 {
+	left: 944px;
+	top: 510px;
+}
+
+.more3 {
+	left: 1088px;
+	top: 510px;
+}
+
+.more4 {
+	left: 800px;
+	top: 600px;
+}
+
+.more5 {
+	left: 944px;
+	top: 600px;
+}
+
+.more6 {
+	left: 1088px;
+	top: 600px;
+}
+</style>
+</head>
+<body>
+	<header>
+		<nav id="nav-menu">
+			<ul id="login">
+				<!--이거 자리만 미리 잡아놓을려고 만든거임 신경 ㄴㄴ-->
+				<li><a href="#">회원가입</a></li>
+				<li><a href="#">로그인</a></li>
+			</ul>
+			<div id="drop">
+				<ul id="menu">
+					<li id="logo"><a href="main.html"><img
+							src="images/logo.png"></a></a></li>
+					<li id="soccer"><a href="#">축구</a>
+						<ul class="drop-menu drop-soccer">
+							<li><a href="#">김천 상무</a></li>
+							<li><a href="html/soccer-incheon.jsp">인천 UNT</a></li>
+							<li><a href="#">전북 현대</a></li>
+							<li><a href="#">수원 삼성</a></li>
+							<li><a href="#">성남 FC</a></li>
+							<li><a href="html/soccer-seoul.jsp">FC 서울</a></li>
+							<li><a href="#">제주 UNT</a></li>
+							<li><a href="#">대구 FC</a></li>
+							<li><a href="#">강원 FC</a></li>
+							<li><a href="#">수원 FC</a></li>
+							<li><a href="#">울산 현대</a></li>
+							<li><a href="#">포항 스틸러스</a></li>
+						</ul></li>
+					<li id="baseball"><a href="#">야구</a>
+						<ul class="drop-menu drop-baseball">
+							<li><a href="#">KT 위즈</a></li>
+							<li><a href="#">두산 베어스</a></li>
+							<li><a href="#">삼성 라이온즈</a></li>
+							<li><a href="#">LG 트윈스</a></li>
+							<li><a href="#">키움 히어로즈</a></li>
+							<li><a href="#">SSG 랜더스</a></li>
+							<li><a href="#">NC 다이노스</a></li>
+							<li><a href="#">롯데 자이언츠</a></li>
+							<li><a href="html/baseball-kia.jsp">KIA 타이거즈</a></li>
+							<li><a href="#">한화 이글스</a></li>
+						</ul></li>
+					<li id="volleyball"><a href="#">배구</a>
+						<ul class="drop-volleyball">
+							<li>
+								<ul id="volleyman">
+									<li>남자부</li>
+									<li><a href="#">대한항공 점보스</a></li>
+									<li><a href="#">KB손해보험 스타즈</a></li>
+									<li><a href="#">한국전력 빅스톰</a></li>
+									<li><a href="#">삼성화재 블루팡스</a></li>
+									<li><a href="#">우리카드 우리WON</a></li>
+									<li><a href="#">OK금융그룹 읏맨</a></li>
+									<li><a href="#">현대캐피탈 스카이워커스</a></li>
+								</ul>
+							</li>
+							<li>
+								<ul id="volleywoman">
+									<li>여자부</li>
+									<li><a href="#">GS 칼텍스 KIXX</a></li>
+									<li><a href="#">IBK 기업은행 알토스</a></li>
+									<li><a href="#">KGC인삼공사 프로배구단</a></li>
+									<li><a href="#">페퍼저축은행 AI 페퍼스</a></li>
+									<li><a href="#">흥국생명 핑크스파이더스</a></li>
+									<li><a href="#">한국도로공사 하이패스</a></li>
+									<li><a href="#">현대건설 힐스테이트</a></li>
+								</ul>
+							</li>
+						</ul></li>
+				</ul>
+			</div>
+		</nav>
+	</header>
+	<section>
+		<article>
+			<h1>관광지 정보</h1>
+			<div id="around-tour-box">
+				<div id="mainpic-con">
+					<img class="mainpic ht1" src="images/detail/hotel1.jpg" /> <img
+						class="mainpic ht2" src="images/detail/hotel2.jpg" /> <img
+						class="mainpic ht3" src="images/detail/hotel3.jpg" /> <img
+						class="mainpic ht4" src="images/detail/hotel4.jpg" /> <img
+						class="mainpic ht5" src="images/detail/hotel5.jpg" /> <img
+						class="mainpic ht6" src="images/detail/hotel6.jpg" />
+				</div>
+				<div class="detail-container">
+					<div id="mainbox">
+						<h1 class="maintext1">스탠포드 호텔 서울</h1>
+						<ul class="maininfo">
+							<li>장소 : 서울특별시 마포구 월드컵북로58길 15</li>
+							<li>전화 : 02-6016-0001</li>
+							<li>체크인 15:00 ㅣ 체크아웃 11:00</li>
+						</ul>
+					</div>
+					<div class="detail-box">
+						<h1 class="maintext2">상세설명</h1>
+						<p class="detailtext">인천국제공항 30분, 김포공항 15분, 일산 킨텍스 20분, 서울
+							중심으로부터 30분 거리에 위치 국제도시 서울의 새로운 명소 상암동 디지털미디어시티에 위치한 스탠포드호텔 서울</p>
+						<div class="detailpics">
+							<p class="more more1">자세히보기</p>
+							<img class="detailpic" id="pic1"
+								src="images/detail/hotel1.jpg"></img>
+
+							<p class="more more2">자세히보기</p>
+							<img class="detailpic" id="pic2"
+								src="images/detail/hotel2.jpg"></img>
+
+							<p class="more more3">자세히보기</p>
+							<img class="detailpic" id="pic3"
+								src="images/detail/hotel3.jpg"></img>
+
+							<p class="more more4">자세히보기</p>
+							<img class="detailpic" id="pic4"
+								src="images/detail/hotel4.jpg"></img>
+
+							<p class="more more5">자세히보기</p>
+							<img class="detailpic" id="pic5"
+								src="images/detail/hotel5.jpg"></img>
+
+							<p class="more more6">자세히보기</p>
+							<img class="detailpic" id="pic6"
+								src="images/detail/hotel6.jpg"></img>
+						</div>
+					</div>
+				</div>
+			</div>
+		</article>
+	</section>
+
+	<footer></footer>
+
+	<div class="out">
+		<div class="window">
+			<div class="btn prev">
+				<button class="">&#10094;</button>
+			</div>
+			<div class="slides">
+				<div class="attr_container">
+					<span class="img"> <img
+						src="/images/seoul/이랜드크루즈 (한강유람선)1.JPG" /> <!-- <div class="img_p">
+                <p>자세히 보기+</p>
+              </div> -->
+					</span> <span>[명소]&nbsp; <b>이랜드크루즈(한강유람선)</b></span> <span id="content">한강
+						유람선은 1986년 10월 26일, 서울특별시의 중심부를 동서로 가로지르는 유람선을 첫 취항하여 운항을 개시하였다.현재
+						㈜이랜드크루즈에서 여의도, 잠실을 중심으로 2개의 터미널을 운영하고 있다. </span>
+				</div>
+				<div class="attr_container">
+					<span class="img"> <img src="/images/seoul/경복궁1.jpg" />
+					</span> <span>[명소]&nbsp; <b>경복궁</b></span> <span id="content">경복궁은
+						1395년 태조 이성계에 의해서 새로운 조선왕조의 법궁으로 지어졌다. 경복궁은 동궐(창덕궁)이나 서궐(경희궁)에 비해
+						위치가 북쪽에 있어 '북궐'이라 불리기도 했다. 경복궁은 5대 궁궐 가운데 으뜸의 규모와 건축미를 자랑한다. </span>
+				</div>
+				<div class="attr_container">
+					<span class="img"> <img src="/images/seoul/청계산1.jpg" />
+					</span> <span>[명소]&nbsp; <b>청계산</b></span> <span id="content">"서울대공원과
+						서울랜드, 국립현대미술관을 둘러싼 푸른 산자락이 바로 청계산이다. 서울 양재동과 과천시, 성남시,의왕시의 경계를 이루고
+						있는 청계산은 관악산 산자락이 과천 시내를 에둘러 남쪽으로 뻗어내린 것이다. 산맥은 여기서 멈추지 않고 서남쪽으로
+						뻗어나가 의왕시의 백운산, 모락산, 오봉산으로 이어진다. </span>
+				</div>
+				<div class="attr_container">
+					<span class="img"> <img src="/images/seoul/신사동 가로수길1.jpg" />
+					</span> <span>[명소]&nbsp; <b>신사동 가로수길</b></span> <span id="content">3호선
+						신사역에서 압구정 현대고등학교 앞으로 통하는 은행나무길.‘예술가의 거리’ 라 불리는 신사동 가로수길 주위로는 아기자기한
+						커피숍과 맛집, 디자이너들의 옷 매장들이 즐비해 있어 이국적인 분위기를 연출한다. 이러한 신사동 가로수길만의 독특한
+						분위기 덕분에 평일에도 카메라를 들고 여기저기서 사진을 촬영하는 사람들의 모습을 종종 볼 수 있다. 특히 가을에는
+						낙엽지는 거리를 보러 많은 사람들이 찾아오며, 젊은이들의 입소문을 타고 유명세를 탄 이후 많은 영화의 배경지로 나오기도
+						했다. </span>
+				</div>
+				<div class="attr_container">
+					<span class="img"> <img src="/images/seoul/남산골한옥마을1.jpg" />
+					</span> <span>[명소]&nbsp; <b>남산골한옥마을</b></span> <span id="content">"1998년
+						조성된 남산골한옥마을은 남산 북측 옛 수도방위사령부 부지 총 79,934m²(24,180평)에 한옥 5동, 전통공예관,
+						천우각, 전통정원, 서울남산국악당, 새천년타임캡슐 광장으로 구성되어 시민과 관광객을 맞이하고 있다. 번화한 도심 한
+						가운데에서 한국 전통문화를 소재로 한 다양한 체험거리를 만나볼 수 있으며, 남산 자락을 따라 전통조경 양식으로 조성된
+						계곡과 정자, 각종 화초가 만들어내는 아름다운 풍경을 만날 수 있다. 전통정원 가장 높은 곳에는 서울정도 600년을
+						기념하고 400년 후 서울정도 천년을 기대하며 1994년 당대의 기억을 매설한 서울천년타입캡슐 광장이 조성되어 있다.
+						옛 가옥을 복원해 놓은 남산골한옥마을 남산골한옥마을 안으로 들어서면 연못 청학지와 그 곁으로 천우각이 있다. </span>
+				</div>
+				<div class="attr_container">
+					<span class="img"> <img src="/images/seoul/홍릉수목원1.jpg" />
+					</span> <span>[명소]&nbsp; <b>홍릉수목원</b></span> <span id="content">홍릉수목원은
+						1922년 서울 홍릉에 임업 시험장이 설립되면서 조성된 우리나라 최초의 제1세대 수목원이다. 이곳은 조선왕조 고종의
+						왕비인 명성황후의 능(1897년)인 「홍릉」이 있었던 곳으로 「홍릉수목원」이라 이름 붙여졌으며 지금은 이장되어 터만
+						표시되어 있다. </span>
+				</div>
+				<div class="attr_container">
+					<span class="img"> <img src="/images/seoul/광화문1.jpg" />
+					</span> <span>[명소]&nbsp; <b>광화문</b></span> <span id="content">광화문은
+						경복궁의 남문이며, 궁성의 정문이다. 광화문은 국왕이 드나드는 정문이기도 했지만, 조선의 법궁인 경복궁의 정문이었기
+						때문에 다른 궁궐의 정문에 비해 그 규모와 격식 면에서도 매우 웅장하고 화려했다. 또한 광화문은 담장 끝 동쪽과 서쪽에
+						각각 동십자각과 서십자각을 두어 조선의 5대 궁궐 가운데 유일하게 궐문형식을 갖추고 있기도 했다. 광화문은 중층으로 된
+						문루를 받치는 기단석축에 세 개의 홍예로 이루어져 있는데, 중앙의 홍예로는 왕이, 좌우의 홍예로는 왕세자와 신하들이
+						출입하도록 하였다. </span>
+				</div>
+				<div class="attr_container">
+					<span class="img"> <img src="/images/seoul/남산서울타워1.jpg" />
+					</span> <span>[명소]&nbsp; <b>남산서울타워</b></span> <span id="content">"'남산서울타워'는
+						효율적인 방송전파 송수신과 한국의 전통미를 살린 관광 전망시설의 기능을 겸비한 국내 최초의 종합전파탑으로 방송문화와
+						관광산업의 미래를 위해 건립되었다. 세계 유명한 종합 탑들이 그 나라 또는 그 도시의 상징적인 존재가 된 것 처럼
+						'남산서울타워' 역시 지난 40여 년간 대한민국의 대표적인 관광지이자 서울의 상징물 역할을 해왔다.'남산서울타워'는
+						서울 시내 전 지역에서 바라보이는 탑의 높이와 독특한 구조, 형태 등으로 인하여 시민의 관심과 사랑의 대상이 되었고,
+						내외국인들이 즐겨 찾는 제1의 관광 명소로서의 위치를 확고히 하고 있다. 최근에는 한류 바람을 몰고 온 각종 예능,
+						드라마의 촬영지로 이름이 높아지면서 내외국인 관광객들이 발길이 끊이지 않는 곳이다. </span>
+				</div>
+			</div>
+		</div>
+		<div class="btn next">
+			<button class="">&#10095;</button>
+		</div>
+	</div>
+</body>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const SLIDE_WIDTH = 1200;
+      const prevBtn = document.querySelector("div.prev");
+      const nextBtn = document.querySelector("div.next");
+      const slides = document.querySelector("div.slides");
+      const sldCount = document.querySelectorAll("div.slides div").length;
+      
+      let position = 0;
+      let curPosition = 0;
+      
+      if (prevBtn) {
+        prevBtn.addEventListener("click", () => {
+          if (curPosition > 0) {
+            position += SLIDE_WIDTH;
+            slides.style.transform = `translateX(${position}px)`;
+            slides.style.transition = `${0.8}s ease-out`;
+            curPosition--;
+          }
+        });
+      }
+      
+      if (nextBtn) {
+        nextBtn.addEventListener("click", () => {
+          if (curPosition <= sldCount - 8) {
+            position -= SLIDE_WIDTH;
+            slides.style.transform = `translateX(${position}px)`;
+            slides.style.transition = `${0.8}s ease-out`;
+            curPosition++;
+          }
+        });
+      }
+    });
+    </script>
+<script src="../js/detailpage.js"></script>
+
+</html>

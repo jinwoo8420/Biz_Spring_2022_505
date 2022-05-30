@@ -2,6 +2,8 @@ package com.callor.school.controller;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,11 +16,19 @@ import com.callor.school.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-//@RequestMapping(value = "/user")
-public class UserController {
+@Controller
+@RequestMapping(value = "/user")
+public class UserControllerV2 {
+	/*
+	 * @Qulifier("userServiceV2")
+	 * UserService 인터페이스를 상속받은 클래스가 2개 있다
+	 * User...ImplV1 과 User...ImplV2가 있는데
+	 * 그 중에서 @Service("userServiceV2")라고 명시된 클래스를 주입
+	 */
+
 	private final UserService userService;
 
-	public UserController(UserService userService) {
+	public UserControllerV2(@Qualifier("userServiceV2") UserService userService) {
 		this.userService = userService;
 	}
 
@@ -28,44 +38,40 @@ public class UserController {
 	}
 
 	/*
-	 * 1. login.form에서 username과 password 받기
-	 * 2. userVO에 담겨서 받게 된다
-	 * 3. userVO UserService.login에게 전달한다
-	 * 4. UserService.login() method는 username과 password 검사
-	 * 5. 정상적인(username, password가 일치) 정보이면
-	 * 		나머지 user 정보를 userVO에 담아서 return
-	 *  	만약 정상적인 사용자가 아니면 null을 return
-	 * 6. Controller.login.POST method에는 HttpSession 클래스를 매개변수로 설정한다
-	 * 7. 정상 사용자 정보이면(userVO가 null이 아니면)
-	 * 		setAttribute() method를 사용하여 사용자 정보를 변수에 setting한다
-	 * 8. 정상 사용자가 아니면 removeAttribute() method를 사용하여 변수를 제거해버린다
+	 * HttpSession
+	 * 웹 어플리케이션은 한번 요청을 수행하고 응답을 받으면 연결이 종료된다 
+	 * 이러한 것을 stateless(상태가 없다)라고 한다
+	 * 사용자가 로그인을 성공하면 다른 페이지로 이동하였을때는 그 정보가 유지되어야 한다
+	 * 매번 페이지 이동 때 다시 로그인을 수행한다면
+	 * 상당히 불편한 상황이 될 것이다
+	 * 웹 어플리케이션은 로그인한 사용자 정보를 어딘가에 보관을 하고 있다가
+	 * 
+	 * 다른 페이지로 이동하였을때 그 정보를 참조 할 수 있어야 한다
+	 * 웹 어플리케이션은 이러한 유지되어야 할 정보를
+	 * 서버의 메모리에 보관을 해놓는다
+	 * 
+	 * Spring에서는 이 정보를 HttpSession 클래스를 사용하여 관리한다
+	 * 로그인한 사용자의 정보(VO 데이터)를 HttpSession에 변수로 저장을 해놓는다
+	 * session.setAttribute("USER", loginUser); 명령을 사용하여
+	 * USER라는 변수에 loginUser 정보를 저장해 놓는다
+	 * 이 후에 서버를 재시작, 종료 하기 전까지 USER라는 변수에는
+	 * loginUser 정보가 계속 담겨 있게 된다
+	 * 
+	 * 임의로 이 정보를 삭제하려먼
+	 * session.removeAttribute() method를 사용하여 USER 변수를 삭제해주어야 한다 
 	 */
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String login(UserVO userVO, HttpSession session, Model model) {
-		log.debug(userVO.toString());
+		UserVO loginUser = userService.login(userVO);
 
-		String loginMessage = null;
-		UserVO loginUserVO = userService.findById(userVO.getUsername());
-
-		if (loginUserVO == null) { // 가입 된 적 없을 때
-			loginMessage = "USERNAME FAIL";
-		}
-
-		// username은 있지만 password가 다른 경우
-		else if (!loginUserVO.getPassword().equals(userVO.getPassword())) {
-			loginMessage = "PASSWORD FAIL";
-		}
-
-		if (loginMessage == null) {
-			session.setAttribute("USER", loginUserVO);
-		} else {
+		if (loginUser == null) {
 			session.removeAttribute("USER");
+		} else {
+			session.setAttribute("USER", loginUser);
 		}
 
-		model.addAttribute("Login_message", loginMessage);
-
-		return "user/login_ok";
+		return "redirect:/";
 	}
 
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
@@ -77,7 +83,7 @@ public class UserController {
 		 * Enter 누르기
 		 */
 
-		return "redirect:/user/login";
+		return "redirect:/";
 	}
 
 	@RequestMapping(value = "/join", method = RequestMethod.GET)

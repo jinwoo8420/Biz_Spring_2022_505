@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+    
 <!DOCTYPE html>
 <html lang="ko">
   <head>
@@ -16,35 +20,35 @@
     <div class="main"></div>
 
     <div class="main_button">
-      <img id="logo_img" src="/images/로고1.png" />
+      <img id="logo_img" src="images/로고1.png" />
       <!-- <img id="logo_img" src="\images\시즌 잉.png" /> -->
 
-      <button id="football" onclick="location.href = 'soccer-seoul.jsp'; ">
-        <img id="button_img" src="/images/football_text.png" /><br />
+      <button id="football" onclick="location.href = 'html/soccer-seoul.jsp'; ">
+        <img id="button_img" src="images/football_text.png" /><br />
         <p class="m_b_text">K-리그</p>
         <p id="button_text">
           정보보러가기 <b id="button_text_arrow"> &#10095;</b>
         </p>
       </button>
-      <img id="football_img" src="/images/football.png" />
+      <img id="football_img" src="images/football.png" />
 
-      <button id="baseball" onclick="location.href = 'baseball-kia.jsp'; ">
-        <img id="button_img" src="/images/baseball_text.png" /><br />
+      <button id="baseball" onclick="location.href = 'html/baseball-kia.jsp'; ">
+        <img id="button_img" src="images/baseball_text.png" /><br />
         <p class="m_b_text">KBO-리그</p>
         <p id="button_text">
           정보보러가기 <b id="button_text_arrow"> &#10095;</b>
         </p>
       </button>
-      <img id="baseball_img" src="/images/baseball.png" />
+      <img id="baseball_img" src="images/baseball.png" />
 
       <button id="volleyball" onclick="location.href = 'html/nav.html'; ">
-        <img id="button_img" src="/images/volleyball_text.png" /><br />
+        <img id="button_img" src="images/volleyball_text.png" /><br />
         <p class="m_b_text">V-리그</p>
         <p id="button_text">
           정보보러가기 <b id="button_text_arrow"> &#10095;</b>
         </p>
       </button>
-      <img id="volleyball_img" src="/images/volleyball.png" />
+      <img id="volleyball_img" src="images/volleyball.png" />
     </div>
 
     <footer>사용한 오픈소스들 카카오~관광지~어쩌고</footer>

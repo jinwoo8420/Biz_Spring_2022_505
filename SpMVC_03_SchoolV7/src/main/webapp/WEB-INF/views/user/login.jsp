@@ -37,8 +37,8 @@ form input, form button {
 	<form method="POST" autocomplete="off">
 		<fieldset>
 			<legend>로그인</legend>
-			<input name="username" placeholder="USER NAME" /> <input
-				name="password" type="password" placeholder="PASSWORD" />
+			<input name="username" placeholder="USER NAME" /> 
+			<input name="password" type="password" placeholder="PASSWORD" />
 			<button>로그인</button>
 		</fieldset>
 	</form>
