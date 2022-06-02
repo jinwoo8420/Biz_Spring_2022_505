@@ -14,5 +14,6 @@
 </head>
 <body>
 	<h1>도서정보 리스트</h1>
+	<a href="${rootPath}/books/insert">도서정보 추가</a>
 </body>
 </html>

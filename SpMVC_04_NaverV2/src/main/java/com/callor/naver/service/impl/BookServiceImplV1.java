@@ -4,10 +4,19 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.callor.naver.config.QualifierConfig;
 import com.callor.naver.model.BookVO;
 import com.callor.naver.service.BookService;
 
-@Service("bookServiceV1")
+/*
+ * bookServiceV1
+ * BookService interface를 상속받은 클래스가 다수 있을때
+ * Controller에서 어떤 클래스를 지금 연결하여 사용 할 것인가의 문제가 발생
+ * 
+ * 그럴 경우 @Service Annotation(식별자)을 부착하여 클래스 중에서 필요한 부분을 선택
+ */
+
+@Service(QualifierConfig.SERVICE.BOOKS_V1)
 public class BookServiceImplV1 implements BookService {
 
 	@Override
