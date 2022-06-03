@@ -69,6 +69,7 @@
 				<c:forEach items="${BOOKS}" var="BOOK">
 					<tr>
 						<td>${BOOK.isbn}</td>
+						<td>${BOOK.isbn}</td>
 						<td>${BOOK.title}</td>
 						<td>${BOOK.publisher}</td>
 						<td>${BOOK.author}</td>

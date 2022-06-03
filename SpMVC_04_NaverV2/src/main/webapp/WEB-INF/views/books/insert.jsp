@@ -14,7 +14,7 @@
 	const rootPath = "${rootPath}"
 </script>
 
-<script src="${rootPath}/static/js/save.js?ver2022-06-03-007"></script>
+<script src="${rootPath}/static/js/save.js?ver2022-06-03-008"></script>
 <body>
 	<header>
 		<h1>API APP</h1>
@@ -63,8 +63,8 @@
 
 		<div class="btn">
 			<button class="btn_save" type="button">저장</button>
-			<button id="btn_new" type="submit">새로작성</button>
-			<button id="btn_list" type="submit">리스트보기</button>
+			<button id="btn_new" type="button">새로작성</button>
+			<button id="btn_list" type="button">리스트보기</button>
 		</div>
 	</form>
 

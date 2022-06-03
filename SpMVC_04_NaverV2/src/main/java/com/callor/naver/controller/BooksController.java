@@ -24,9 +24,10 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping(value = "/books")
 @Controller
 public class BooksController {
+	@Qualifier(QualifierConfig.SERVICE.BOOKS_V1)
 	private final BookService bookService;
 
-	public BooksController(@Qualifier(QualifierConfig.SERVICE.BOOKS_V1) BookService bookService) {
+	public BooksController(BookService bookService) {
 		this.bookService = bookService;
 
 	}
@@ -42,13 +43,9 @@ public class BooksController {
 	 * null을 return 하면 Spring에서 자체적으로 폴더 / 파일 형식으로 구성
 	 */
 
-	@RequestMapping(value = { "/", "" })
-	public String home() {
-		return "books/list";
-	}
-
 	@RequestMapping(value = "/list")
-	public String list(Model model) {
+	public String home(Model model) {
+
 		List<BookVO> bookList = bookService.selectAll();
 
 		// bookList에 담긴 데이터를 BOOKS 이름으로 변수에 담아 jsp 파일로 보내기
@@ -78,6 +75,8 @@ public class BooksController {
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)
 	public String insert(BookVO bookVO) {
 		log.debug("도서정보 : " + bookVO.toString());
+
+		bookService.save(bookVO);
 
 		return null;
 	}
