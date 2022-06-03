@@ -60,3 +60,26 @@ a tag에서는 nav의 color를 강제로 상속받로고 설정한다
 nav a {
 	color: inherit;
 }
+
+button {
+	width: 120px;
+	height: 50px;
+	margin-left: auto;
+}
+
+.btn {
+	margin-top: 25px;
+	float: right;
+}
+
+.btn .btn_save {
+	background-color: blue;
+}
+
+.btn #btn_new {
+	background-color: red;
+}
+
+.btn #btn_list {
+	background-color: yellow;
+}

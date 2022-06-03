@@ -3,24 +3,28 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set value="${pageContext.request.contextPath}" var="rootPath" />
 
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Insert title here</title>
 <link rel="stylesheet"
-	href="${rootPath}/static/css/home_book.css?ver=2022-06-3-004">
+	href="${rootPath}/static/css/home_book.css?ver=2022-06-3-001">
 <link rel="stylesheet"
 	href="${rootPath}/static/css/main.css?ver=2022-06-2-002">
 <link rel="stylesheet"
-	href="${rootPath}/static/css/input_book.css?ver=2022-06-3-001">
-
-<script>
-	const rootPath = "${rootPath}"
-</script>
-
-<script src="${rootPath}/static/js/save.js?ver2022-06-03-007"></script>
+	href="${rootPath}/static/css/table_book.css?ver=2022-06-3-005">
+</head>
 <body>
 	<header>
-		<h1>API APP</h1>
+		<h1>도서정보 리스트</h1>
 	</header>
 
 	<nav>
+
 		<ul>
 			<li><a href="${rootPath}/">Home</a></li>
 			<li><a href="${rootPath}/books/list">도서정보</a></li>
@@ -46,26 +50,5 @@
 		</ul>
 	</nav>
 
-	<form class="save" method="POST">
-		<div>
-			<input name="isbn" id="isbn" placeholder="ISBN"> <input
-				name="title" id="title" placeholder="도서명">
-		</div>
-
-		<div>
-			<input name="author" placeholder="저자"> <input
-				name="publisher" placeholder="출판사"> <input name="pubdate"
-				placeholder="출판일"> <input name="price" placeholder="가격"
-				type="number">
-		</div>
-
-		<textarea rows="5" cols="140" placeholder="내용 입력"></textarea>
-
-		<div class="btn">
-			<button class="btn_save" type="button">저장</button>
-			<button id="btn_new" type="submit">새로작성</button>
-			<button id="btn_list" type="submit">리스트보기</button>
-		</div>
-	</form>
-
 </body>
+</html>

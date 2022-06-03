@@ -16,7 +16,7 @@
 </style>
 
 <link rel="stylesheet"
-	href="${rootPath}/static/css/home.css?ver=2022-06-2-002">
+	href="${rootPath}/static/css/home.css?ver=2022-06-3-001">
 <link rel="stylesheet"
 	href="${rootPath}/static/css/main.css?ver=2022-06-2-001">
 <link rel="stylesheet"
