@@ -44,7 +44,8 @@
 			<li><a href="${rootPath}/">Home</a></li>
 			<li><a href="${rootPath}/books/list">도서정보</a></li>
 			<li><a href="${rootPath}/news/news_list">오늘의 뉴스</a></li>
-			<li><a href="${rootPath}/movies/movies_list">영화정보</a></li>
+			<li><a href="${rootPath}/movies">영화정보</a></li>
+			<li><a href="${rootPath}/naver">네이버 체험</a></li>
 
 			<%
 			// 로그인 하지 않았을 때

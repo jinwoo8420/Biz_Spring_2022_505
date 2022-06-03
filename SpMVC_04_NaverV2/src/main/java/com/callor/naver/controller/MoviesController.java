@@ -7,13 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class MoviesController {
 
-	@RequestMapping(value = "/movies_list")
+	@RequestMapping(value = { "/", "" })
 	public String movies_list() {
 		return "movies/movies_list";
 	}
-
-//	@RequestMapping(value = { "/", "" })
-//	public String movies_list() {
-//		return "movies/movies_list";
-//	}
 }

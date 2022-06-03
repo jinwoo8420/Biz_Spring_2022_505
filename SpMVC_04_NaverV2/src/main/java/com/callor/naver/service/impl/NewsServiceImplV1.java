@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import com.callor.naver.model.NewsVO;
 import com.callor.naver.service.NewsService;
 
-@Service("newServiceV1")
+@Service("newsServiceV1")
 public class NewsServiceImplV1 implements NewsService {
 
 	@Override
