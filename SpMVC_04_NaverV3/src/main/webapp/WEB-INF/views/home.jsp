@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set value="${pageContext.request.contextPath}" var="rootPath" />
 
@@ -10,22 +9,31 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Insert title here</title>
-<link rel="stylesheet"
-	href="${rootPath}/static/css/home_book.css?ver=2022-06-3-001">
-<link rel="stylesheet"
-	href="${rootPath}/static/css/main.css?ver=2022-06-2-002">
-<link rel="stylesheet"
-	href="${rootPath}/static/css/table_book.css?ver=2022-06-3-005">
+<title>API APP</title>
 
+<style>
+</style>
+
+<link rel="stylesheet" href="${rootPath}/static/css/home.css?ver=2022-06-07-001">
+<link rel="stylesheet" href="${rootPath}/static/css/main.css?ver=2022-06-2-001">
+<link rel="stylesheet" href="${rootPath}/static/css/table.css?ver=2022-05-31-002">
+<link rel="stylesheet" href="${rootPath}/static/css/modal.css?ver=2022-05-31-002">
+<link rel="stylesheet" href="${rootPath}/static/css/input.css?ver=2022-05-31-001">
+
+<script>
+	const rootPath = "${rootPath}"
+</script>
+
+<script src="${rootPath}/static/js/input.js?ver=2022-05-31-003"></script>
 </head>
+
 <body>
 	<header>
-		<h1>도서정보 리스트</h1>
+		<h1>API APP</h1>
+		<p>Naver API를 활용한 도서, 뉴스, 영화 정보 서비스</p>
 	</header>
 
 	<nav>
-
 		<ul>
 			<li><a href="${rootPath}/">Home</a></li>
 			<li><a href="${rootPath}/books/list">도서정보</a></li>
@@ -51,39 +59,10 @@
 		</ul>
 	</nav>
 
-	<article class="ch-container">
-		<table class="ch-table">
+	<section class="main"></section>
 
-			<thead>
-				<tr>
-					<th>No.</th>
-					<th>ISBN</th>
-					<th>도서명</th>
-					<th>출판사</th>
-					<th>저자</th>
-					<th>출판일자</th>
-				</tr>
-			</thead>
-
-			<tbody>
-				<c:forEach items="${BOOKS}" var="BOOK">
-					<c:set var="i" value="${i+1}" />
-					<tr>
-						<td>${i}</td>
-						<td>${BOOK.isbn}</td>
-						<td>${BOOK.title}</td>
-						<td>${BOOK.publisher}</td>
-						<td>${BOOK.author}</td>
-						<td>${BOOK.pubdate}</td>
-					</tr>
-				</c:forEach>
-			</tbody>
-
-		</table>
-	</article>
-
-
-	<button onclick="location.href = '${rootPath}/books/insert'">도서정보
-		추가</button>
+	<footer>
+		<address>CopyRight &copy; 1223wlsdn@naver.com</address>
+	</footer>
 </body>
 </html>
