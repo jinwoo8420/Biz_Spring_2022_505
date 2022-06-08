@@ -12,7 +12,7 @@
 <title>Insert title here</title>
 
 <style>
-table {
+table.books {
 	border-collapse: collapse;
 	margin: 10px auto;
 	width: 80%;
@@ -46,7 +46,7 @@ div.btn_box a:hover {
 </head>
 <body>
 
-	<table class="books">
+	<table class="w3-table-all books">
 		<colgroup>
 			<col width="100px">
 			<col width="100px">

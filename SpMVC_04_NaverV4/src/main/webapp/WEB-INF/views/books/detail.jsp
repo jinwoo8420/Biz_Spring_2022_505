@@ -12,6 +12,18 @@
 <title>Insert title here</title>
 
 <style>
+section.w3-container {
+	display: flex;
+	flex-direction: column;
+	width: 80%;
+	margin: 10px auto;
+}
+
+div.detail-flex {
+	display: flex;
+	justify-content: space-around;
+}
+
 div.detail, div.btn_box {
 	width: 80%;
 	margin: 10px auto;
@@ -48,23 +60,36 @@ a.delete {
 
 </head>
 <body>
-	<div class="detail">
-		<p>ISBN : ${BOOK.isbn}</p>
-		<p>도서명 : ${BOOK.title}</p>
-		<p>저자 : ${BOOK.author}</p>
-		<p>출판사 : ${BOOK.publisher}</p>
-		<p>가격 : ${BOOK.price}</p>
-		<p>출판일자 : ${BOOK.pubdate}</p>
-	</div>
+	<section class="w3-container">
 
-	<div class="btn_box">
-		<a href="${rootPath}/books/list" class="list">리스트</a>
-		<a href="${rootPath}/books/${BOOK.isbn}/update" class="update">수정</a>
-		<%
-		//href="javascript:void(0)" : a tag의 link 연결 기능 완전 무력화
-		%>
-		<a href="javascript:void(0)" class="delete">삭제</a>
-	</div>
+		<div class="w3-container detail-flex">
+			<div>
+				<img src="${BOOK.image}">
+			</div>
+
+			<div class="detail">
+				<h2>
+					도서명 :
+					<a href="${BOOK.link}" target=_Blank>${BOOK.title}</a>
+				</h2>
+				<p>ISBN : ${BOOK.isbn}</p>
+				<p>저자 : ${BOOK.author}</p>
+				<p>출판사 : ${BOOK.publisher}</p>
+				<p>가격 : ${BOOK.price}</p>
+				<p>출판일자 : ${BOOK.pubdate}</p>
+			</div>
+
+		</div>
+
+		<div class="btn_box">
+			<a href="${rootPath}/books/list" class="list">리스트</a>
+			<a href="${rootPath}/books/${BOOK.isbn}/update" class="update">수정</a>
+			<%
+			//href="javascript:void(0)" : a tag의 link 연결 기능 완전 무력화
+			%>
+			<a href="javascript:void(0)" class="delete">삭제</a>
+		</div>
+	</section>
 </body>
 
 <script>

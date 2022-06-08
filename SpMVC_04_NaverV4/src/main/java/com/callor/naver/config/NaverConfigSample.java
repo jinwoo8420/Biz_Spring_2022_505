@@ -16,4 +16,6 @@ public class NaverConfigSample {
 	public static final String NAVER_BOOK_XML_URL = "https://openapi.naver.com/v1/search/book.xml";
 	public static final String NAVER_NEWS_URL = "https://openapi.naver.com/v1/search/news.json";
 	public static final String NAVER_MOVIE_URL = "https://openapi.naver.com/v1/search/movie.json";
+	
+	public static final String APP_JSON = "application/json;charset=UTF-8";
 }

@@ -23,7 +23,7 @@
 	const rootPath = "${rootPath}"
 </script>
 
-<script src="${rootPath}/static/js/input.js?ver=2022-06-08-003"></script>
+<script src="${rootPath}/static/js/input.js?ver=2022-06-08-100"></script>
 
 </head>
 

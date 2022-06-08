@@ -5,9 +5,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.callor.naver.config.NaverConfig;
 import com.callor.naver.config.QualifierConfig;
 import com.callor.naver.service.NaverService;
 
@@ -68,6 +71,21 @@ public class NaverController {
 		model.addAttribute("BOOKS", bookList);
 
 		return "naver/book_search";
+	}
+
+	/*
+	 * ISBN 코드를 전달받아 Naver에 검색한 후
+	 * 한개의 도서 정보만 JSON type으로 보내기
+	 */
+
+	@ResponseBody
+	@RequestMapping(value = "/{isbn}/book", method = RequestMethod.GET, produces = NaverConfig.APP_JSON)
+	public Object book(@PathVariable("isbn") String isbn) {
+		String queryString = naverService.queryString("BOOK", isbn);
+
+		List<Object> bookList = naverService.getNaver(queryString);
+
+		return bookList.get(0);
 	}
 
 }
