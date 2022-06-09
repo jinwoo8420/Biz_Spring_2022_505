@@ -65,7 +65,7 @@
 		CREATE TABLE tbl_users (
 		    username	VARCHAR2(20)    PRIMARY KEY,
 		    password	nVARCHAR2(125)  NOT NULL,
-		    email		VARCHAR2(125)	NOT NULL,
+		    email		VARCHAR2(125)	NOT NULL UNIQUE,
 		    name		nVARCHAR2(125),
 			nickname	nVARCHAR2(125),
 			role		VARCHAR2(5)

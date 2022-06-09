@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.callor.naver.config.QualifierConfig;
 import com.callor.naver.model.UserVO;
 import com.callor.naver.persistance.UserDao;
 import com.callor.naver.service.UserService;
@@ -20,11 +21,11 @@ import lombok.extern.slf4j.Slf4j;
  */
 
 @Slf4j
-@Service
+@Service(QualifierConfig.SERVICE.USER_V1)
 public class UserServiceImplV1 implements UserService {
 
 	@Autowired
-	private UserDao userDao;
+	protected UserDao userDao;
 
 	@Autowired
 	@Override
@@ -60,7 +61,7 @@ public class UserServiceImplV1 implements UserService {
 
 	@Override
 	public UserVO findById(String id) {
-		return null;
+		return userDao.findById(id);
 	}
 
 	@Override
@@ -80,6 +81,12 @@ public class UserServiceImplV1 implements UserService {
 
 	@Override
 	public UserVO login(UserVO userVO) {
+		UserVO loginUser = userDao.findById(userVO.getUsername());
+
+		if (loginUser != null && loginUser.getPassword().equals(userVO.getPassword())) {
+			return loginUser;
+		}
+
 		return null;
 	}
 

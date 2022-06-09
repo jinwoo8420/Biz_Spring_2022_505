@@ -30,6 +30,8 @@
 		base-package="com.callor.naver.controller" />
 	<context:component-scan
 		base-package="com.callor.naver.service.impl" />
+	<context:component-scan
+		base-package="com.callor.naver.config" />
 
 
 

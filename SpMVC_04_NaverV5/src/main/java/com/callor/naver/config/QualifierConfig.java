@@ -16,6 +16,9 @@ public class QualifierConfig {
 		public static final String NAVER_V0 = "naverServiceV0";
 		public static final String NAVER_V1 = "naverServiceV1";
 		public static final String NAVER_V2 = "naverServiceV2";
+
+		public static final String USER_V1 = "userServiceV1";
+		public static final String USER_V2 = "userServiceV2";
 	}
 
 }

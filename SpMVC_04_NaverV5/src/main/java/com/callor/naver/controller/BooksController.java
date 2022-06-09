@@ -2,6 +2,8 @@ package com.callor.naver.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.callor.naver.config.QualifierConfig;
 import com.callor.naver.model.BookVO;
+import com.callor.naver.model.UserVO;
 import com.callor.naver.service.BookService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -71,9 +74,17 @@ public class BooksController {
 	 */
 
 	@RequestMapping(value = "/insert", method = RequestMethod.GET)
-	public String insert(Model model) {
+	public String insert(Model model, HttpSession session) {
 
 		model.addAttribute("LAYOUT", "BOOK-INPUT");
+
+		UserVO userVO = (UserVO) session.getAttribute("USER");
+
+		if (userVO == null) {
+			model.addAttribute("error", "LOGIN_NEED");
+
+			return "redirect:/user/login";
+		}
 
 		return "home";
 	}

@@ -53,7 +53,7 @@
 			// 로그인 했을 때는 USER 객체에 로그인한 사용자 정보가 담겨 있다
 			%>
 			<c:if test="${not empty USER}">
-				<li><a href="${rootPath}/user/mypage">My Page</a></li>
+				<li><a href="${rootPath}/user/mypage">My Page(${USER.nickname})</a></li>
 				<li><a href="${rootPath}/user/logout">로그아웃</a></li>
 			</c:if>
 		</ul>
@@ -79,6 +79,10 @@
 
 			<c:when test="${LAYOUT=='LOGIN'}">
 				<%@ include file="/WEB-INF/views/user/login.jsp"%>
+			</c:when>
+			
+			<c:when test="${LAYOUT=='MYPAGE'}">
+				<%@ include file="/WEB-INF/views/user/mypage.jsp"%>
 			</c:when>
 		</c:choose>
 	</section>
