@@ -51,6 +51,12 @@
 		<constructor-arg ref="sqlSession" />
 	</bean>
 
+	<tx:jta-transaction-manager />
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="ds" />
+	</bean>
+
 	<!-- Dao interface가 저장된 package를 scan하여 SqlSessionFactory에게 알려주는 역할 -->
 	<mybatis-spring:scan
 		base-package="com.callor.naver.persistance" />

@@ -1,5 +1,7 @@
 package com.callor.naver.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +14,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.callor.naver.config.QualifierConfig;
+import com.callor.naver.model.BookVO;
+import com.callor.naver.model.BuyBookVO;
 import com.callor.naver.model.UserVO;
+import com.callor.naver.service.BookService;
+import com.callor.naver.service.BuyBookService;
 import com.callor.naver.service.UserService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -26,6 +32,12 @@ public class UserController {
 	@Autowired
 	@Qualifier(QualifierConfig.SERVICE.USER_V2)
 	private UserService userService;
+
+	@Autowired
+	private BookService bookService;
+
+	@Autowired
+	private BuyBookService buyService;
 
 	@RequestMapping(value = "/join", method = RequestMethod.GET)
 	public String join(Model model) {
@@ -107,6 +119,33 @@ public class UserController {
 			return "redirect:/user/login";
 		}
 
+		// 로그인 한 사용자의 도서 구입 리스트 가져오기
+
+		/*
+		 * buyBook 리스트에는 b_isbn, b_username, b_date 값만 담긴 상태
+		 * tbl_buybooks에는 3개의 칼럼만 존재하기 때문
+		 * 이 데이터만 가지고는 구체적인 도서 정보를 알 수 없음
+		 */
+
+		List<BuyBookVO> buyBook = buyService.findByUserName(loginUser.getUsername());
+
+		// 도서 구입 리스트의 ISBN을 도서 리스트에서 조회하여 가져오기
+
+		/*
+		 * 도서 구입 리스트를 for()문으로 반복하면서
+		 * b_isbn 값으로 다시 도서 정보를 조회한다
+		 * 조회된 도서 정보는 book 변수에 담는다
+		 * book 변수는 type BookVO 이므로 도서의 구체적인 정보가 담기게 된다
+		 */
+
+		for (BuyBookVO buyVO : buyBook) {
+			String isbn = buyVO.getB_isbn();
+			BookVO book = bookService.findById(isbn);
+
+			buyVO.setBook(book);
+		}
+
+		model.addAttribute("BUY_BOOK", buyBook);
 		model.addAttribute("LAYOUT", "MYPAGE");
 
 		return "home";

@@ -21,6 +21,29 @@ section.main-view .article-title {
 	display: flex;
 	flex-direction: column;
 }
+
+div.header {
+	display: flex;
+	margin: 5px 10px 5px 5px;
+	padding: 8px;
+	cursor: pointer;
+	color: #777;
+	transition: 0.5s;
+}
+
+div.header p {
+	margin: 5px 1rem 5px auto;
+	font-weight: 100;
+	opacity: 0;
+}
+
+div.header:hover {
+	background-color: #eee;
+}
+
+div.header:hover>p {
+	opacity: 1;
+}
 </style>
 
 <section class="main-view">
@@ -53,4 +76,5 @@ section.main-view .article-title {
 			<hr />
 		</div>
 	</article>
+
 </section>
