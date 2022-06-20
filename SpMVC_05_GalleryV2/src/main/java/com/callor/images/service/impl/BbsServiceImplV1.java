@@ -37,7 +37,7 @@ public class BbsServiceImplV1 implements BBsService {
 
 		// 게시판 내용(text)을 먼저 insert 실행
 		int ret = bbsDao.insert(bbsVO);
-		
+
 		/*
 		 * 게시판 내용을 insert 하고 나면
 		 * bbsVO.b_seq 값이 새로 생성된 상태가 된다
@@ -50,14 +50,13 @@ public class BbsServiceImplV1 implements BBsService {
 				// 파일 업로드하기
 				String fileName = fileService.fileUp(file);
 				// 업로드 된 파일 정보로 imageVO 데이터 생성하기
-				FilesVO imageVO = FilesVO.builder().i_originalName(fileName).i_imageName(fileName)
+				FilesVO imageVO = FilesVO.builder().i_originalName(file.getOriginalFilename()).i_imageName(fileName)
 						.i_bseq(bbsVO.getB_seq()).build();
 				// tbl_images에 추가하기
 				fileDao.insert(imageVO);
 				log.debug(imageVO.toString());
 				return imageVO.getI_imageName();
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 				log.debug("FILE UP FAIL");
 				return "FILE UP FAIL";
@@ -69,6 +68,32 @@ public class BbsServiceImplV1 implements BBsService {
 
 	@Override
 	public String insertBbsAndFiles(BBsVO bbsVO, MultipartHttpServletRequest files) {
+		int ret = bbsDao.insert(bbsVO);
+
+		/*
+		 * 실제 이미지 데이터들은 files에 담겨 있는데
+		 * files에 담겨있는 개별적인 파일을 분리하여 List로 바꾸기 위해서
+		 * files.getFiles() method를 사용하는데
+		 * 이때 getFiles()에게 form의 input tag 이름을 전달해 주어야 한다
+		 */
+//		List<MultipartFile> fileList = files.getFiles("mFile");
+
+//		for (MultipartFile file : fileList) {
+//			log.debug("파일들 : {}", file.getOriginalFilename());
+//		}
+
+		try {
+			List<FilesVO> fileNames = fileService.filesUp(files);
+
+			for (FilesVO file : fileNames) {
+				file.setI_seq(bbsVO.getB_seq());
+			}
+
+			ret = fileDao.insertFiles(fileNames);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 		return null;
 	}
 

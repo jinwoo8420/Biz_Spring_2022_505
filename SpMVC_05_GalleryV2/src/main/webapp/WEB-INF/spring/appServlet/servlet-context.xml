@@ -26,11 +26,9 @@
 	<resources mapping="/css/**" location="/static/css/" />
 
 	<!-- 업로드할 파일을 저장할 폴더 -->
-	<resources mapping="/upload/**" location="/static/upload/" />
-
 	<!-- 로컬디스크(c:)의 server/upload 폴더 지정 -->
 	<resources mapping="/upload/**"
-		location="file:///c:/server/upload/" />
+		location="/static/upload/, file:///c:/server/upload/" />
 
 	<!-- String upLoadFolder = "/server/upload"; -->
 	<beans:bean id="upLoadFolder" class="java.lang.String">

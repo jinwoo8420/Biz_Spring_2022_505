@@ -9,6 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.callor.images.config.QualifierConfig;
+import com.callor.images.model.FilesVO;
 import com.callor.images.service.FileUpService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -61,7 +62,7 @@ public class FileServiceImplV1 implements FileUpService {
 	}
 
 	@Override
-	public List<String> filesUp(MultipartHttpServletRequest files) throws Exception {
+	public List<FilesVO> filesUp(MultipartHttpServletRequest files) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}

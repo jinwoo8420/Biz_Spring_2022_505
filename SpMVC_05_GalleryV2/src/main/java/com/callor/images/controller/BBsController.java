@@ -40,7 +40,6 @@ public class BBsController {
 
 		model.addAttribute("bbsVO", bbsVO);
 		return "bbs/input";
-
 	}
 
 	@RequestMapping(value = "/write", method = RequestMethod.POST)
@@ -65,7 +64,6 @@ public class BBsController {
 //			bbsVO.setImages(fileDao.fineByBBsSeq(b_seq));
 			model.addAttribute("BBS", bbsVO);
 		} catch (Exception e) {
-			// TODO: handle exception
 		}
 
 		return null;

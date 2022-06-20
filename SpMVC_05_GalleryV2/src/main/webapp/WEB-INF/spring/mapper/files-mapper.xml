@@ -6,8 +6,19 @@
  <mapper namespace="com.callor.images.persistance.FileDao">
  
  	<select id="selectAll" resultType="FilesVO">
- 		SELECT * FROM tbl_bbs
+ 		SELECT * FROM tbl_images
  	</select>
+ 	
+ 	<insert id="insertFiles" parameterType="FilesVO">
+ 		 	INSERT INTO tbl_images(i_seq, i_bseq, i_originalName, i_imageName)
+ 		 	
+ 		 	SELECT seq_image.NEXTVAL, SUB. * FROM (
+ 		 	<foreach collection="list" separator="UNION ALL" item="vo">
+ 			SELECT	#{vo.i_bseq}, #{vo.i_originalName}, #{vo.i_imageName}
+ 			FROM DUAL 			
+ 		 	</foreach>
+ 		 	) SUB 		 	 
+ 	</insert>
  	
  	<insert id="insert" parameterType="FilesVO">
  		INSERT INTO tbl_images(
@@ -27,8 +38,8 @@
 	 	CREATE TABLE tbl_images (
 	 			i_seq NUMBER PRIMARY KEY,
 		        i_bseq NUMBER  NOT NULL,
-		        i_originalName VARCHAR2(255) NOT NULL,	
-		        i_imageName VARCHAR2(255)	NOT NULL	
+		        i_originalName VARCHAR2(255) NOT NULL,
+		        i_imageName VARCHAR2(255)	NOT NULL
 		)
  	</select>
  

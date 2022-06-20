@@ -14,6 +14,7 @@
 <body>
 	<h1>Hello</h1>
 	<a href="${rootPath}/bbs/write">게시판 글쓰기</a>
+	<a href="${rootPath}/file/fileups">여러 이미지 업로드</a>
 	<div class="images">
 		<c:forEach items="${FILES}" var="FILE">
 			<img src="${rootPath}/upload/${FILE.i_imageName}" width="100px" alt="${FILE}">
