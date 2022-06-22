@@ -32,22 +32,21 @@ span {
 	<section class="main">
 		<form:form modelAttribute="emsVO">
 			<form:input path="e_to_email" placeholder="받는 Email" />
-			<br>
+			<br />
 			<form:errors path="e_to_email" />
 
-			<form:input path="e_front_name" placeholder="보내는 사람" />
-			<br>
-			<form:errors path="e_front_name" />
+			<form:input path="e_from_name" placeholder="보내는 사람" />
+			<br />
+			<form:errors path="e_from_name" />
 
 			<form:input path="e_to_name" placeholder="받는 사람" />
-			<br>
+			<br />
 			<form:errors path="e_to_name" />
 
 			<form:input path="e_subject" placeholder="제목" />
-			<br>
+			<br />
 			<form:errors path="e_subject" />
 
-			<br>
 			<form:input path="e_content" placeholder="내용" />
 
 			<button>보내기</button>

@@ -1,14 +1,8 @@
 package com.callor.ems.model;
 
-import javax.validation.constraints.DecimalMax;
-import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Length;
 
@@ -27,14 +21,14 @@ import lombok.ToString;
 @ToString
 public class EmsVO {
 	private String e_seq;
-	private String e_front_email;
+	private String e_from_email;
 
 	@Email(message = "Email 형식이 아님")
 	@NotEmpty(message = "받는 사람 Email 필수 입력")
 	private String e_to_email;
 
 	@NotNull(message = "보내는 사람 이름 null 일 수 없음")
-	private String e_front_name;
+	private String e_from_name;
 
 	@Length(min = 1, max = 100, message = "받는 사람 이름은 1 ~ 100 글자까지 가능")
 	@NotEmpty(message = "받는 사람 이름 필수 입력")

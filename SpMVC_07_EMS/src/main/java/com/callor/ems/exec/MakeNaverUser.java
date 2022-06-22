@@ -34,9 +34,6 @@ public class MakeNaverUser {
 		String mysqlProps = "db.connection.properties";
 		String mysqlUser = "mysql.username";
 
-		System.out.println(secFiles.get("db.connection.properties")[0]);
-		System.out.println(secFiles.get("db.connection.properties")[1]);
-
 		Set<String> files = secFiles.keySet();
 
 		for (String file : files) {
@@ -62,7 +59,7 @@ public class MakeNaverUser {
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			}
-
+//			BJB6GS511HJG
 		}
 	}
 }
