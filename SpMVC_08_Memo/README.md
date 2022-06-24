@@ -1,0 +1,28 @@
+* 사용자 생성
+```
+CREATE TABLESPACE memoDB
+DATAFILE 'C:/oraclexe/data/memo.dbf'
+SIZE 1M AUTOEXTEND ON NEXT 1K;
+
+CREATE USER memo IDENTIFIED BY 1234
+DEFAULT TABLESPACE memoDB;
+
+GRANT DBA TO memo;
+```
+
+* Table 및 Seq 생성
+```
+CREATE TABLE tbl_memo (
+	m_seq NUMBER PRIMARY KEY,
+	m_author VARCHAR(25) NOT NULL,
+	m_date VARCHAR(10) NOT NULL,
+	m_time VARCHAR(10) NOT NULL,
+	m_memo VARCHAR(40) NOT NULL,
+	m_image VARCHAR(125)
+);
+
+CREATE SEQUENCE seq_memo
+INCREMENT BY 1 START WITH 1;
+
+SELECT seq_memo.NEXTVAL FROM DUAL;
+```
