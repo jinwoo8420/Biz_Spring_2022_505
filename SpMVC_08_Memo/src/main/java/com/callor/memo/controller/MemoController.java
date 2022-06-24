@@ -39,7 +39,6 @@ public class MemoController {
 
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)
 	public String insert(@ModelAttribute("memoVO") MemoVO memoVO, @RequestParam("img") MultipartFile file) {
-		
 
 		try {
 			String filename = memoService.fileUp(file);
@@ -66,16 +65,22 @@ public class MemoController {
 	public String update(@PathVariable("m_seq") String m_seq, Model model) {
 
 		MemoVO memoVO = memoService.findById(m_seq);
-		model.addAttribute("MEMO", memoVO);
+		model.addAttribute("memoVO", memoVO);
 
 		return "/memo/insert";
 
 	}
 
 	@RequestMapping(value = "/{m_seq}/update", method = RequestMethod.POST)
-	public String update(@ModelAttribute("memoVO") MemoVO memoVO) {
+	public String update(@ModelAttribute("memoVO") MemoVO memoVO, @RequestParam("img") MultipartFile file) {
 
-		int ret = memoService.update(memoVO);
+		try {
+			String filename = memoService.fileUp(file);
+			memoVO.setM_image(filename);
+			int ret = memoService.update(memoVO);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 		String retStr = String.format("redirect:/memo/%s/detail", memoVO.getM_seq());
 		return retStr;

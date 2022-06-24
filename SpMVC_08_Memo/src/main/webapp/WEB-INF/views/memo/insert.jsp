@@ -11,7 +11,6 @@
 	</div>
 	<div>
 		<input name="img" type="file" />
-		<!-- <input type="file" name="m_image" multiple="multiple" accept="images/*"/> -->
 	</div>
 	<form:textarea rows="10" path="m_memo" />
 	<button>저장</button>
