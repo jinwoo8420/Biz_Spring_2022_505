@@ -34,7 +34,7 @@ div.btn-box {
 
 div.btn-box a {
 	text-decoration: none;
-	color: white;
+	color: black;
 	display: inline-block;
 	padding: 12px 16px;
 	border-radius: 5px;
@@ -45,15 +45,36 @@ div.btn-box a:hover {
 }
 
 a.list {
-	background-color: green;
+	background-color: white;
 }
 
 a.update {
-	background-color: blue;
+	background-color: white;
 }
 
 a.delete {
-	background-color: red;
+	background-color: white;
+}
+
+img {
+	width: 70%;
+	margin: 30px 30px;
+}
+
+body {
+	background-color: skyblue;
+}
+
+.detail {
+	background-color: white;
+	color: black;
+	text-align: center;
+	margin: 50px 20px;
+	display: inline-block;
+	height: 300px;
+	font-size: 20px;
+	box-shadow: 3px 3px 3px black;
+	padding: 20px;
 }
 </style>
 </head>

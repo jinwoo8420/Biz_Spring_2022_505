@@ -14,7 +14,7 @@
 table {
 	border-collapse: collapse;
 	margin: 10px auto;
-	width: 80%;
+	width: 70%;
 }
 
 div.btn_box {
@@ -32,8 +32,16 @@ div.btn_box a {
 	border-radius: 6px;
 }
 
+body {
+	background-color: skyblue;
+}
+
 div.btn_box a:hover {
 	box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.7);
+}
+
+h1 {
+	text-align: center;
 }
 </style>
 
@@ -46,6 +54,7 @@ div.btn_box a:hover {
 
 </head>
 <body>
+	<h1>메모리스트</h1>
 	<table class="w3-table-all memo">
 		<colgroup>
 			<col width="100px">
