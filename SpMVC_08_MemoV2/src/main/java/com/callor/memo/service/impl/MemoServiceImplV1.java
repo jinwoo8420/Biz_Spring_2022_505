@@ -14,11 +14,11 @@ import com.callor.memo.service.MemoService;
 @Service
 public class MemoServiceImplV1 implements MemoService {
 
-	protected final FileUpService fileup;
+	protected final FileUpService fileUp;
 	protected final MemoDao memoDao;
 
-	public MemoServiceImplV1(FileUpService fileup, MemoDao memoDao) {
-		this.fileup = fileup;
+	public MemoServiceImplV1(FileUpService fileUp, MemoDao memoDao) {
+		this.fileUp = fileUp;
 		this.memoDao = memoDao;
 	}
 
@@ -29,64 +29,76 @@ public class MemoServiceImplV1 implements MemoService {
 
 	@Override
 	public List<MemoDTO> selectAll() {
-		return memoDao.selectAll();
-//		return null;
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public int insertAndUpdate(MemoDTO memo, MultipartFile file) {
-		/*
-		 * insert가 되는 경우는 m_seq가 0일 것이고
-		 * update가 되는 경우는 m_seq가 0이 아닐 것이다
-		 */
-
+		// TODO Auto-generated method stub
+		// insert(새로추가)가 되는 경우는 m_seq 가 0 일 것이고
+		// Update(수정)가 되는 경우는 m_seq 가 0 이 아닐 것이다
 		long m_seq = memo.getM_seq();
 
 		// 메모 수정일 경우 처리
 		if (m_seq != 0) {
-			MemoDTO updateMemo = memoDao.findById(m_seq); // seq 값으로 table에서 데이터 가져오기
-			String fileName = updateMemo.getM_image(); // 저장된 파일 이름 가져오기
+			// 먼저 seq 값으로 table 에서 데이터를 가져오고
+			MemoDTO updateMemo = memoDao.findById(m_seq);
 
-			if (!fileName.equals(file.getOriginalFilename())) { // 저장된 파일 이름과 새롭게 업로드된 파일 이름이 다를 시
-				fileup.fileDelete(updateMemo.getM_up_image());
+			// 저장된 파일 이름을 가져오기
+			String fileName = updateMemo.getM_image();
+
+			// 저장된 파일 이름과 새롭게 업로드된 파일 이름이 다르면
+			if (!fileName.equals(file.getOriginalFilename())) {
+				// 기존의 파일을 삭제하고
+				fileUp.fileDelete(updateMemo.getM_up_image());
 			}
 
-			String upLoadFileName = fileup.fileUp(file); // 파일 업로드하고 업로드된 파일 이름 가져오기
+			// 파일을 업로드 하고
+			// 업로드된 파일 이름 가져오기
+			String upLoadFileName = fileUp.fileUp(file);
 
-			// table에 저장하기 위해 원래 파일 이름과 UUID가 부착된 파일 이름을 DTO에 저장
+			// table 에 저장하기 위하여
+			// 원래 파일 이름과 UUID 가 부착된 파일이름을 DTO 에 저장
 			memo.setM_image(file.getOriginalFilename());
 			memo.setM_up_image(upLoadFileName);
-
 			return memoDao.update(memo);
 		}
 
 		memo.setM_image(file.getOriginalFilename());
-		memo.setM_up_image(fileup.fileUp(file));
-
+		memo.setM_up_image(fileUp.fileUp(file));
 		return memoDao.insert(memo);
+
 	}
 
 	/*
-	 * 메모 삭제
-	 * 1. 첨부 파일이 있을 경우 파일을 먼저 삭제
-	 * 2. 그 후 데이터 삭제
+	 * 메모를 삭제할때
+	 * 1. 첨파일이 있을 경우 파일을 먼저 삭제 해야 한다
+	 * 2. 데이터를 삭제 한다.
 	 * 
-	 * 만약 순서가 바뀔 시 필요없는 파일들이 폴더에 남아 있을 수 있다
+	 * 만약 순서가 바뀌게 되면, 필요없는 파일들이
+	 * 폴더에 남아 있을 수 있다.
+	 * 
 	 */
-
 	@Override
 	public int delete(Long seq) {
-		MemoDTO memo = memoDao.findById(seq); // seq에 해당하는 데이터 select
+		// TODO Auto-generated method stub
 
-		fileup.fileDelete(memo.getM_up_image()); // 파일 이름을 fileDelete() method에 보낸 후 파일 삭제
+		// seq 에 해당하는 데이터를 select 하고
+		MemoDTO memo = memoDao.findById(seq);
 
-		memoDao.delete(seq); // 데이터 삭제
+		// 파일이름을 fileDelete() method 에게 보내서
+		// 파일을 삭제
+		fileUp.fileDelete(memo.getM_up_image());
 
+		// 데이터 삭제
+		memoDao.delete(seq);
 		return 0;
 	}
 
 	@Override
 	public MemoDTO findById(Long seq) {
+		// TODO Auto-generated method stub
 		return memoDao.findById(seq);
 	}
 

@@ -28,28 +28,29 @@ public class MemoController {
 	private MemoService memoService;
 
 	@RequestMapping(value = "/insert", method = RequestMethod.GET)
-	public String insert(@ModelAttribute("memo") MemoDTO memo, HttpSession httpSession, Model model) {
+	public String insert(@ModelAttribute("memo") MemoDTO memo, HttpSession httpSession) {
 		String username = (String) httpSession.getAttribute("USERNAME");
-
 		if (username == null) {
 			return "redirect:/user/login";
 		}
-
 		memo.setM_author(username);
-
 		return "memo/input";
 	}
 
 	/*
-	 * 첨부파일이 있는 프로젝트에서 form의 file input box의 이름은
-	 * 절대 VO(DTO) 클래스에 선언된 이름을 사용하면 안된다
+	 * 첨부파일이 있는 프로젝트에서
+	 * form 의 file input box 의 이름은 절대 VO(DTO) 클래스에
+	 * 선언된 이름을 사용하면 안된다~~~ 
 	 */
-
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)
-	public String insert(@ModelAttribute("memo") MemoDTO memo, MultipartFile file, HttpSession httpSession) {
-		// 메모를 저장하기 전에 현재 session에 저장된 username 가져오기
+	public String insert(@ModelAttribute("memo") MemoDTO memo,
+
+			MultipartFile file, HttpSession httpSession) {
+
+		// 메모를 저장하기 전에 현재 session 에 저장된 username 가져오기
 		String username = (String) httpSession.getAttribute("USERNAME");
-		memo.setM_author(username); // 저장할 메모 정보에 username 세팅
+		// 저장할 메모 정보에 username 세팅
+		memo.setM_author(username);
 
 		memoService.insertAndUpdate(memo, file);
 
@@ -61,58 +62,56 @@ public class MemoController {
 
 	@RequestMapping(value = "/{seq}/detail", method = RequestMethod.GET)
 	public String detail(@PathVariable("seq") String seq, @ModelAttribute("memo") MemoDTO memoDTO, Model model) {
+
 		long m_seq = Long.valueOf(seq);
-
 		memoDTO = memoService.findById(m_seq);
-
 		model.addAttribute("MEMO", memoDTO);
-
 		return "memo/detail";
+
 	}
 
 	@RequestMapping(value = "/{seq}/update", method = RequestMethod.GET)
 	public String update(@PathVariable("seq") String seq, Model model) {
-		MemoDTO memo = memoService.findById(Long.valueOf(seq)); // 전달받은 seq에 해당하는 데이터 select
 
+		// 전달받은 seq 에 해당하는 데이터 select
+		MemoDTO memo = memoService.findById(Long.valueOf(seq));
 		model.addAttribute("MEMO", memo);
-
 		return "memo/input";
 	}
 
 	@RequestMapping(value = "/{seq}/update", method = RequestMethod.POST)
-	public String update(@ModelAttribute("memo") MemoDTO memoDTO, MultipartFile file, @PathVariable("seq") String seq,
+	public String update(@PathVariable("seq") String seq, @ModelAttribute("memo") MemoDTO memoDTO, MultipartFile file,
 			HttpSession httpSession) {
 
 		String username = (String) httpSession.getAttribute("USERNAME");
-
 		if (username == null) {
 			return "redirect:/user/login";
 		}
 
-		memoDTO.setM_author(username); // 로그인된 사용자의 이름을 memoDTO에 setting
+		// 로그인된 사용자의 이름을 memoDTO 에 setting 하기
+		memoDTO.setM_author(username);
 
-		long m_seq = Long.valueOf(seq); // 주소에 따라온 seq 변수 값을 추출하여 memoDTO에 setting
+		// 주소에 따라온 seq 변수값을 추출하여 memoDTO 에 setting 하기
+		long m_seq = Long.valueOf(seq);
 		memoDTO.setM_seq(m_seq);
 
 		log.debug(memoDTO.toString());
-
 		memoService.insertAndUpdate(memoDTO, file);
-
-		return String.format("redirect:memo/%s/detail", seq);
+		return String.format("redirect:/memo/%s/detail", seq);
 	}
 
 	@RequestMapping(value = "/{seq}/delete", method = RequestMethod.GET)
 	public String delete(@PathVariable("seq") String seq) {
 		memoService.delete(Long.valueOf(seq));
-
 		return "redirect:/";
 	}
 
 	@ModelAttribute("memo")
 	private MemoDTO memoDTO() {
+
 		Date date = new Date(System.currentTimeMillis());
 		SimpleDateFormat toDay = new SimpleDateFormat("yyyy-MM-dd");
-		SimpleDateFormat toTime = new SimpleDateFormat("HH:mm:ss");
+		SimpleDateFormat toTime = new SimpleDateFormat("HH:mm:SS");
 
 		MemoDTO memo = MemoDTO.builder().m_date(toDay.format(date)).m_time(toTime.format(date)).build();
 

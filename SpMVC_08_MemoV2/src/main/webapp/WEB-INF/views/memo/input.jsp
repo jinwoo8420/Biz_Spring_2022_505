@@ -5,12 +5,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 <title>Insert title here</title>
-
 <style>
 * {
 	box-sizing: border-box;
@@ -29,6 +28,7 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	background-color: skyblue;
 }
 
 form {
@@ -45,10 +45,10 @@ input {
 </head>
 <body>
 	<form method="POST" enctype="multipart/form-data">
-		<%-- <input name="m_seq" type="hidden" value='<c:out value="${MEMO.m_seq}" default="0"/>'> --%>
-		<input name="m_memo" placeholder="메모 입력" value="${MEMO.memo}">
+		<input name="m_seq" type="hidden" value='<c:out value="${MEMO.m_seq}" default ="0"/>'>
+		<input name="m_memo" placeholder="메모 입력" value="${MEMO.m_memo}">
 		<input name="file" type="file" accept="images/*">
-		<button>메모 기록</button>
+		<button>메모기록</button>
 	</form>
 </body>
 </html>

@@ -11,10 +11,10 @@
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/static/**" location="/static/" />
 
-	<!-- jsp에서 바라볼 upload -->
-	<resources mapping="/upload/**" location="file:///c:server/upload/" />
+	<!-- jsp 파일에서 바라볼 upload 폴더 -->
+	<resources mapping="/upload/**" location="file:///c:/server/upload/" />
 
-	<!-- java에서 바라볼 upload -->
+	<!-- java 코드에서 바라볼 upload 폴더 -->
 	<beans:bean id="upLoadFolder" class="java.lang.String">
 		<beans:constructor-arg value="c:/server/upload" />
 	</beans:bean>
@@ -24,7 +24,6 @@
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
-
 	<context:component-scan base-package="com.callor.memo.controller" />
 	<context:component-scan base-package="com.callor.memo.service.impl" />
 

@@ -12,7 +12,7 @@
 <title>Insert title here</title>
 
 <style>
-.memo {
+table {
 	border-collapse: collapse;
 	margin: 10px auto;
 	width: 70%;
@@ -41,14 +41,10 @@ div.btn_box a:hover {
 	box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.7);
 }
 
-h1 {
-	text-align: center;
+h1{
+text-align: center;
 }
 </style>
-
-<!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css?ver=2022-06-27-001"> -->
-<link rel="stylesheet" href="${rootPath}/static/css/w3css.css?ver=2022-06-27-001">
-
 
 <script>
 	const rootPath = "${rootPath}"
@@ -58,13 +54,7 @@ h1 {
 </head>
 <body>
 	<h1>${USERNAME}</h1>
-
-	<table class="w3-table-all memo">
-		<colgroup>
-			<col width="100px">
-			<col width="100px">
-			<col width="100px">
-			<col width="100px">
+	<table class="memo">
 		<tr>
 			<th>SEQ</th>
 			<th>작성일자</th>
@@ -85,13 +75,10 @@ h1 {
 			</tr>
 		</c:forEach>
 	</table>
-
-	<a href="${rootPath}/memo/insert">메모 작성</a>
-
+	<a href="${rootPath}/memo/insert">메모작성하기</a>
 	<c:if test="${empty USERNAME}">
 		<a href="${rootPath}/user/login">로그인</a>
 	</c:if>
-
 	<c:if test="${not empty USERNAME}">
 		<a href="${rootPath}/user/logout">로그아웃</a>
 	</c:if>
