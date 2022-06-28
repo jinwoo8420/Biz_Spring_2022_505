@@ -25,23 +25,27 @@ div.detail-flex {
 }
 
 div.detail {
-	width: 30%;
+	width: 50%;
 	margin: 10px auto;
+	line-height: 300%;
 }
 
 div.btn-box {
 	margin: 10px auto;
-	
+	margin-right: 10px;
+	position: absolute;
+	right: 0px;
+	bottom: 0px;
+	line-height: 100%;
+	position: absolute;
 }
 
 div.btn-box a {
-	border: 1px solid black;
 	text-decoration: none;
-	color: black;
+	color: white;
 	display: inline-block;
 	padding: 12px 16px;
 	border-radius: 5px;
-	text-decoration: none;
 }
 
 div.btn-box a:hover {
@@ -49,15 +53,15 @@ div.btn-box a:hover {
 }
 
 a.list {
-	background-color: white;
+	background-color: #001841;
 }
 
 a.update {
-	background-color: white;
+	background-color: #001841;
 }
 
 a.delete {
-	background-color: white;
+	background-color: #001841;
 }
 
 img {
@@ -66,7 +70,7 @@ img {
 }
 
 body {
-	background-color: skyblue;
+	background-color: #b8d7fd;
 }
 
 .detail {
@@ -83,6 +87,7 @@ body {
 	justify-content: center;
 	align-items: center;
 	height: 300px;
+	position: relative;
 }
 </style>
 
@@ -105,7 +110,10 @@ body {
 					<a href="${rootPath}/memo/${MEMO.m_seq}/delete" class="delete">삭제</a>
 					<a href="${rootPath}/" class="list">리스트</a>
 				</div>
+
 			</div>
+
+
 		</div>
 
 

@@ -28,7 +28,11 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-color: skyblue;
+	background-color: #b8d7fd;
+}
+
+a {
+	color: inherit;
 }
 
 form {
@@ -40,13 +44,24 @@ input {
 	padding: 1rem;
 	width: 100%;
 }
+
+.list {
+	text-decoration: none;
+	padding: 15px 16px;
+	border-radius: 5px;
+	right: 0px;
+	position: absolute;
+	background-color: #001841;
+	color: white;
+}
 </style>
 
 </head>
 <body>
-	<form method="POST" enctype="multipart/form-data">
+	<form method="POST" enctype="multipart/form-data" style="position: relative;">
+		<a href="${rootPath}/" class="list">HOME</a>
 		<input name="m_seq" type="hidden" value='<c:out value="${MEMO.m_seq}" default ="0"/>'>
-		<input name="m_memo" placeholder="메모 입력" value="${MEMO.m_memo}">
+		<input name="m_memo" placeholder="메모 입력 (20자 이내)" value="${MEMO.m_memo}" maxlength='20' style="width: 30%;">
 		<input name="file" type="file" accept="images/*">
 		<button>메모기록</button>
 	</form>

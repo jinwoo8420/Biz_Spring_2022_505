@@ -34,15 +34,34 @@ div.btn_box a {
 }
 
 body {
-	background-color: skyblue;
+	background-color: #b8d7fd;
 }
 
 div.btn_box a:hover {
 	box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.7);
 }
 
-h1{
-text-align: center;
+h1 {
+	text-align: center;
+}
+
+div.btn-box {
+	float: right;
+	margin: 10px auto;
+}
+
+div.btn-box a {
+	text-decoration: none;
+	color: black;
+	display: inline-block;
+	padding: 12px 16px;
+	border-radius: 5px;
+	text-decoration: none;
+	background-color: white;
+}
+
+div.btn-box a:hover {
+	box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.7);
 }
 </style>
 
@@ -63,11 +82,11 @@ text-align: center;
 		</tr>
 		<c:if test="${empty MEMOS}">
 			<tr>
-				<td colspan="4">메모 X</td>
+				<td colspan="4" style="text-align: center">메모 X</td>
 			</tr>
 		</c:if>
 		<c:forEach items="${MEMOS}" var="MEMO" varStatus="INDEX">
-			<tr data-seq="${MEMO.m_seq}">
+			<tr data-seq="${MEMO.m_seq}" style="text-align: center">
 				<td>${INDEX.count}</td>
 				<td>${MEMO.m_date}</td>
 				<td>${MEMO.m_time}</td>
@@ -75,12 +94,15 @@ text-align: center;
 			</tr>
 		</c:forEach>
 	</table>
-	<a href="${rootPath}/memo/insert">메모작성하기</a>
-	<c:if test="${empty USERNAME}">
-		<a href="${rootPath}/user/login">로그인</a>
-	</c:if>
-	<c:if test="${not empty USERNAME}">
-		<a href="${rootPath}/user/logout">로그아웃</a>
-	</c:if>
+
+	<div class="btn-box">
+		<a href="${rootPath}/memo/insert">메모작성하기</a>
+		<c:if test="${empty USERNAME}">
+			<a href="${rootPath}/user/login">로그인</a>
+		</c:if>
+		<c:if test="${not empty USERNAME}">
+			<a href="${rootPath}/user/logout">로그아웃</a>
+		</c:if>
+	</div>
 </body>
 </html>
