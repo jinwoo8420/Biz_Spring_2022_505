@@ -29,6 +29,7 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	background-color: #b8d7fd;
 }
 
 form {
@@ -38,7 +39,21 @@ form {
 
 input {
 	padding: 1rem;
-	width: 100%;
+	border-radius: 5px;
+	margin-right: 100px;
+}
+
+a {
+	color: inherit;
+}
+
+.list {
+	text-decoration: none;
+	padding: 15px 16px;
+	border-radius: 5px;
+	position: absolute;
+	background-color: #001841;
+	color: white;
 }
 </style>
 
@@ -46,6 +61,7 @@ input {
 <body>
 	<form method="POST">
 		<input name="username" placeholder="USERNAME 입력 후 Enter">
+		<a href="${rootPath}/" class="list">HOME</a>
 	</form>
 </body>
 </html>

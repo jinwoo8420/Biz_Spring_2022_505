@@ -12,6 +12,32 @@
 <title>Insert title here</title>
 
 <style>
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	width: 100vw;
+	height: 100vh;
+}
+
+body {
+	width: 50vw;
+	margin: 10px auto;
+	background-color: #b8d7fd;
+	/* display: flex;
+	flex-direction: column; */
+}
+
+div.container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 50vh;
+}
+
 table {
 	border-collapse: collapse;
 	margin: 10px auto;
@@ -33,15 +59,14 @@ div.btn_box a {
 	border-radius: 6px;
 }
 
-body {
-	background-color: #b8d7fd;
-}
-
 div.btn_box a:hover {
 	box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.7);
 }
 
 h1 {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	text-align: center;
 }
 
@@ -72,28 +97,31 @@ div.btn-box a:hover {
 
 </head>
 <body>
-	<h1>${USERNAME}</h1>
-	<table class="memo">
-		<tr>
-			<th>SEQ</th>
-			<th>작성일자</th>
-			<th>작성시각</th>
-			<th>메모</th>
-		</tr>
-		<c:if test="${empty MEMOS}">
+
+	<div class="container">
+		<h1>${USERNAME}</h1>
+		<table class="memo">
 			<tr>
-				<td colspan="4" style="text-align: center">메모 X</td>
+				<th>SEQ</th>
+				<th>작성일자</th>
+				<th>작성시각</th>
+				<th>메모</th>
 			</tr>
-		</c:if>
-		<c:forEach items="${MEMOS}" var="MEMO" varStatus="INDEX">
-			<tr data-seq="${MEMO.m_seq}" style="text-align: center">
-				<td>${INDEX.count}</td>
-				<td>${MEMO.m_date}</td>
-				<td>${MEMO.m_time}</td>
-				<td>${MEMO.m_memo}</td>
-			</tr>
-		</c:forEach>
-	</table>
+			<c:if test="${empty MEMOS}">
+				<tr>
+					<td colspan="4" style="text-align: center">메모 X</td>
+				</tr>
+			</c:if>
+			<c:forEach items="${MEMOS}" var="MEMO" varStatus="INDEX">
+				<tr data-seq="${MEMO.m_seq}" style="text-align: center">
+					<td>${INDEX.count}</td>
+					<td>${MEMO.m_date}</td>
+					<td>${MEMO.m_time}</td>
+					<td>${MEMO.m_memo}</td>
+				</tr>
+			</c:forEach>
+		</table>
+	</div>
 
 	<div class="btn-box">
 		<a href="${rootPath}/memo/insert">메모작성하기</a>
@@ -104,5 +132,6 @@ div.btn-box a:hover {
 			<a href="${rootPath}/user/logout">로그아웃</a>
 		</c:if>
 	</div>
+
 </body>
 </html>
