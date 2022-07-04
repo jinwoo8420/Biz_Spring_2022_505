@@ -102,7 +102,7 @@ div.btn-box a:hover {
 		<h1>${USERNAME}</h1>
 		<table class="memo">
 			<tr>
-				<th>SEQ</th>
+				<th>NO</th>
 				<th>작성일자</th>
 				<th>작성시각</th>
 				<th>메모</th>

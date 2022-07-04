@@ -49,21 +49,59 @@ input {
 	text-decoration: none;
 	padding: 15px 16px;
 	border-radius: 5px;
+	color: white;
+	margin-left: 20px;
+	width: 110px;
+	height: 40.5px;
+}
+
+.list:hover {
+	background-color: white;
+	color: black;
+}
+
+.input-file_btn:hover {
+	background-color: white;
+	color: black;
+}
+
+.input-file_btn {
+	padding: 10px 20px;
+	border-radius: 4px;
+	color: white;
+	cursor: pointer;
+	width: 30px;
+	height: 30px;
+}
+
+button {
+	padding: 10px 20px;
+	background-color: #001841;
+	border-radius: 4px;
+	color: white;
+	cursor: pointer;
 	right: 0px;
 	position: absolute;
-	background-color: #001841;
-	color: white;
+}
+
+button:hover {
+	background-color: white;
+	color: black;
+	border: 1px solid black
 }
 </style>
 
 </head>
 <body>
 	<form method="POST" enctype="multipart/form-data" style="position: relative;">
-		<a href="${rootPath}/" class="list">HOME</a>
-		<input name="m_seq" type="hidden" value='<c:out value="${MEMO.m_seq}" default ="0"/>'>
-		<input name="m_memo" placeholder="메모 입력 (20자 이내)" value="${MEMO.m_memo}" maxlength='20' style="width: 30%;">
-		<input name="file" type="file" accept="images/*">
 		<button>메모기록</button>
+		<input name="m_seq" type="hidden" value='<c:out value="${MEMO.m_seq}" default ="0"/>'>
+		<input name="m_memo" placeholder="메모 입력 (20자 이내)" value="${MEMO.m_memo}" maxlength='20'
+			style="width: 30%; margin-bottom: 20px;">
+		<br> <label class="input-file_btn" for="file_btn"> 파일선택 </label>
+		<input id="file_btn" type="file" name="file" accept="images/*" style="display: none;" />
+
+		<a href="${rootPath}/" class="list">HOME</a>
 	</form>
 </body>
 </html>

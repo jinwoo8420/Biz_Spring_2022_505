@@ -65,7 +65,7 @@ a.delete {
 }
 
 img {
-	width: 100%;
+	width: 300px;
 	margin: 30px 30px;
 }
 

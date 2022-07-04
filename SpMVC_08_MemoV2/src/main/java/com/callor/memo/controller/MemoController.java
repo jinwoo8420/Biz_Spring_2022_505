@@ -37,14 +37,8 @@ public class MemoController {
 		return "memo/input";
 	}
 
-	/*
-	 * 첨부파일이 있는 프로젝트에서
-	 * form 의 file input box 의 이름은 절대 VO(DTO) 클래스에
-	 * 선언된 이름을 사용하면 안된다~~~ 
-	 */
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)
-	public String insert(@ModelAttribute("memo") MemoDTO memo,
-
+	public String insert(@ModelAttribute("memo") MemoDTO memo, 
 			MultipartFile file, HttpSession httpSession) {
 
 		// 메모를 저장하기 전에 현재 session 에 저장된 username 가져오기
@@ -61,7 +55,8 @@ public class MemoController {
 	}
 
 	@RequestMapping(value = "/{seq}/detail", method = RequestMethod.GET)
-	public String detail(@PathVariable("seq") String seq, @ModelAttribute("memo") MemoDTO memoDTO, Model model) {
+	public String detail(@PathVariable("seq") String seq, @ModelAttribute("memo") MemoDTO memoDTO, 
+			Model model) {
 
 		long m_seq = Long.valueOf(seq);
 		memoDTO = memoService.findById(m_seq);
@@ -111,7 +106,7 @@ public class MemoController {
 
 		Date date = new Date(System.currentTimeMillis());
 		SimpleDateFormat toDay = new SimpleDateFormat("yyyy-MM-dd");
-		SimpleDateFormat toTime = new SimpleDateFormat("HH:mm:SS");
+		SimpleDateFormat toTime = new SimpleDateFormat("HH:mm:ss");
 
 		MemoDTO memo = MemoDTO.builder().m_date(toDay.format(date)).m_time(toTime.format(date)).build();
 
