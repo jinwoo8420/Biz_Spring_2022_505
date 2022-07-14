@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace : Dao 인터페이스와 연결하여 mybatis로 하여금 클래스를 작성하도록 하기 위한 설정 -->
+<mapper namespace="com.callor.naver.persistance.BuyBookDao">
+	<select id="selectAll" resultType="BuyBookVO">
+		SELECT * FROM tbl_buybooks
+	</select>
+
+	<select id="findById" resultType="BuyBookVO">
+		SELECT * FROM tbl_buybooks WHERE b_isbn = #{isbn}
+	</select>
+	
+	<select id="findByIsbnAndUserName" resultType="BuyBookVO">
+		SELECT * FROM tbl_buybooks 
+		WHERE b_isbn = #{b_isbn} AND b_username = #{username}
+	</select>
+	
+	<!-- ISBN을 기준으로 해당 도서를 구입한 사용자 리스트 -->
+	<select id="findByIsbn" resultType="BuyBookVO">
+		SELECT * FROM tbl_buybooks WHERE b_isbn = #{isbn}
+	</select>
+	
+	<select id="findByUserName" resultType="BuyBookVO">
+		SELECT * FROM tbl_buybooks WHERE b_username = #{username}
+	</select>
+	
+	<select id="findByDate" resultType="String">
+ 		SELECT b_date FROM tbl_buybooks
+ 		GROUP BY b_date
+ 	</select>
+ 	
+ 	<select id="findByUserNameAndDate" resultType="BuyBookVO">
+ 		SELECT * FROM tbl_buybooks
+ 		WHERE b_username = #{username} AND b_date =#{buydate}
+ 	</select>
+
+	<!-- 대문자 to 소문자 : ctrl + shift + y -->
+	<!-- 소문자 to 대문자 : ctrl + shift + x -->
+	<insert id="insert" parameterType="BuyBookVO">
+		INSERT INTO tbl_buybooks (
+			b_isbn,
+			b_username,
+			b_date
+
+		)	VALUES (
+			#{b_isbn},
+			#{b_username},
+			#{b_date}
+		)
+	</insert>
+	
+	<!-- 
+	mybatis를 연동한 INSERT 수행문에서 부적절한 열 유형 1111 오류가 발생하는 경우는
+	보통 form에서 전체 데이터를 추가하지 않고 일부만 입력된 상태로 INSERT에게 전달되는 경우 발생
+	
+	문제가 발생하지 않도록 각 변수에 jdbcType = VARCHAR 키워드를 추가
+	
+	이 키워드를 추가해 두면
+	데이터가 모두 준비되지 않은 상태로 INSERT가 성공하게 되어 테스트를 완전하게 수행하지 못 할 수도 있다
+	 -->
+	
+	<update id="update" parameterType="BuyBookVO">
+	</update>
+	
+	<delete id="delete">
+		DELETE FROM tbl_buybooks WHERE b_isbn = #{isbn}
+	</delete>
+	
+	<!-- MySQL CTREATE 명령문 -->
+	<!-- CREATE TABLE IF NOT EXISTS tbl_buy_books -->
+	<select id = "create_buy_table">
+		CREATE TABLE tbl_buybooks (
+		    b_isbn      VARCHAR2(13) NOT NULL,
+    		b_username  VARCHAR2(20) NOT NULL,
+    		b_date      VARCHAR2(10),
+    		PRIMARY KEY(b_isbn, b_username),
+    		CONSTRAINT FK_BUY_BOOKS FOREIGN KEY(b_isbn) REFERENCES tbl_books(isbn),
+		    CONSTRAINT FK_BUY_USER FOREIGN KEY(b_username) REFERENCES tbl_users(username)
+		)
+	</select>
+</mapper>
