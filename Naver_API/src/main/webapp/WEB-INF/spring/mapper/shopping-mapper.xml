@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.callor.naver.persistance.ShoppingDao">
+	<select id="selectAll" resultType="ShoppingVO">
+		SELECT * FROM tbl_shopping
+	</select>
+
+	<select id="findById" resultType="ShoppingVO">
+		SELECT * FROM tbl_shopping WHERE s_productId = #{s_productId}
+	</select>
+	
+	<select id="findByUser" resultType="ShoppingVO">
+		SELECT * FROM tbl_shopping WHERE s_username = #{s_username}
+	</select>
+
+	<!-- 대문자 to 소문자 : ctrl + shift + y -->
+	<!-- 소문자 to 대문자 : ctrl + shift + x -->
+	<insert id="insert" parameterType="ShoppingVO">
+		INSERT INTO tbl_shopping (
+			s_productId,
+			s_title,
+			s_mallName,
+			s_maker,
+			s_brand,
+			s_lprice,
+			s_hprice,
+			s_link,
+			s_image,
+			s_username
+		)	VALUES (
+			#{s_productId},
+			#{s_title},
+			#{s_mallName},
+			#{s_maker},		
+			#{s_brand, jdbcType = VARCHAR},
+		    #{s_lprice, jdbcType = VARCHAR},
+		    #{s_hprice, jdbcType = VARCHAR},
+		    #{s_link, jdbcType = VARCHAR},
+		    #{s_image, jdbcType = VARCHAR},
+		    #{s_username}
+		)
+	</insert>
+	
+	<update id="update" parameterType="ShoppingVO">
+		UPDATE tbl_shopping SET
+			s_title = #{s_title},
+			s_mallName = #{s_mallName},
+			s_maker = #{s_maker},		
+			s_brand = #{s_brand},
+		    s_lprice = #{s_lprice},
+		    s_hprice = #{s_hprice},
+		    s_link = #{s_link},
+		    s_image = #{s_image},
+		    s_username = #{s_username}
+		WHERE s_productId = #{s_productId}
+	</update>
+	
+	<delete id="delete">
+		DELETE FROM tbl_shopping WHERE s_productId = #{s_productId}
+	</delete>
+	
+	<!-- CREATE TABLE IF NOT EXISTS tbl_shopping -->
+	<select id = "create_shopping_table">
+		CREATE TABLE tbl_shopping (
+			s_productId	VARCHAR2(255)   PRIMARY KEY,
+			s_title		nVARCHAR2(255)  NOT NULL,
+			s_mallName	nVARCHAR2(125),
+			s_maker		nVARCHAR2(125),
+			s_brand		nVARCHAR2(125),
+			s_lprice	NUMBER,
+			s_hprice	NUMBER,
+			s_link		VARCHAR2(125),
+			s_image		VARCHAR2(125),
+			s_username	VARCHAR2(20)	NOT NULL
+		)
+	</select>
+</mapper>

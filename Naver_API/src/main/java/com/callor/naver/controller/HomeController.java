@@ -9,10 +9,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.callor.naver.service.exec.NaverBookServiceEx;
+import com.callor.naver.service.exec.NaverShoppingServiceEx;
 
-import lombok.extern.slf4j.Slf4j;
-
-@Slf4j
 @Controller
 public class HomeController {
 
@@ -21,16 +19,34 @@ public class HomeController {
 		return "home";
 	}
 
+//	@ResponseBody
+//	@RequestMapping(value = "/", method = RequestMethod.POST)
+//	public String b_home(String title, Model model) {
+//		NaverBookServiceEx naverService = new NaverBookServiceEx();
+//		String queryString = naverService.queryString("BOOK", title);
+//		String resString = naverService.getJsonString(queryString);
+//
+//		return resString;
+//	}
+	
 	@ResponseBody
 	@RequestMapping(value = "/", method = RequestMethod.POST)
-	public String home(String title, Model model) {
-		log.debug("도서명 : " + title);
-
-		NaverBookServiceEx naverService = new NaverBookServiceEx();
-		String queryString = naverService.queryString("BOOK", title);
+	public String s_home(String title, Model model) {
+		NaverShoppingServiceEx naverService = new NaverShoppingServiceEx();
+		String queryString = naverService.queryString("SHOPPING", title);
 		String resString = naverService.getJsonString(queryString);
 
 		return resString;
 	}
+	
+//	@ResponseBody
+//	@RequestMapping(value = "/", method = RequestMethod.POST)
+//	public String m_home(String title, Model model) {
+//		NaverBookServiceEx naverService = new NaverBookServiceEx();
+//		String queryString = naverService.queryString("BOOK", title);
+//		String resString = naverService.getJsonString(queryString);
+//
+//		return resString;
+//	}
 
 }

@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set value="${pageContext.request.contextPath}" var="rootPath" />
 
@@ -15,45 +16,44 @@
 </style>
 
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="${rootPath}/static/css/home.css?ver=2022-06-09-001">
-<link rel="stylesheet" href="${rootPath}/static/css/main.css?ver=2022-06-08-001">
-<link rel="stylesheet" href="${rootPath}/static/css/table.css?ver=2022-05-31-002">
+<link rel="stylesheet"
+	href="${rootPath}/static/css/home.css?ver=2022-06-09-001">
+<link rel="stylesheet"
+	href="${rootPath}/static/css/main.css?ver=2022-06-08-001">
+<link rel="stylesheet"
+	href="${rootPath}/static/css/table.css?ver=2022-07-14-001">
 
 <script>
 	const rootPath = "${rootPath}"
 </script>
 
-<script src="${rootPath}/static/js/input.js?ver=2022-06-08-100"></script>
+<script src="${rootPath}/static/js/input.js?ver=2022-07-15-001"></script>
+<script src="${rootPath}/static/js/shopping_input.js?ver=2022-07-15-001"></script>
 
 </head>
 
 <body>
 	<header>
 		<h1>API APP</h1>
-		<p>Naver API를 활용한 도서, 뉴스, 영화 정보 서비스</p>
+		<p>Naver API를 활용한 도서, 쇼핑, 영화 정보 서비스</p>
 	</header>
 
 	<nav>
 		<ul>
 			<li><a href="${rootPath}/">Home</a></li>
 			<li><a href="${rootPath}/books/list">도서정보</a></li>
-			<li><a href="${rootPath}/news/news_list">오늘의 뉴스</a></li>
-			<li><a href="${rootPath}/movies">영화정보</a></li>
+			<li><a href="${rootPath}/shopping/shopping_list">쇼핑</a></li>
+			<li><a href="${rootPath}/movies/movies_list">영화정보</a></li>
 			<li><a href="${rootPath}/naver">네이버 체험</a></li>
 
-			<%
-			// 로그인 하지 않았을 때
-			%>
 			<c:if test="${empty USER}">
 				<li><a href="${rootPath}/user/login">로그인</a></li>
 				<li><a href="${rootPath}/user/join">회원가입</a></li>
 			</c:if>
 
-			<%
-			// 로그인 했을 때는 USER 객체에 로그인한 사용자 정보가 담겨 있다
-			%>
 			<c:if test="${not empty USER}">
-				<li><a href="${rootPath}/user/mypage">My Page(${USER.nickname})</a></li>
+				<li><a href="${rootPath}/user/mypage">My
+						Page(${USER.nickname})</a></li>
 				<li><a href="${rootPath}/user/logout">로그아웃</a></li>
 			</c:if>
 		</ul>
@@ -71,6 +71,30 @@
 
 			<c:when test="${LAYOUT=='BOOK-DETAIL'}">
 				<%@ include file="/WEB-INF/views/books/detail.jsp"%>
+			</c:when>
+
+			<c:when test="${LAYOUT=='SHOPPING-INPUT'}">
+				<%@ include file="/WEB-INF/views/shopping/shopping_insert.jsp"%>
+			</c:when>
+
+			<c:when test="${LAYOUT=='SHOPPING-LIST'}">
+				<%@ include file="/WEB-INF/views/shopping/shopping_list.jsp"%>
+			</c:when>
+
+			<c:when test="${LAYOUT=='SHOPPING-DETAIL'}">
+				<%@ include file="/WEB-INF/views/shopping/shopping_detail.jsp"%>
+			</c:when>
+
+			<c:when test="${LAYOUT=='MOVIE-INPUT'}">
+				<%@ include file="/WEB-INF/views/movies/movies_insert.jsp"%>
+			</c:when>
+
+			<c:when test="${LAYOUT=='MOVIE-LIST'}">
+				<%@ include file="/WEB-INF/views/movies/movies_list.jsp"%>
+			</c:when>
+
+			<c:when test="${LAYOUT=='MOVIE-DETAIL'}">
+				<%@ include file="/WEB-INF/views/movies/movies_detail.jsp"%>
 			</c:when>
 
 			<c:when test="${LAYOUT=='JOIN'}">
@@ -117,9 +141,31 @@
 		document.querySelector("span.modal-close")?.addEventListener("click",()=>{
 			document.querySelector("div.w3-modal.modal-result").style.display="none"
 		})
-		
-		document.querySelector("footer.main")?.addEventListener("click",()=>{
-			document.querySelector("div.modal-result").style.display="block"
+		</script>
+
+	</div>
+
+	<div class="w3-modal modal-shopping_result">
+		<div class="w3-modal-content w3-card-4">
+
+			<header class="w3-container w3-teal">
+				<span class="w3-button w3-display-topright modal-shopping_close">&times;</span>
+				<h2>쇼핑 검색 정보</h2>
+			</header>
+
+			<div class="w3-container shopping_search-content">
+				<p>검색 결과 보여지는 곳</p>
+			</div>
+
+			<footer class="w3-container w3-teal">
+				<address>CopyRight &copy; 1223wlsdn@naver.com</address>
+			</footer>
+
+		</div>
+
+		<script>
+		document.querySelector("span.modal-shopping_close")?.addEventListener("click",()=>{
+			document.querySelector("div.w3-modal.modal-shopping_result").style.display="none"
 		})
 		</script>
 

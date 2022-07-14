@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
   const modal_box = document.querySelector("div.modal-result");
-  // div.modal-result에 포함된 요소중에서 div.search-content 가져오기
   const modal_content = modal_box.querySelector("div.search-content");
 
   const inputs = document.querySelectorAll("input");
@@ -17,10 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
     image: 7,
   };
 
-  /*
-  정규식 문법
-  문자열 중에서 tag 문자열을 무조건 삭제하기 위한 패턴
-  */
   const extractTextPattern = /(<([^>]+)>)/gi;
 
   const book_isbn = document.querySelector("input#isbn");
@@ -28,15 +23,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const btn_save = document.querySelector("button.book-save");
 
-  /*
-      input event
-      input tag에 키보드로 문자를 입력 할 때마다 발생하는 event
-      */
-
-  /*
-      if(book_isbn)을 실행하여 book_isbn이 있으면 addEventListener를 부착하고 
-      만약 book_isbn 객체가 없으면 오류를 발생시키지 말고 실행 중단
-      */
   book_isbn?.addEventListener("input", (e) => {
     const isbn = e.target.value;
     if (isbn.length >= 13) {
@@ -46,7 +32,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   book_title?.addEventListener("keypress", (e) => {
     if (e.keyCode === 13) {
-      //   alert(e.target.value);
       fetch(`${rootPath}/naver/books?title=${e.target.value}`)
         .then((res) => res.text())
         .then((result) => {
@@ -57,11 +42,11 @@ document.addEventListener("DOMContentLoaded", () => {
   }); // end book_title
 
   modal_box?.addEventListener("click", (e) => {
-    const td = e.target; // table에 click event가 발생하면 가장 내부의 tag 정보 추출
+    const td = e.target;
 
     if (td.tagName === "TD") {
-      const tr = td.closest("TR"); // td를 감싸고 있는 가장 가까운 영역의 tr 추출
-      const codes = tr.dataset.isbn?.split(" "); // 추출된 tr의 속성 중에 data-isbn으로 설정된 속성 값 추출
+      const tr = td.closest("TR");
+      const codes = tr.dataset.isbn?.split(" ");
 
       if (codes.length > 1) {
         fetch(`${rootPath}/naver/${codes[1]}/book`)
@@ -118,7 +103,6 @@ document.addEventListener("DOMContentLoaded", () => {
       return false;
     }
 
-    // click event가 발생한 tag에서 가장 가까운 form 추출
     const form = btn.currentTarget.closest("FORM");
     form.submit();
   });

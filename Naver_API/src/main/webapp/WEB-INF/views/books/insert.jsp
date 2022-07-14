@@ -20,6 +20,7 @@
 	<div>
 		<input name="link" class="w3-input" placeholder="자세히보기" value="${BOOK.link}">
 		<input name="image" class="w3-input" placeholder="이미지경로" value="${BOOK.image}">
+		<input name="b_usename" class="w3-input" placeholder="작성자" value="${B_USER}" readonly="readonly">
 	</div>
 	<textarea rows="5" cols="205" name="description">${BOOK.description}</textarea>
 

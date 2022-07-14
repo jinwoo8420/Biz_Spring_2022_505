@@ -49,7 +49,7 @@ div.header:hover>p {
 <section class="main-view">
 	<article>
 		<div class="article-title">
-			<div class="header">
+			<div class="header" onclick="location.href='${rootPath}/books/list';">
 				<h3>도서목록</h3>
 				<p>더보기 &#43;</p>
 			</div>
@@ -58,9 +58,9 @@ div.header:hover>p {
 	</article>
 
 	<article>
-		<div class="article-title">
+		<div class="article-title" onclick="location.href='${rootPath}/shopping/shopping_list';">
 			<div class="header">
-				<h3>오늘의 뉴스</h3>
+				<h3>쇼핑목록</h3>
 				<p>더보기 &#43;</p>
 			</div>
 			<hr />
@@ -68,7 +68,7 @@ div.header:hover>p {
 	</article>
 
 	<article>
-		<div class="article-title">
+		<div class="article-title" onclick="location.href='${rootPath}/movies/movies_list';">
 			<div class="header">
 				<h3>영화목록</h3>
 				<p>더보기 &#43;</p>

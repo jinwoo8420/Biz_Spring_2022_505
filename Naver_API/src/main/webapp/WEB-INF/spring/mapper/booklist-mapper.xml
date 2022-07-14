@@ -12,6 +12,10 @@
 	<select id="findById" resultType="BookVO">
 		SELECT * FROM tbl_books WHERE isbn = #{isbn}
 	</select>
+	
+	<select id="findByUser" resultType="BookVO">
+		SELECT * FROM tbl_books WHERE b_username = #{b_username}
+	</select>
 
 	<!-- 대문자 to 소문자 : ctrl + shift + y -->
 	<!-- 소문자 to 대문자 : ctrl + shift + x -->
@@ -26,8 +30,8 @@
 		    description,
 		    pubdate,
 		    link,
-		    image
-
+		    image,
+		    b_username
 		)	VALUES (
 			#{isbn},
 			#{title},
@@ -38,7 +42,8 @@
 		    #{description, jdbcType = VARCHAR},
 		    #{pubdate, jdbcType = VARCHAR},
 		    #{link, jdbcType = VARCHAR},
-		    #{image, jdbcType = VARCHAR}
+		    #{image, jdbcType = VARCHAR},
+		    #{b_username}
 		)
 	</insert>
 	
@@ -62,7 +67,8 @@
 		    description = #{description},
 		    pubdate = #{pubdate},
 		    link = #{link},
-		    image = #{image}
+		    image = #{image},
+		    b_username = #{b_username}
 		WHERE isbn = #{isbn}
 	</update>
 	
@@ -83,7 +89,8 @@
 		    description	nVARCHAR2(2000),
 		    pubdate	    VARCHAR2(10),
 		    link	    VARCHAR2(125),
-		    image	    VARCHAR2(125)
+		    image	    VARCHAR2(125),
+		    b_username	VARCHAR2(20)	NOT NULL
 		)
 	</select>
 </mapper>

@@ -63,39 +63,36 @@ a.delete {
 <body>
 	<section class="w3-container">
 
-		<div class="w3-container detail-flex">
+		<div class="w3-container shopping_detail-flex">
 			<div>
-				<img src="${BOOK.image}">
+				<img src="${SHOPPING.s_image}">
 			</div>
 
-			<div class="detail">
+			<div class="shopping_detail">
 				<h2>
-					도서명 : <a href="${BOOK.link}" target=_Blank>${BOOK.title}</a>
+					상품명 : <a href="${SHOPPING.s_link}" target=_Blank>${SHOPPING.s_title}</a>
 				</h2>
-				<p>ISBN : ${BOOK.isbn}</p>
-				<p>저자 : ${BOOK.author}</p>
-				<p>출판사 : ${BOOK.publisher}</p>
-				<p>가격 : ${BOOK.price}</p>
-				<p>출판일자 : ${BOOK.pubdate}</p>
+				<p>쇼핑몰 : ${SHOPPING.s_mallName}</p>
+				<p>제조사 : ${SHOPPING.s_maker}</p>
+				<p>브랜드 : ${SHOPPING.s_brand}</p>
+				<p>최저가 : ${SHOPPING.s_lprice}</p>
+				<p>최고가 : ${SHOPPING.s_hprice}</p>
 			</div>
 
 		</div>
 
 		<div class="btn_box">
-			<a href="${rootPath}/books/list" class="list">리스트</a> <a
-				href="${rootPath}/books/${BOOK.isbn}/update" class="update">수정</a>
-			<%
-			//href="javascript:void(0)" : a tag의 link 연결 기능 완전 무력화
-			%>
-			<a href="javascript:void(0)" class="delete">삭제</a>
+			<a href="${rootPath}/shopping/shopping_list" class="list">리스트</a> <a
+				href="${rootPath}/shopping/${SHOPPING.s_productId}/shopping_update" class="shopping_update">수정</a>
+			<a href="javascript:void(0)" class="shopping_delete">삭제</a>
 		</div>
 	</section>
 </body>
 
 <script>
-	document.querySelector("a.delete")?.addEventListener("click",()=>{
+	document.querySelector("a.shopping_delete")?.addEventListener("click",()=>{
 		if(confirm("삭제?")) {
-			document.location.replace("${rootPath}/books/${BOOK.isbn}/delete")
+			document.location.replace("${rootPath}/shopping/${SHOPPING.s_productId}/shopping_delete")
 		}
 	})
 </script>

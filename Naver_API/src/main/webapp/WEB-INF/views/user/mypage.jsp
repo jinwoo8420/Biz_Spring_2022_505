@@ -29,10 +29,5 @@ div.w3-card-4 {
 		<h3 class="w3-text-blue">ROLE : ${USER.role}</h3>
 	</div>
 
-	<ul>
-		<c:forEach items="${BUY_BOOK}" var="BOOK">
-			<li>${BOOK.book.isbn}, &nbsp; &nbsp; ${BOOK.book.title}, &nbsp; &nbsp; ${BOOK.book.author}</li>
-		</c:forEach>
-	</ul>
 </body>
 </html>

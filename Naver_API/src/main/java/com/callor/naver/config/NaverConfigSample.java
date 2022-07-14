@@ -7,6 +7,9 @@ package com.callor.naver.config;
  * 변경한 후 프로젝트 실행
  */
 public class NaverConfigSample {
+	public static final String NAVER_CLIENT_ID = "";
+	public static final String NAVER_CLIENT_SEC = ""; 
+	
 	public static class HEADER {
 		public static final String ID = "X-Naver-Client-Id";
 		public static final String SEC = "X-Naver-Client-Secret";

@@ -42,16 +42,17 @@ div.btn_box a:hover {
 <script>
 	const rootPath = "${rootPath}"
 </script>
-<script src="${rootPath}/static/js/books.js?ver=2022-07-14-001"></script>
+<script src="${rootPath}/static/js/shopping.js?ver=2022-07-15-001"></script>
 
 </head>
 <body>
 
-	<table class="w3-table-all books">
+	<table class="w3-table-all shopping">
 		<colgroup>
 			<col width="100px">
-			<col width="100px">
 			<col width="300px">
+			<col width="100px">
+			<col width="100px">
 			<col width="100px">
 			<col width="100px">
 			<col width="100px">
@@ -60,23 +61,25 @@ div.btn_box a:hover {
 		<thead>
 			<tr>
 				<th>No.</th>
-				<th>ISBN</th>
-				<th>도서명</th>
-				<th>출판사</th>
-				<th>저자</th>
-				<th>출판일자</th>
+				<th>상품명</th>
+				<th>쇼핑몰</th>
+				<th>제조사</th>
+				<th>브랜드</th>
+				<th>최저가</th>
+				<th>최고가</th>
 			</tr>
 		</thead>
 
 		<tbody>
-			<c:forEach items="${BOOKS}" var="BOOK" varStatus="INDEX">
-				<tr data-isbn="${BOOK.isbn}">
+			<c:forEach items="${SHOPPINGS}" var="SHOPPING" varStatus="INDEX">
+				<tr data-id="${SHOPPING.s_productId}">
 					<td>${INDEX.count}</td>
-					<td>${BOOK.isbn}</td>
-					<td>${BOOK.title}</td>
-					<td>${BOOK.publisher}</td>
-					<td>${BOOK.author}</td>
-					<td>${BOOK.pubdate}</td>
+					<td>${SHOPPING.s_title}</td>
+					<td>${SHOPPING.s_mallName}</td>
+					<td>${SHOPPING.s_maker}</td>
+					<td>${SHOPPING.s_brand}</td>
+					<td>${SHOPPING.s_lprice}</td>
+					<td>${SHOPPING.s_hprice}</td>
 				</tr>
 			</c:forEach>
 		</tbody>
@@ -84,7 +87,7 @@ div.btn_box a:hover {
 	</table>
 
 	<div class="btn_box">
-		<a href="${rootPath}/books/insert">도서정보추가</a>
+		<a href="${rootPath}/shopping/shopping_insert">상품정보추가</a>
 	</div>
 
 </body>

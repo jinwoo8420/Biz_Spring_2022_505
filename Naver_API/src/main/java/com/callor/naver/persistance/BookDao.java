@@ -19,7 +19,7 @@ public interface BookDao extends GenericDao<BookVO, String> {
 
 	public List<BookVO> findByPublisher(String publisher);
 
-	public List<BookVO> findByPrice(int price);
+	public List<BookVO> findByUser(String username);
 
 	public void create_book_table();
 }
