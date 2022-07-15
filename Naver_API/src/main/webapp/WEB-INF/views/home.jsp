@@ -28,7 +28,7 @@
 </script>
 
 <script src="${rootPath}/static/js/input.js?ver=2022-07-15-002"></script>
-<script src="${rootPath}/static/js/shopping_input.js?ver=2022-07-15-016"></script>
+<script src="${rootPath}/static/js/shopping_input.js?ver=2022-07-15-018"></script>
 
 </head>
 

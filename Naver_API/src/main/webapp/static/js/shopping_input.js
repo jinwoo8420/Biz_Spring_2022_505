@@ -48,8 +48,16 @@ document.addEventListener("DOMContentLoaded", () => {
       console.log(codes);
 
       if (codes != 0) {
-        fetch(`${rootPath}/naver/${codes}/shopping`)
-          .then((res) => res.json())
+        fetch(`${rootPath}/naver/${codes}/shopping`, {
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+        })
+          .then((res) => {
+            res.json();
+            console.log(res);
+          })
           .then((result) => {
             inputs[input_index.productId].value = result.productId;
             inputs[input_index.title].value = result.title;
