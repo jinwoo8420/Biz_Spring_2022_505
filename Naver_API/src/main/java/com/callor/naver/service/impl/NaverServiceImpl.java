@@ -85,9 +85,9 @@ public class NaverServiceImpl implements NaverService {
 			InputStreamReader is = null;
 			BufferedReader buffer = null;
 
-			if (resCode == 200) { 
-				is = new InputStreamReader(httpCon.getInputStream()); 
-			} else { 
+			if (resCode == 200) {
+				is = new InputStreamReader(httpCon.getInputStream());
+			} else {
 				is = new InputStreamReader(httpCon.getErrorStream());
 			}
 

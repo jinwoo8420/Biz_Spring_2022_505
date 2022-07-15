@@ -34,7 +34,7 @@ input {
 	<form method="POST">
 		<select name="cat">
 			<option value="BOOK">도서검색</option>
-			<option value="NEWS">뉴스검색</option>
+			<option value="SHOPPING">상품검색</option>
 			<option value="MOVIE">영화검색</option>
 		</select> <input name="search" placeholder="검색어 입력">
 		<button>검색</button>

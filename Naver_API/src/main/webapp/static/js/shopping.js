@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const id = tr?.dataset.id;
 
     if (id) {
-      document.location.href = `${rootPath}/shopping/${id}/detail`;
+      document.location.href = `${rootPath}/shopping/${productId}/detail`;
     }
   });
 });

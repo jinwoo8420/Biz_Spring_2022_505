@@ -65,25 +65,25 @@ a.delete {
 
 		<div class="w3-container shopping_detail-flex">
 			<div>
-				<img src="${SHOPPING.s_image}">
+				<img src="${SHOPPING.image}">
 			</div>
 
 			<div class="shopping_detail">
 				<h2>
-					상품명 : <a href="${SHOPPING.s_link}" target=_Blank>${SHOPPING.s_title}</a>
+					상품명 : <a href="${SHOPPING.link}" target=_Blank>${SHOPPING.title}</a>
 				</h2>
-				<p>쇼핑몰 : ${SHOPPING.s_mallName}</p>
-				<p>제조사 : ${SHOPPING.s_maker}</p>
-				<p>브랜드 : ${SHOPPING.s_brand}</p>
-				<p>최저가 : ${SHOPPING.s_lprice}</p>
-				<p>최고가 : ${SHOPPING.s_hprice}</p>
+				<p>쇼핑몰 : ${SHOPPING.mallName}</p>
+				<p>제조사 : ${SHOPPING.maker}</p>
+				<p>브랜드 : ${SHOPPING.brand}</p>
+				<p>최저가 : ${SHOPPING.lprice}</p>
+				<p>최고가 : ${SHOPPING.hprice}</p>
 			</div>
 
 		</div>
 
 		<div class="btn_box">
 			<a href="${rootPath}/shopping/shopping_list" class="list">리스트</a> <a
-				href="${rootPath}/shopping/${SHOPPING.s_productId}/shopping_update" class="shopping_update">수정</a>
+				href="${rootPath}/shopping/${SHOPPING.productId}/shopping_update" class="shopping_update">수정</a>
 			<a href="javascript:void(0)" class="shopping_delete">삭제</a>
 		</div>
 	</section>
@@ -92,7 +92,7 @@ a.delete {
 <script>
 	document.querySelector("a.shopping_delete")?.addEventListener("click",()=>{
 		if(confirm("삭제?")) {
-			document.location.replace("${rootPath}/shopping/${SHOPPING.s_productId}/shopping_delete")
+			document.location.replace("${rootPath}/shopping/${SHOPPING.productId}/shopping_delete")
 		}
 	})
 </script>

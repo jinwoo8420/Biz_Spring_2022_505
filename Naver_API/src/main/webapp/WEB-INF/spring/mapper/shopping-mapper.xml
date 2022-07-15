@@ -9,7 +9,7 @@
 	</select>
 
 	<select id="findById" resultType="ShoppingVO">
-		SELECT * FROM tbl_shopping WHERE s_productId = #{s_productId}
+		SELECT * FROM tbl_shopping WHERE productId = #{productId}
 	</select>
 	
 	<select id="findByUser" resultType="ShoppingVO">
@@ -20,60 +20,60 @@
 	<!-- 소문자 to 대문자 : ctrl + shift + x -->
 	<insert id="insert" parameterType="ShoppingVO">
 		INSERT INTO tbl_shopping (
-			s_productId,
-			s_title,
-			s_mallName,
-			s_maker,
-			s_brand,
-			s_lprice,
-			s_hprice,
-			s_link,
-			s_image,
+			productId,
+			title,
+			mallName,
+			maker,
+			brand,
+			lprice,
+			hprice,
+			link,
+			image,
 			s_username
 		)	VALUES (
-			#{s_productId},
-			#{s_title},
-			#{s_mallName},
-			#{s_maker},		
-			#{s_brand, jdbcType = VARCHAR},
-		    #{s_lprice, jdbcType = VARCHAR},
-		    #{s_hprice, jdbcType = VARCHAR},
-		    #{s_link, jdbcType = VARCHAR},
-		    #{s_image, jdbcType = VARCHAR},
+			#{productId},
+			#{title},
+			#{mallName},
+			#{maker},		
+			#{brand, jdbcType = VARCHAR},
+		    #{lprice, jdbcType = VARCHAR},
+		    #{hprice, jdbcType = VARCHAR},
+		    #{link, jdbcType = VARCHAR},
+		    #{image, jdbcType = VARCHAR},
 		    #{s_username}
 		)
 	</insert>
 	
 	<update id="update" parameterType="ShoppingVO">
 		UPDATE tbl_shopping SET
-			s_title = #{s_title},
-			s_mallName = #{s_mallName},
-			s_maker = #{s_maker},		
-			s_brand = #{s_brand},
-		    s_lprice = #{s_lprice},
-		    s_hprice = #{s_hprice},
-		    s_link = #{s_link},
-		    s_image = #{s_image},
+			title = #{title},
+			mallName = #{mallName},
+			maker = #{maker},		
+			brand = #{brand},
+		    lprice = #{lprice},
+		    hprice = #{hprice},
+		    link = #{link},
+		    image = #{s_image},
 		    s_username = #{s_username}
-		WHERE s_productId = #{s_productId}
+		WHERE productId = #{productId}
 	</update>
 	
 	<delete id="delete">
-		DELETE FROM tbl_shopping WHERE s_productId = #{s_productId}
+		DELETE FROM tbl_shopping WHERE productId = #{productId}
 	</delete>
 	
 	<!-- CREATE TABLE IF NOT EXISTS tbl_shopping -->
 	<select id = "create_shopping_table">
 		CREATE TABLE tbl_shopping (
-			s_productId	VARCHAR2(255)   PRIMARY KEY,
-			s_title		nVARCHAR2(255)  NOT NULL,
-			s_mallName	nVARCHAR2(125),
-			s_maker		nVARCHAR2(125),
-			s_brand		nVARCHAR2(125),
-			s_lprice	NUMBER,
-			s_hprice	NUMBER,
-			s_link		VARCHAR2(125),
-			s_image		VARCHAR2(125),
+			productId	VARCHAR2(255)   PRIMARY KEY,
+			title		nVARCHAR2(255)  NOT NULL,
+			mallName	nVARCHAR2(125),
+			maker		nVARCHAR2(125),
+			brand		nVARCHAR2(125),
+			lprice		NUMBER,
+			hprice		NUMBER,
+			link		VARCHAR2(125),
+			image		VARCHAR2(125),
 			s_username	VARCHAR2(20)	NOT NULL
 		)
 	</select>

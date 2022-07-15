@@ -48,6 +48,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const tr = td.closest("TR");
       const codes = tr.dataset.isbn?.split(" ");
 
+      console.log(codes.length);
+
       if (codes.length > 1) {
         fetch(`${rootPath}/naver/${codes[1]}/book`)
           .then((res) => res.json())

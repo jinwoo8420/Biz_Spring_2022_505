@@ -5,15 +5,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const inputs = document.querySelectorAll("input");
 
   const input_index = {
-    s_productId: 0,
-    s_title: 1,
-    s_mallName: 2,
-    s_maker: 3,
-    s_brand: 4,
-    s_lprice: 5,
-    s_hprice: 6,
-    s_link: 7,
-    s_image: 8,
+    productId: 0,
+    title: 1,
+    mallName: 2,
+    maker: 3,
+    brand: 4,
+    lprice: 5,
+    hprice: 6,
+    link: 7,
+    image: 8,
   };
 
   const extractTextPattern = /(<([^>]+)>)/gi;
@@ -23,10 +23,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const btn_save = document.querySelector("button.shopping-save");
 
-  shopping_id?.addEventListener("input", (e) => {
-    const id = e.target.value;
-    alert(id);
-  });
+  // shopping_id?.addEventListener("input", (e) => {
+  //   const id = e.target.value;
+  //   alert(id);
+  // });
 
   shopping_title?.addEventListener("keypress", (e) => {
     if (e.keyCode === 13) {
@@ -44,23 +44,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (td.tagName === "TD") {
       const tr = td.closest("TR");
-      const codes = tr.dataset.id?.split(" ");
+      const codes = tr.dataset.id;
+      console.log(codes);
 
-      if (codes.length > 1) {
-        fetch(`${rootPath}/naver/${codes[1]}/shopping`)
+      if (codes != 0) {
+        fetch(`${rootPath}/naver/${codes}/shopping`)
           .then((res) => res.json())
           .then((result) => {
-            inputs[input_index.s_productId].value = result.s_productId
-              .replace(extractTextPattern, "")
-              .split(" ")[1];
-            inputs[input_index.s_title].value = result.s_title;
-            inputs[input_index.s_mallName].value = result.s_mallName;
-            inputs[input_index.s_maker].value = result.s_maker;
-            inputs[input_index.s_brand].value = result.s_brand;
-            inputs[input_index.s_lprice].value = result.s_lprice;
-            inputs[input_index.s_hprice].value = result.s_hprice;
-            inputs[input_index.s_link].value = result.s_link;
-            inputs[input_index.s_image].value = result.s_image;
+            inputs[input_index.productId].value = result.productId;
+            inputs[input_index.title].value = result.title;
+            inputs[input_index.mallName].value = result.mallName;
+            inputs[input_index.maker].value = result.maker;
+            inputs[input_index.brand].value = result.brand;
+            inputs[input_index.lprice].value = result.lprice;
+            inputs[input_index.hprice].value = result.hprice;
+            inputs[input_index.link].value = result.link;
+            inputs[input_index.image].value = result.image;
             modal_box.style.display = "none";
           });
       } else {
@@ -72,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   btn_save?.addEventListener("click", (btn) => {
-    const title = inputs[input_index.s_title];
+    const title = inputs[input_index.title];
 
     if (title?.value === "") {
       alert("상품명 입력");

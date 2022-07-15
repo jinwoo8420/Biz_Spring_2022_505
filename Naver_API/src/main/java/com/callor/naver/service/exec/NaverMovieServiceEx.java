@@ -15,10 +15,10 @@ import com.callor.naver.config.NaverConfig;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class NaverShoppingServiceEx {
+public class NaverMovieServiceEx {
 
 	public String queryString(String cat, String search) {
-		String queryString = NaverConfig.NAVER_SHOPPING_URL;
+		String queryString = NaverConfig.NAVER_MOVIE_URL;
 		String encodeSearch = null;
 
 		try {
@@ -39,11 +39,9 @@ public class NaverShoppingServiceEx {
 
 	public String getJsonString(String queryString) {
 		URL url = null;
-
 		HttpsURLConnection httpCon = null;
 
 		try {
-
 			url = new URL(queryString);
 			httpCon = (HttpsURLConnection) url.openConnection();
 

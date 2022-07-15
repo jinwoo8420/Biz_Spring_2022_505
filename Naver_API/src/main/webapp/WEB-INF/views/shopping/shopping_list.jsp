@@ -42,7 +42,7 @@ div.btn_box a:hover {
 <script>
 	const rootPath = "${rootPath}"
 </script>
-<script src="${rootPath}/static/js/shopping.js?ver=2022-07-15-001"></script>
+<script src="${rootPath}/static/js/shopping.js?ver=2022-07-15-002"></script>
 
 </head>
 <body>
@@ -72,14 +72,14 @@ div.btn_box a:hover {
 
 		<tbody>
 			<c:forEach items="${SHOPPINGS}" var="SHOPPING" varStatus="INDEX">
-				<tr data-id="${SHOPPING.s_productId}">
+				<tr data-id="${SHOPPING.productId}">
 					<td>${INDEX.count}</td>
-					<td>${SHOPPING.s_title}</td>
-					<td>${SHOPPING.s_mallName}</td>
-					<td>${SHOPPING.s_maker}</td>
-					<td>${SHOPPING.s_brand}</td>
-					<td>${SHOPPING.s_lprice}</td>
-					<td>${SHOPPING.s_hprice}</td>
+					<td>${SHOPPING.title}</td>
+					<td>${SHOPPING.mallName}</td>
+					<td>${SHOPPING.maker}</td>
+					<td>${SHOPPING.brand}</td>
+					<td>${SHOPPING.lprice}</td>
+					<td>${SHOPPING.hprice}</td>
 				</tr>
 			</c:forEach>
 		</tbody>
