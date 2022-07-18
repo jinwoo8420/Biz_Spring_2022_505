@@ -32,26 +32,28 @@ public class AddressServiceImpl implements AddressService {
 
 	@Override
 	public List<AddressVO> selectAll() {
-		return null;
+		return addrDao.selectAll();
 	}
 
 	@Override
 	public AddressVO findById(Long seq) {
-		return null;
+		return addrDao.findById(seq);
 	}
 
 	@Override
 	public int insert(AddressVO address) {
-		return 0;
+		return addrDao.insert(address);
 	}
 
 	@Override
 	public int update(AddressVO address) {
+		addrDao.update(address);
 		return 0;
 	}
 
 	@Override
 	public int delete(Long seq) {
+		addrDao.delete(seq);
 		return 0;
 	}
 
