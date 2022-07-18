@@ -18,15 +18,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const extractTextPattern = /(<([^>]+)>)/gi;
 
-  const shopping_id = document.querySelector("input#s_productId");
   const shopping_title = document.querySelector("input#s_title");
 
   const btn_save = document.querySelector("button.shopping-save");
-
-  // shopping_id?.addEventListener("input", (e) => {
-  //   const id = e.target.value;
-  //   alert(id);
-  // });
 
   shopping_title?.addEventListener("keypress", (e) => {
     if (e.keyCode === 13) {
@@ -44,37 +38,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (td.tagName === "TD") {
       const tr = td.closest("TR");
-      const codes = tr.dataset.id;
+      const codes = tr.dataset.title.replace(extractTextPattern, "");
       console.log(codes);
 
-      if (codes != 0) {
-        fetch(`${rootPath}/naver/${codes}/shopping`, {
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
+      fetch(`${rootPath}/naver/${codes}/shopping`)
+        .then((res) => {
+          res.json();
         })
-          .then((res) => {
-            res.json();
-            console.log(res);
-          })
-          .then((result) => {
-            inputs[input_index.productId].value = result.productId;
-            inputs[input_index.title].value = result.title;
-            inputs[input_index.mallName].value = result.mallName;
-            inputs[input_index.maker].value = result.maker;
-            inputs[input_index.brand].value = result.brand;
-            inputs[input_index.lprice].value = result.lprice;
-            inputs[input_index.hprice].value = result.hprice;
-            inputs[input_index.link].value = result.link;
-            inputs[input_index.image].value = result.image;
-            modal_box.style.display = "none";
-          });
-      } else {
-        alert("ID 코드 찾을 수 없음");
-      }
-
-      alert(codes);
+        .then((result) => {
+          inputs[input_index.productId].value = result.productId;
+          inputs[input_index.title].value = result.title;
+          inputs[input_index.mallName].value = result.mallName;
+          inputs[input_index.maker].value = result.maker;
+          inputs[input_index.brand].value = result.brand;
+          inputs[input_index.lprice].value = result.lprice;
+          inputs[input_index.hprice].value = result.hprice;
+          inputs[input_index.link].value = result.link;
+          inputs[input_index.image].value = result.image;
+          modal_box.style.display = "none";
+        });
     }
   });
 

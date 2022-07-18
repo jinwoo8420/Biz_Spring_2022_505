@@ -28,7 +28,8 @@
 </script>
 
 <script src="${rootPath}/static/js/input.js?ver=2022-07-15-002"></script>
-<script src="${rootPath}/static/js/shopping_input.js?ver=2022-07-15-018"></script>
+<script src="${rootPath}/static/js/shopping_input.js?ver=2022-07-15-030"></script>
+<script src="${rootPath}/static/js/movie_input.js?ver=2022-07-16-011"></script>
 
 </head>
 
@@ -170,5 +171,33 @@
 		</script>
 
 	</div>
+	
+	<div class="w3-modal modal-movie_result">
+		<div class="w3-modal-content w3-card-4">
+
+			<header class="w3-container w3-teal">
+				<span class="w3-button w3-display-topright modal-movie_close">&times;</span>
+				<h2>영화 검색 정보</h2>
+			</header>
+
+			<div class="w3-container search-movie_content">
+				<p>검색 결과 보여지는 곳</p>
+			</div>
+
+			<footer class="w3-container w3-teal">
+				<address>CopyRight &copy; 1223wlsdn@naver.com</address>
+			</footer>
+
+		</div>
+
+		<script>
+		document.querySelector("span.modal-movie_close")?.addEventListener("click",()=>{
+			document.querySelector("div.w3-modal.modal-movie_result").style.display="none"
+		})
+		</script>
+
+	</div>
+	
+	
 </body>
 </html>

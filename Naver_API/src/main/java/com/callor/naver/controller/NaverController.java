@@ -34,13 +34,13 @@ public class NaverController {
 			queryString = naverService.queryString("SHOPPING", search);
 			List<Object> shoppingList = naverService.getNaver(queryString);
 			model.addAttribute("SHOPPINGS", shoppingList);
-			
+
 			return "naver/shopping_search";
 		} else if (cat.equals("MOVIE")) {
 			queryString = naverService.queryString("MOVIE", search);
 			List<Object> movieList = naverService.getNaver(queryString);
 			model.addAttribute("MOVIES", movieList);
-			
+
 			return "naver/movie_search";
 		}
 
@@ -71,7 +71,7 @@ public class NaverController {
 
 		return bookList.get(0);
 	}
-	
+
 	@RequestMapping(value = "/shopping", method = RequestMethod.GET)
 	public String shopping_search(String title, Model model) {
 		String queryString = naverService.queryString("SHOPPING", title);
@@ -84,16 +84,16 @@ public class NaverController {
 	}
 
 	@ResponseBody
-	@RequestMapping(value = "/{productId}/shopping", method = RequestMethod.GET, produces = NaverConfig.APP_JSON)
-	public Object shopping(@PathVariable("productId") String productId) {
-		String queryString = naverService.queryString("SHOPPING", productId);
+	@RequestMapping(value = "/{title}/shopping", method = RequestMethod.GET, produces = NaverConfig.APP_JSON)
+	public Object shopping(@PathVariable("title") String title) {
+		String queryString = naverService.queryString("SHOPPING", title);
 
 		List<Object> shoppingList = naverService.getNaver(queryString);
 
 		return shoppingList.get(0);
 	}
-	
-	@RequestMapping(value = "/movie", method = RequestMethod.GET)
+
+	@RequestMapping(value = "/movies", method = RequestMethod.GET)
 	public String movie_search(String title, Model model) {
 		String queryString = naverService.queryString("MOVIE", title);
 
@@ -105,7 +105,7 @@ public class NaverController {
 	}
 
 	@ResponseBody
-	@RequestMapping(value = "/{title}/movie", method = RequestMethod.GET, produces = NaverConfig.APP_JSON)
+	@RequestMapping(value = "/{title}/movies", method = RequestMethod.GET, produces = NaverConfig.APP_JSON)
 	public Object movie(@PathVariable("title") String title) {
 		String queryString = naverService.queryString("MOVIE", title);
 

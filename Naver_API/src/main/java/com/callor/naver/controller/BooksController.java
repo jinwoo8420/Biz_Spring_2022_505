@@ -14,6 +14,9 @@ import com.callor.naver.model.BookVO;
 import com.callor.naver.model.UserVO;
 import com.callor.naver.service.BookService;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @RequestMapping(value = "/books")
 @Controller
 public class BooksController {
@@ -32,8 +35,8 @@ public class BooksController {
 	@RequestMapping(value = "/list")
 	public String list(Model model, HttpSession session, BookVO bookVO) {
 		UserVO userVO = (UserVO) session.getAttribute("USER");
-		
-		if(userVO == null) {
+
+		if (userVO == null) {
 			List<BookVO> bookList = bookService.selectAll();
 			model.addAttribute("BOOKS", bookList);
 		}
@@ -62,7 +65,7 @@ public class BooksController {
 
 			return "redirect:/user/login";
 		}
-		
+
 		bookVO.setB_username(userVO.getUsername());
 		model.addAttribute("B_USER", bookVO.getB_username());
 
@@ -70,7 +73,7 @@ public class BooksController {
 	}
 
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)
-	public String insert(BookVO bookVO, HttpSession session,Model model) {
+	public String insert(BookVO bookVO, HttpSession session, Model model) {
 		UserVO userVO = (UserVO) session.getAttribute("USER");
 		bookVO.setB_username(userVO.getUsername());
 		model.addAttribute("B_USER", bookVO.getB_username());
@@ -91,8 +94,12 @@ public class BooksController {
 	}
 
 	@RequestMapping(value = "/{isbn}/update", method = RequestMethod.GET)
-	public String update(@PathVariable("isbn") String isbn, Model model) {
+	public String update(@PathVariable("isbn") String isbn, Model model, HttpSession session) {
 		BookVO bookVO = bookService.findById(isbn);
+
+		UserVO userVO = (UserVO) session.getAttribute("USER");
+		bookVO.setB_username(userVO.getUsername());
+		model.addAttribute("B_USER", bookVO.getB_username());
 
 		model.addAttribute("BOOK", bookVO);
 		model.addAttribute("LAYOUT", "BOOK-INPUT");
@@ -106,6 +113,8 @@ public class BooksController {
 		bookVO.setB_username(userVO.getUsername());
 
 		int ret = bookService.update(bookVO);
+
+		log.debug("결과 {}", bookVO.toString());
 		String retStr = String.format("redirect:/books/%s/detail", bookVO.getIsbn());
 
 		return retStr;

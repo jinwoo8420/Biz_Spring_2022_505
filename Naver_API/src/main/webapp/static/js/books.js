@@ -6,8 +6,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const tr = target?.closest("TR");
     const isbn = tr?.dataset.isbn;
 
-    if (isbn) {
-      document.location.href = `${rootPath}/books/${isbn}/detail`;
-    }
+    document.location.href = `${rootPath}/books/${isbn}/detail`;
   });
 });

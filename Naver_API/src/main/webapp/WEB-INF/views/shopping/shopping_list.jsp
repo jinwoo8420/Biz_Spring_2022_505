@@ -42,7 +42,7 @@ div.btn_box a:hover {
 <script>
 	const rootPath = "${rootPath}"
 </script>
-<script src="${rootPath}/static/js/shopping.js?ver=2022-07-15-002"></script>
+<script src="${rootPath}/static/js/shopping.js?ver=2022-07-16-001"></script>
 
 </head>
 <body>

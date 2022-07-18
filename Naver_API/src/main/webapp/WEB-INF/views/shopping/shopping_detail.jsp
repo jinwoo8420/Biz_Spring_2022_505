@@ -83,8 +83,8 @@ a.delete {
 
 		<div class="btn_box">
 			<a href="${rootPath}/shopping/shopping_list" class="list">리스트</a> <a
-				href="${rootPath}/shopping/${SHOPPING.productId}/shopping_update" class="shopping_update">수정</a>
-			<a href="javascript:void(0)" class="shopping_delete">삭제</a>
+				href="${rootPath}/shopping/${SHOPPING.productId}/shopping_update" class="update">수정</a>
+			<a href="javascript:void(0)" class="delete">삭제</a>
 		</div>
 	</section>
 </body>

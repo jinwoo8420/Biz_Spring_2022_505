@@ -65,8 +65,8 @@
 	<!-- CREATE TABLE IF NOT EXISTS tbl_shopping -->
 	<select id = "create_shopping_table">
 		CREATE TABLE tbl_shopping (
-			productId	VARCHAR2(255)   PRIMARY KEY,
-			title		nVARCHAR2(255)  NOT NULL,
+			title		nVARCHAR2(255) PRIMARY KEY,
+			productId	VARCHAR2(255)  NOT NULL,
 			mallName	nVARCHAR2(125),
 			maker		nVARCHAR2(125),
 			brand		nVARCHAR2(125),

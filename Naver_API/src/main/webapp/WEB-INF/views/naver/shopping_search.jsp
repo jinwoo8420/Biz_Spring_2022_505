@@ -31,7 +31,7 @@
 			</c:if>
 
 			<c:forEach items="${SHOPPINGS}" var="SHOPPING">
-				<tr data-id="${SHOPPING.productId}">
+				<tr data-title="${SHOPPING.title}">
 					<td>${SHOPPING.title}</td>
 					<td>${SHOPPING.mallName}</td>
 					<td>${SHOPPING.maker}</td>
