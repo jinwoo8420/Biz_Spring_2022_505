@@ -65,11 +65,13 @@ public class HomeController {
 	public String update(AddressVO adrVO) {
 		int ret = adrService.update(adrVO);
 
-		return "redirect:/";
+		String str = String.format("redirect:/detail?seq=%s", adrVO.getA_seq());
+
+		return str;
 	}
 
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
-	public String delete(@RequestParam("seq") String strSeq, Model model) {
+	public String delete(@RequestParam("seq") String strSeq) {
 		long seq = Long.valueOf(strSeq);
 
 		int ret = adrService.delete(seq);
