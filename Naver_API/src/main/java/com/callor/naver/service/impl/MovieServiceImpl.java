@@ -44,6 +44,15 @@ public class MovieServiceImpl implements MovieService {
 		} catch (Exception e) {
 		}
 	}
+	
+	@Autowired
+	@Override
+	public void create_movie_seq() {
+		try {
+			movieDao.create_movie_seq();
+		} catch (Exception e) {
+		}
+	}
 
 	@Override
 	public List<MovieVO> selectAll() {

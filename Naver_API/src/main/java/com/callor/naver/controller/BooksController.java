@@ -14,9 +14,6 @@ import com.callor.naver.model.BookVO;
 import com.callor.naver.model.UserVO;
 import com.callor.naver.service.BookService;
 
-import lombok.extern.slf4j.Slf4j;
-
-@Slf4j
 @RequestMapping(value = "/books")
 @Controller
 public class BooksController {
@@ -95,9 +92,16 @@ public class BooksController {
 
 	@RequestMapping(value = "/{isbn}/update", method = RequestMethod.GET)
 	public String update(@PathVariable("isbn") String isbn, Model model, HttpSession session) {
+		UserVO userVO = (UserVO) session.getAttribute("USER");
+
+		if (userVO == null) {
+			model.addAttribute("error", "LOGIN_NEED");
+
+			return "redirect:/user/login";
+		}
+
 		BookVO bookVO = bookService.findById(isbn);
 
-		UserVO userVO = (UserVO) session.getAttribute("USER");
 		bookVO.setB_username(userVO.getUsername());
 		model.addAttribute("B_USER", bookVO.getB_username());
 
@@ -114,14 +118,21 @@ public class BooksController {
 
 		int ret = bookService.update(bookVO);
 
-		log.debug("결과 {}", bookVO.toString());
 		String retStr = String.format("redirect:/books/%s/detail", bookVO.getIsbn());
 
 		return retStr;
 	}
 
 	@RequestMapping(value = "/{isbn}/delete", method = RequestMethod.GET)
-	public String delete(@PathVariable("isbn") String isbn) {
+	public String delete(@PathVariable("isbn") String isbn, Model model, HttpSession session) {
+		UserVO userVO = (UserVO) session.getAttribute("USER");
+
+		if (userVO == null) {
+			model.addAttribute("error", "LOGIN_NEED");
+
+			return "redirect:/user/login";
+		}
+
 		int ret = bookService.delete(isbn);
 
 		return "redirect:/books/list";

@@ -27,12 +27,12 @@ public class MoviesController {
 	public String movies_list() {
 		return "movies/movies_list";
 	}
-	
+
 	@RequestMapping(value = "/movies_list")
 	public String list(Model model, HttpSession session, MovieVO movieVO) {
 		UserVO userVO = (UserVO) session.getAttribute("USER");
-		
-		if(userVO == null) {
+
+		if (userVO == null) {
 			List<MovieVO> movieList = movieService.selectAll();
 			model.addAttribute("MOVIES", movieList);
 		}
@@ -61,7 +61,7 @@ public class MoviesController {
 
 			return "redirect:/user/login";
 		}
-		
+
 		movieVO.setM_username(userVO.getUsername());
 		model.addAttribute("M_USER", movieVO.getM_username());
 
@@ -69,7 +69,7 @@ public class MoviesController {
 	}
 
 	@RequestMapping(value = "/movies_insert", method = RequestMethod.POST)
-	public String insert(MovieVO movieVO, HttpSession session,Model model) {
+	public String insert(MovieVO movieVO, HttpSession session, Model model) {
 		UserVO userVO = (UserVO) session.getAttribute("USER");
 		movieVO.setM_username(userVO.getUsername());
 		model.addAttribute("M_USER", movieVO.getM_username());
@@ -89,9 +89,20 @@ public class MoviesController {
 		return "home";
 	}
 
-	@RequestMapping(value = "/{m_code}/movie_update", method = RequestMethod.GET)
-	public String update(@PathVariable("m_code") String title, Model model) {
-		MovieVO movieVO = movieService.findById(title);
+	@RequestMapping(value = "/{m_seq}/movies_update", method = RequestMethod.GET)
+	public String update(@PathVariable("m_seq") String seq, Model model, HttpSession session) {
+		MovieVO movieVO = movieService.findById(seq);
+
+		UserVO userVO = (UserVO) session.getAttribute("USER");
+
+		if (userVO == null) {
+			model.addAttribute("error", "LOGIN_NEED");
+
+			return "redirect:/user/login";
+		}
+
+		movieVO.setM_username(userVO.getUsername());
+		model.addAttribute("M_USER", movieVO.getM_username());
 
 		model.addAttribute("MOVIE", movieVO);
 		model.addAttribute("LAYOUT", "MOVIE-INPUT");
@@ -99,20 +110,29 @@ public class MoviesController {
 		return "home";
 	}
 
-	@RequestMapping(value = "/{m_code}/movie_update", method = RequestMethod.POST)
+	@RequestMapping(value = "/{m_seq}/movies_update", method = RequestMethod.POST)
 	public String update(MovieVO movieVO, HttpSession session) {
 		UserVO userVO = (UserVO) session.getAttribute("USER");
 		movieVO.setM_username(userVO.getUsername());
 
 		int ret = movieService.update(movieVO);
-		String retStr = String.format("redirect:/movies/%s/movies_detail", movieVO.getM_code());
+
+		String retStr = String.format("redirect:/movies/%s/movies_detail", movieVO.getM_seq());
 
 		return retStr;
 	}
 
-	@RequestMapping(value = "/{m_code}/movies_delete", method = RequestMethod.GET)
-	public String delete(@PathVariable("m_code") String title) {
-		int ret = movieService.delete(title);
+	@RequestMapping(value = "/{m_seq}/movies_delete", method = RequestMethod.GET)
+	public String delete(@PathVariable("m_seq") String seq, Model model, HttpSession session) {
+		UserVO userVO = (UserVO) session.getAttribute("USER");
+
+		if (userVO == null) {
+			model.addAttribute("error", "LOGIN_NEED");
+
+			return "redirect:/user/login";
+		}
+
+		int ret = movieService.delete(seq);
 
 		return "redirect:/movies/movies_list";
 	}

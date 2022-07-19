@@ -29,7 +29,7 @@
 
 <script src="${rootPath}/static/js/input.js?ver=2022-07-15-002"></script>
 <script src="${rootPath}/static/js/shopping_input.js?ver=2022-07-15-030"></script>
-<script src="${rootPath}/static/js/movie_input.js?ver=2022-07-16-011"></script>
+<script src="${rootPath}/static/js/movie_input.js?ver=2022-07-19-001"></script>
 
 </head>
 

@@ -55,6 +55,7 @@ div.btn_box a:hover {
 			<col width="100px">
 			<col width="100px">
 			<col width="100px">
+			<col width="200px">
 		</colgroup>
 
 		<thead>
@@ -65,6 +66,7 @@ div.btn_box a:hover {
 				<th>출판사</th>
 				<th>저자</th>
 				<th>출판일자</th>
+				<th>작성자</th>
 			</tr>
 		</thead>
 
@@ -77,6 +79,7 @@ div.btn_box a:hover {
 					<td>${BOOK.publisher}</td>
 					<td>${BOOK.author}</td>
 					<td>${BOOK.pubdate}</td>
+					<td>${BOOK.b_username}</td>
 				</tr>
 			</c:forEach>
 		</tbody>

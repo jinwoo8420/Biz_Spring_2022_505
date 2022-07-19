@@ -2,7 +2,6 @@ package com.callor.naver.persistance;
 
 import java.util.List;
 
-import com.callor.naver.model.BookVO;
 import com.callor.naver.model.MovieVO;
 
 public interface MovieDao extends GenericDao<MovieVO, String> {
@@ -16,4 +15,6 @@ public interface MovieDao extends GenericDao<MovieVO, String> {
 	public List<MovieVO> findByUser(String username);
 
 	public void create_movie_table();
+
+	public void create_movie_seq();
 }

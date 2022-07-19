@@ -13,7 +13,6 @@ document.addEventListener("DOMContentLoaded", () => {
     userRating: 5,
     link: 6,
     image: 7,
-    m_code: 8,
   };
 
   const extractTextPattern = /(<([^>]+)>)/gi;
@@ -56,7 +55,6 @@ document.addEventListener("DOMContentLoaded", () => {
           inputs[input_index.userRating].value = result.userRating;
           inputs[input_index.link].value = result.link;
           inputs[input_index.image].value = result.image;
-          inputs[input_index.m_code].value = result.link.split("=")[1];
           modal_box.style.display = "none";
         });
       alert(codes);

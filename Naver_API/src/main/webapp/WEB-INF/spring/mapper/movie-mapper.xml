@@ -4,11 +4,11 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.callor.naver.persistance.MovieDao">
 	<select id="selectAll" resultType="MovieVO">
-		SELECT * FROM tbl_movie
+		SELECT * FROM tbl_movie ORDER BY m_seq
 	</select>
 
 	<select id="findById" resultType="MovieVO">
-		SELECT * FROM tbl_movie WHERE m_code = #{m_code}
+		SELECT * FROM tbl_movie WHERE m_seq = #{m_seq}
 	</select>
 	
 	<select id="findByUser" resultType="MovieVO">
@@ -18,8 +18,12 @@
 	<!-- 대문자 to 소문자 : ctrl + shift + y -->
 	<!-- 소문자 to 대문자 : ctrl + shift + x -->
 	<insert id="insert" parameterType="MovieVO">
+		<selectKey keyProperty="m_seq" resultType="String" order="BEFORE">
+ 			SELECT seq_movie.NEXTVAL FROM DUAL	
+ 		</selectKey>
+ 		
 		INSERT INTO tbl_movie (
-			m_code,
+			m_seq,
 			title,
 			director,
 			actor,
@@ -30,7 +34,7 @@
 			userRating,
 			m_username
 		)	VALUES (
-			#{m_code},
+			#{m_seq},
 			#{title},
 			#{director},
 			#{actor},
@@ -54,17 +58,17 @@
 			image = #{image},
 			userRating = #{userRating},
 		    m_username = #{m_username}
-		WHERE m_code = #{m_code}
+		WHERE m_seq = #{m_seq}
 	</update>
 	
 	<delete id="delete">
-		DELETE FROM tbl_movie WHERE m_code = #{m_code}
+		DELETE FROM tbl_movie WHERE m_seq = #{m_seq}
 	</delete>
 	
 	<!-- CREATE TABLE IF NOT EXISTS tbl_movie -->
 	<select id = "create_movie_table">
 		CREATE TABLE tbl_movie (
-		    m_code      VARCHAR2(20)    PRIMARY KEY,
+			m_seq 		NUMBER			PRIMARY KEY,    
             title	    nVARCHAR2(255)	NOT NULL,
 		    director	nVARCHAR2(255),
 		    actor		nVARCHAR2(255),
@@ -76,4 +80,9 @@
 		    m_username	VARCHAR2(20)	NOT NULL
 		)
 	</select>
+	
+	<select id="create_movie_seq">
+ 			CREATE SEQUENCE seq_movie
+			INCREMENT BY 1 START WITH 1
+ 	</select>
 </mapper>

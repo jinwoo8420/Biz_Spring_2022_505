@@ -82,7 +82,7 @@ a.delete {
 
 		<div class="btn_box">
 			<a href="${rootPath}/movies/movies_list" class="list">리스트</a> <a
-				href="${rootPath}/movies/${MOVIE.m_code}/movies_update" class="update">수정</a>
+				href="${rootPath}/movies/${MOVIE.m_seq}/movies_update" class="update">수정</a>
 			<a href="javascript:void(0)" class="delete">삭제</a>
 		</div>
 	</section>
@@ -91,7 +91,7 @@ a.delete {
 <script>
 	document.querySelector("a.delete")?.addEventListener("click",()=>{
 		if(confirm("삭제?")) {
-			document.location.replace("${rootPath}/movies/${MOVIE.m_code}/movies_delete")
+			document.location.replace("${rootPath}/movies/${MOVIE.m_seq}/movies_delete")
 		}
 	})
 </script>

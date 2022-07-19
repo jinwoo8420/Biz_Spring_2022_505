@@ -62,7 +62,7 @@
 	<!-- MySQL CTREATE 명령문 -->
 	<!-- CREATE TABLE IF NOT EXISTS tbl_users -->
 	<select id = "create_user_table">
-		CREATE TABLE IF NOT EXISTS tbl_users (
+		CREATE TABLE tbl_users (
 		    username	VARCHAR2(20)    PRIMARY KEY,
 		    password	nVARCHAR2(125)  NOT NULL,
 		    email		VARCHAR2(125)	NOT NULL UNIQUE,

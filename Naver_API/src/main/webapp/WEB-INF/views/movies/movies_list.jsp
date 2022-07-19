@@ -51,6 +51,7 @@ div.btn_box a:hover {
 			<col width="100px">
 			<col width="100px">
 			<col width="100px">
+			<col width="200px">
 		</colgroup>
 
 		<thead>
@@ -60,17 +61,19 @@ div.btn_box a:hover {
 				<th>감독</th>
 				<th>주연</th>
 				<th>평점</th>
+				<th>작성자</th>
 			</tr>
 		</thead>
 
 		<tbody>
 			<c:forEach items="${MOVIES}" var="MOVIE" varStatus="INDEX">
-				<tr data-title="${MOVIE.m_code}">
+				<tr data-title="${MOVIE.m_seq}">
 					<td>${INDEX.count}</td>
 					<td>${MOVIE.title}</td>
 					<td>${MOVIE.director}</td>
 					<td>${MOVIE.actor}</td>
 					<td>${MOVIE.userRating}</td>
+					<td>${MOVIE.m_username}</td>
 				</tr>
 			</c:forEach>
 		</tbody>
