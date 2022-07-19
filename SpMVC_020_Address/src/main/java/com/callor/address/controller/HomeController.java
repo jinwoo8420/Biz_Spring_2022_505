@@ -4,17 +4,14 @@ import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.callor.address.model.AddressVO;
+import com.callor.address.model.SearchPage;
 import com.callor.address.service.AddressService;
 
-import lombok.extern.slf4j.Slf4j;
-
-@Slf4j
 @Controller
 public class HomeController {
 
@@ -25,8 +22,16 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Model model) {
-		List<AddressVO> adrVO = adrService.selectAll();
+	public String home(Model model, @RequestParam(name = "pageno", required = false, defaultValue = "0") int pageno) {
+//		List<AddressVO> adrVO = adrService.selectAll();
+
+		SearchPage searchpage = SearchPage.builder().a_name("").limit(10).offset(pageno * 10).build();
+
+		searchpage.setCurrentPageNo(pageno);
+
+		adrService.searchAndPage(model, searchpage); // 페이지 계산
+
+		List<AddressVO> adrVO = adrService.searchAndPage(searchpage); // 데이터 가져오기
 		model.addAttribute("HOME", adrVO);
 
 		return "home";

@@ -12,6 +12,15 @@
 	 		WHERE a_seq = #{a_seq}
 	 </select>
 	 
+	 <select id="searchAndPage" resultType="AddressVO">
+	 	SELECT * FROM 
+		(
+			SELECT * FROM tbl_address
+			WHERE a_name LIKE CONCAT('%', #{a_name}, '%')
+		) AS SUB
+		LIMIT #{limit} OFFSET #{offset}
+	 </select>
+	 
 	 <insert id="insert" parameterType="AddressVO">
 	 		INSERT INTO tbl_address (
 	 			a_name,

@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set value="${pageContext.request.contextPath}" var="rootPath" />
 
@@ -60,7 +59,6 @@ button:hover {
 .tbl_adr {
 	border-collapse: collapse;
 	margin: 10px auto;
-	width: 70%;
 }
 
 .tbl_adr td {
@@ -85,8 +83,7 @@ button:hover {
 			<button>저장</button>
 
 			<c:if test="${not empty UPDATE.a_seq}">
-				<button
-					onclick="location.href = '${rootPath}/detail?seq=${UPDATE.a_seq}';">뒤로가기</button>
+				<button onclick="location.href = '${rootPath}/detail?seq=${UPDATE.a_seq}';">뒤로가기</button>
 			</c:if>
 		</div>
 	</form>
@@ -95,7 +92,7 @@ button:hover {
 		<colgroup>
 			<col width="100px">
 			<col width="300px">
-			<col width="300px">
+			<col width="500px">
 			<col width="1000px">
 		</colgroup>
 
@@ -120,5 +117,8 @@ button:hover {
 			</c:forEach>
 		</tbody>
 	</table>
+
+	<%@ include file="/WEB-INF/views/pagenation.jsp"%>
+
 </body>
 </html>

@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set value="${pageContext.request.contextPath}" var="rootPath" />
 
@@ -27,7 +26,6 @@ body {
 table {
 	border-collapse: collapse;
 	margin: 10px auto;
-	width: 70%;
 }
 
 .btn {
@@ -59,6 +57,12 @@ table {
 	<h3>${DETAIL.a_name} DETAIL PAGE</h3>
 
 	<table>
+		<colgroup>
+			<col width="100px">
+			<col width="300px">
+			<col width="500px">
+			<col width="1000px">
+		</colgroup>
 		<thead>
 			<tr>
 				<th>SEQ</th>

@@ -4,9 +4,11 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import com.callor.address.config.QualifyConfig;
 import com.callor.address.model.AddressVO;
+import com.callor.address.model.SearchPage;
 import com.callor.address.persistance.AddressDao;
 import com.callor.address.service.AddressService;
 
@@ -67,6 +69,56 @@ public class AddressServiceImpl implements AddressService {
 	@Override
 	public void create_addr_table() {
 		addrDao.create_addr_table();
+	}
+
+	@Override
+	public List<AddressVO> searchAndPage(SearchPage searchpage) {
+		return addrDao.searchAndPage(searchpage);
+	}
+
+	/*
+	 * 조건에 맞는 데이터를 가져와서 pagenation을 그리기 위한 SearchPage 클래스의 데이터 만들기
+	 */
+
+	@Override
+	public void searchAndPage(Model model, SearchPage searchpage) {
+		searchpage.setLimit(addrDao.selectAll().size());
+		searchpage.setOffset(0);
+
+		// 검색어 조건에 맞는 모든 데이터 가져오기
+		List<AddressVO> addList = addrDao.searchAndPage(searchpage);
+
+		long totalCount = addList.size();
+
+		if (addList.size() < 1) // 조건에 맞는 데이터가 없으면 중단하기
+			return;
+
+		searchpage.setListPerPage(10); // 보여질 데이터 리스트 개수
+		searchpage.setPageNoCount(10); // 하단의 페이지 번호 개수
+		searchpage.setTotalCount(totalCount); // 조건에 맞는 전체 데이터 개수
+
+		// (전체 데이터 개수 - 1) / 보여질 개수
+		long finalPageNo = (totalCount - 1) / searchpage.getListPerPage();
+
+		searchpage.setFinalPageNo(finalPageNo);
+
+		if (searchpage.getCurrentPageNo() > finalPageNo)
+			searchpage.setCurrentPageNo(finalPageNo);
+
+		if (searchpage.getCurrentPageNo() < 1)
+			searchpage.setCurrentPageNo(1);
+
+		long startPageNo = ((searchpage.getCurrentPageNo() - 1) / searchpage.getPageNoCount())
+				* searchpage.getPageNoCount() + 1;
+
+		long endPageNo = startPageNo + searchpage.getPageNoCount() - 1;
+
+		searchpage.setStartPageNo(startPageNo);
+		searchpage.setEndPageNo(endPageNo);
+		searchpage.setLimit(searchpage.getPageNoCount());
+		searchpage.setOffset(searchpage.getCurrentPageNo() * searchpage.getPageNoCount());
+
+		model.addAttribute("PAGE", searchpage);
 	}
 
 }
