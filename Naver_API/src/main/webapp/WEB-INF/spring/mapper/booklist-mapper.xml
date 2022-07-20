@@ -59,17 +59,17 @@
 	
 	<update id="update" parameterType="BookVO">
 		UPDATE tbl_books SET
-			title =	#{title},
-			author = #{author},
-			publisher = #{publisher},		
-			price = #{price},
-		    discount = #{discount},
-		    description = #{description},
-		    pubdate = #{pubdate},
-		    link = #{link},
-		    image = #{image},
-		    b_username = #{b_username}
-		WHERE isbn = #{isbn}
+			title	= #{title},
+			author	= #{author},
+			publisher	= #{publisher},
+			price	= #{price},
+			discount	= #{discount},
+			description	= #{description},
+			pubdate	= #{pubdate},
+			link	= #{link},
+			image	= #{image},
+			b_username = #{b_username}
+		 WHERE isbn	= #{isbn}
 	</update>
 	
 	<delete id="delete">

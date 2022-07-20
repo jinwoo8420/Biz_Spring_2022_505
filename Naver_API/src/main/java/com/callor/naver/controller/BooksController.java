@@ -92,6 +92,8 @@ public class BooksController {
 
 	@RequestMapping(value = "/{isbn}/update", method = RequestMethod.GET)
 	public String update(@PathVariable("isbn") String isbn, Model model, HttpSession session) {
+		BookVO bookVO = bookService.findById(isbn);
+
 		UserVO userVO = (UserVO) session.getAttribute("USER");
 
 		if (userVO == null) {
@@ -99,8 +101,6 @@ public class BooksController {
 
 			return "redirect:/user/login";
 		}
-
-		BookVO bookVO = bookService.findById(isbn);
 
 		bookVO.setB_username(userVO.getUsername());
 		model.addAttribute("B_USER", bookVO.getB_username());
@@ -112,9 +112,10 @@ public class BooksController {
 	}
 
 	@RequestMapping(value = "/{isbn}/update", method = RequestMethod.POST)
-	public String update(BookVO bookVO, HttpSession session) {
+	public String update(@PathVariable("isbn") String isbn, BookVO bookVO, HttpSession session) {
 		UserVO userVO = (UserVO) session.getAttribute("USER");
 		bookVO.setB_username(userVO.getUsername());
+		bookVO.setIsbn(isbn);
 
 		int ret = bookService.update(bookVO);
 

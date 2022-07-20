@@ -5,11 +5,11 @@
 
 <mapper namespace="com.callor.naver.persistance.ShoppingDao">
 	<select id="selectAll" resultType="ShoppingVO">
-		SELECT * FROM tbl_shopping
+		SELECT * FROM tbl_shopping ORDER BY s_seq
 	</select>
 
 	<select id="findById" resultType="ShoppingVO">
-		SELECT * FROM tbl_shopping WHERE productId = #{productId}
+		SELECT * FROM tbl_shopping WHERE s_seq = #{s_seq}
 	</select>
 	
 	<select id="findByUser" resultType="ShoppingVO">
@@ -19,8 +19,12 @@
 	<!-- 대문자 to 소문자 : ctrl + shift + y -->
 	<!-- 소문자 to 대문자 : ctrl + shift + x -->
 	<insert id="insert" parameterType="ShoppingVO">
+		<selectKey keyProperty="s_seq" resultType="String" order="BEFORE">
+ 			SELECT seq_shopping.NEXTVAL FROM DUAL	
+ 		</selectKey>
+	
 		INSERT INTO tbl_shopping (
-			productId,
+			s_seq,
 			title,
 			mallName,
 			maker,
@@ -31,7 +35,7 @@
 			image,
 			s_username
 		)	VALUES (
-			#{productId},
+			#{s_seq},
 			#{title},
 			#{mallName},
 			#{maker},		
@@ -55,17 +59,17 @@
 		    link = #{link},
 		    image = #{s_image},
 		    s_username = #{s_username}
-		WHERE productId = #{productId}
+		WHERE s_seq = #{s_seq}
 	</update>
 	
 	<delete id="delete">
-		DELETE FROM tbl_shopping WHERE productId = #{productId}
+		DELETE FROM tbl_shopping WHERE s_seq = #{s_seq}
 	</delete>
 	
 	<!-- CREATE TABLE IF NOT EXISTS tbl_shopping -->
 	<select id = "create_shopping_table">
 		CREATE TABLE tbl_shopping (
-			productId	NUMBER			PRIMARY KEY,
+			s_seq		NUMBER			PRIMARY KEY,
 			title		nVARCHAR2(255)	NOT NULL,
 			mallName	nVARCHAR2(125),
 			maker		nVARCHAR2(125),

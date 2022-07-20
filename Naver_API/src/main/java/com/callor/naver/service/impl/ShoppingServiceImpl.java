@@ -37,6 +37,15 @@ public class ShoppingServiceImpl implements ShoppingService {
 		} catch (Exception e) {
 		}
 	}
+	
+	@Autowired
+	@Override
+	public void create_shopping_seq() {
+		try {
+			shoppingDao.create_shopping_seq();
+		} catch (Exception e) {
+		}
+	}
 
 	@Override
 	public List<ShoppingVO> selectAll() {

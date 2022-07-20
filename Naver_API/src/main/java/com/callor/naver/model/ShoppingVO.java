@@ -20,8 +20,9 @@ public class ShoppingVO {
 	private String lprice; //	integer	최저가 정보이다. 최저가 정보가 없는 경우 0으로 표시되며, 가격비교 데이터가 없는 경우 이 필드는 가격을 나타낸다.
 	private String hprice; //	integer	최고가 정보이다. 최고가 정보가 없거나 가격비교 데이터가 없는 경우 0으로 표시된다.
 	private String mallName; //	string	상품을 판매하는 쇼핑몰의 상호이다. 정보가 없을 경우 네이버로 표기된다.
-	private String productId; //	integer	해당 상품에 대한 ID 이다.
+//	private String productId; //	integer	해당 상품에 대한 ID 이다.
 	private String maker; //	string	해당 상품의 제조사 명이다.
 	private String brand; //	string	해당 상품의 브랜드 명이다.
+	private String s_seq;
 	private String s_username;
 }

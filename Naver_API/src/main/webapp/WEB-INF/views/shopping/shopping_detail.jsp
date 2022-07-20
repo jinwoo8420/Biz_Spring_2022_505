@@ -83,7 +83,7 @@ a.delete {
 
 		<div class="btn_box">
 			<a href="${rootPath}/shopping/shopping_list" class="list">리스트</a> <a
-				href="${rootPath}/shopping/${SHOPPING.productId}/shopping_update" class="update">수정</a>
+				href="${rootPath}/shopping/${SHOPPING.s_seq}/shopping_update" class="update">수정</a>
 			<a href="javascript:void(0)" class="delete">삭제</a>
 		</div>
 	</section>
@@ -92,7 +92,7 @@ a.delete {
 <script>
 	document.querySelector("a.shopping_delete")?.addEventListener("click",()=>{
 		if(confirm("삭제?")) {
-			document.location.replace("${rootPath}/shopping/${SHOPPING.productId}/shopping_delete")
+			document.location.replace("${rootPath}/shopping/${SHOPPING.s_seq}/shopping_delete")
 		}
 	})
 </script>

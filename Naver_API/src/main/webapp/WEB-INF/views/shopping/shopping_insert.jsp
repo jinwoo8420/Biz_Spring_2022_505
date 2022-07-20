@@ -4,11 +4,6 @@
 
 <form method="POST" class="w3-container">
 	<div>
-		<input name="productId" id="s_productId" class="w3-input" placeholder="ID" value="${SHOPPING.productId}" type="hidden"
-			<c:if test = "${not empty SHOPPING.productId}">
-				readonly = "readonly"
-			</c:if>
-		>
 		<input name="title" id="s_title" class="w3-input" placeholder="상품명" value="${SHOPPING.title}">
 	</div>
 	<div>
@@ -21,6 +16,7 @@
 	<div>
 		<input name="link" class="w3-input" placeholder="자세히보기" value="${SHOPPING.link}" type="hidden">
 		<input name="image" class="w3-input" placeholder="이미지경로" value="${SHOPPING.image}" type="hidden">
+		<input name="s_seq" type="hidden" value='<c:out value="${SHOPPING.s_seq}" default ="0"/>'>
 		<input name="s_usename" class="w3-input" placeholder="작성자" value="${S_USER}" readonly="readonly" type="hidden">
 	</div>
 

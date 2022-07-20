@@ -5,15 +5,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const inputs = document.querySelectorAll("input");
 
   const input_index = {
-    productId: 0,
-    title: 1,
-    mallName: 2,
-    maker: 3,
-    brand: 4,
-    lprice: 5,
-    hprice: 6,
-    link: 7,
-    image: 8,
+    // productId: 0,
+    title: 0,
+    mallName: 1,
+    maker: 2,
+    brand: 3,
+    lprice: 4,
+    hprice: 5,
+    link: 6,
+    image: 7,
   };
 
   const extractTextPattern = /(<([^>]+)>)/gi;
@@ -42,12 +42,13 @@ document.addEventListener("DOMContentLoaded", () => {
       console.log(codes);
 
       fetch(`${rootPath}/naver/${codes}/shopping`)
-        .then((res) => {
-          res.json();
-        })
+        .then((res) => res.json())
         .then((result) => {
-          inputs[input_index.productId].value = result.productId;
-          inputs[input_index.title].value = result.title;
+          // inputs[input_index.productId].value = result.productId;
+          inputs[input_index.title].value = result.title.replace(
+            extractTextPattern,
+            ""
+          );
           inputs[input_index.mallName].value = result.mallName;
           inputs[input_index.maker].value = result.maker;
           inputs[input_index.brand].value = result.brand;

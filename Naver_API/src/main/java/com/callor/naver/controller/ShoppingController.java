@@ -80,9 +80,9 @@ public class ShoppingController {
 		return "redirect:/shopping/shopping_list";
 	}
 
-	@RequestMapping(value = "/{productId}/shopping_detail", method = RequestMethod.GET)
-	public String detail(@PathVariable("productId") String productId, Model model) {
-		ShoppingVO shoppingVO = shoppingService.findById(productId);
+	@RequestMapping(value = "/{s_seq}/shopping_detail", method = RequestMethod.GET)
+	public String detail(@PathVariable("s_seq") String s_seq, Model model) {
+		ShoppingVO shoppingVO = shoppingService.findById(s_seq);
 
 		model.addAttribute("SHOPPING", shoppingVO);
 		model.addAttribute("LAYOUT", "SHOPPING-DETAIL");
@@ -90,9 +90,9 @@ public class ShoppingController {
 		return "home";
 	}
 
-	@RequestMapping(value = "/{productId}/shopping_update", method = RequestMethod.GET)
-	public String update(@PathVariable("productId") String productId, Model model) {
-		ShoppingVO shoppingVO = shoppingService.findById(productId);
+	@RequestMapping(value = "/{s_seq}/shopping_update", method = RequestMethod.GET)
+	public String update(@PathVariable("s_seq") String s_seq, Model model) {
+		ShoppingVO shoppingVO = shoppingService.findById(s_seq);
 
 		model.addAttribute("SHOPPING", shoppingVO);
 		model.addAttribute("LAYOUT", "SHOPPING-INPUT");
@@ -100,20 +100,20 @@ public class ShoppingController {
 		return "home";
 	}
 
-	@RequestMapping(value = "/{productId}/shopping_update", method = RequestMethod.POST)
+	@RequestMapping(value = "/{s_seq}/shopping_update", method = RequestMethod.POST)
 	public String update(ShoppingVO shoppingVO, HttpSession session) {
 		UserVO userVO = (UserVO) session.getAttribute("USER");
 		shoppingVO.setS_username(userVO.getUsername());
 
 		int ret = shoppingService.update(shoppingVO);
-		String retStr = String.format("redirect:/shopping/%s/shopping_detail", shoppingVO.getProductId());
+		String retStr = String.format("redirect:/shopping/%s/shopping_detail", shoppingVO.getS_seq());
 
 		return retStr;
 	}
 
-	@RequestMapping(value = "/{productId}/shopping_delete", method = RequestMethod.GET)
-	public String delete(@PathVariable("productId") String productId) {
-		int ret = shoppingService.delete(productId);
+	@RequestMapping(value = "/{s_seq}/shopping_delete", method = RequestMethod.GET)
+	public String delete(@PathVariable("s_seq") String s_seq) {
+		int ret = shoppingService.delete(s_seq);
 
 		return "redirect:/shopping/shopping_list";
 	}

@@ -72,7 +72,7 @@ div.btn_box a:hover {
 
 		<tbody>
 			<c:forEach items="${SHOPPINGS}" var="SHOPPING" varStatus="INDEX">
-				<tr data-id="${SHOPPING.productId}">
+				<tr data-id="${SHOPPING.s_seq}">
 					<td>${INDEX.count}</td>
 					<td>${SHOPPING.title}</td>
 					<td>${SHOPPING.mallName}</td>
