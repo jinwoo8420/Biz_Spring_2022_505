@@ -90,7 +90,7 @@ a.delete {
 </body>
 
 <script>
-	document.querySelector("a.shopping_delete")?.addEventListener("click",()=>{
+	document.querySelector("a.delete")?.addEventListener("click",()=>{
 		if(confirm("삭제?")) {
 			document.location.replace("${rootPath}/shopping/${SHOPPING.s_seq}/shopping_delete")
 		}

@@ -57,7 +57,7 @@
 		    lprice = #{lprice},
 		    hprice = #{hprice},
 		    link = #{link},
-		    image = #{s_image},
+		    image = #{image},
 		    s_username = #{s_username}
 		WHERE s_seq = #{s_seq}
 	</update>

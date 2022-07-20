@@ -28,12 +28,12 @@ public class ShoppingController {
 
 		return "redirect:/shopping/shopping_list";
 	}
-	
+
 	@RequestMapping(value = "/shopping_list")
 	public String list(Model model, HttpSession session, ShoppingVO shoppingVO) {
 		UserVO userVO = (UserVO) session.getAttribute("USER");
-		
-		if(userVO == null) {
+
+		if (userVO == null) {
 			List<ShoppingVO> shoppingList = shoppingService.selectAll();
 			model.addAttribute("SHOPPINGS", shoppingList);
 		}
@@ -62,7 +62,7 @@ public class ShoppingController {
 
 			return "redirect:/user/login";
 		}
-		
+
 		shoppingVO.setS_username(userVO.getUsername());
 		model.addAttribute("S_USER", shoppingVO.getS_username());
 
@@ -70,7 +70,7 @@ public class ShoppingController {
 	}
 
 	@RequestMapping(value = "/shopping_insert", method = RequestMethod.POST)
-	public String insert(ShoppingVO shoppingVO, HttpSession session,Model model) {
+	public String insert(ShoppingVO shoppingVO, HttpSession session, Model model) {
 		UserVO userVO = (UserVO) session.getAttribute("USER");
 		shoppingVO.setS_username(userVO.getUsername());
 		model.addAttribute("S_USER", shoppingVO.getS_username());
@@ -91,8 +91,19 @@ public class ShoppingController {
 	}
 
 	@RequestMapping(value = "/{s_seq}/shopping_update", method = RequestMethod.GET)
-	public String update(@PathVariable("s_seq") String s_seq, Model model) {
+	public String update(@PathVariable("s_seq") String s_seq, Model model, HttpSession session) {
 		ShoppingVO shoppingVO = shoppingService.findById(s_seq);
+
+		UserVO userVO = (UserVO) session.getAttribute("USER");
+
+		if (userVO == null) {
+			model.addAttribute("error", "LOGIN_NEED");
+
+			return "redirect:/user/login";
+		}
+
+		shoppingVO.setS_username(userVO.getUsername());
+		model.addAttribute("M_USER", shoppingVO.getS_username());
 
 		model.addAttribute("SHOPPING", shoppingVO);
 		model.addAttribute("LAYOUT", "SHOPPING-INPUT");
@@ -112,7 +123,15 @@ public class ShoppingController {
 	}
 
 	@RequestMapping(value = "/{s_seq}/shopping_delete", method = RequestMethod.GET)
-	public String delete(@PathVariable("s_seq") String s_seq) {
+	public String delete(@PathVariable("s_seq") String s_seq, Model model, HttpSession session) {
+		UserVO userVO = (UserVO) session.getAttribute("USER");
+
+		if (userVO == null) {
+			model.addAttribute("error", "LOGIN_NEED");
+
+			return "redirect:/user/login";
+		}
+
 		int ret = shoppingService.delete(s_seq);
 
 		return "redirect:/shopping/shopping_list";

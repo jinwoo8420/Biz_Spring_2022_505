@@ -56,6 +56,7 @@ div.btn_box a:hover {
 			<col width="100px">
 			<col width="100px">
 			<col width="100px">
+			<col width="100px">
 		</colgroup>
 
 		<thead>
@@ -67,6 +68,7 @@ div.btn_box a:hover {
 				<th>브랜드</th>
 				<th>최저가</th>
 				<th>최고가</th>
+				<th>작성자</th>
 			</tr>
 		</thead>
 
@@ -80,6 +82,7 @@ div.btn_box a:hover {
 					<td>${SHOPPING.brand}</td>
 					<td>${SHOPPING.lprice}</td>
 					<td>${SHOPPING.hprice}</td>
+					<td>${SHOPPING.s_username}</td>
 				</tr>
 			</c:forEach>
 		</tbody>
