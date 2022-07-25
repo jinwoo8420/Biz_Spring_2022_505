@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.callor.naver.persistance.EncycDao">
+	<select id="selectAll" resultType="EncycVO">
+		SELECT * FROM tbl_encyc ORDER BY e_seq
+	</select>
+
+	<select id="findById" resultType="EncycVO">
+		SELECT * FROM tbl_encyc WHERE e_seq = #{e_seq}
+	</select>
+	
+	<select id="findByUser" resultType="EncycVO">
+		SELECT * FROM tbl_encyc WHERE e_username = #{e_username}
+	</select>
+
+	<!-- 대문자 to 소문자 : ctrl + shift + y -->
+	<!-- 소문자 to 대문자 : ctrl + shift + x -->
+	<insert id="insert" parameterType="EncycVO">
+		<selectKey keyProperty="e_seq" resultType="String" order="BEFORE">
+ 			SELECT seq_encyc.NEXTVAL FROM DUAL	
+ 		</selectKey>
+ 		
+		INSERT INTO tbl_encyc (
+			e_seq,
+			title,
+			description,
+			link,
+			thumbnail,
+			e_username
+		)	VALUES (
+			#{e_seq},
+			#{title, jdbcType = VARCHAR},
+			#{description, jdbcType = VARCHAR},
+			#{link, jdbcType = VARCHAR},
+			#{thumbnail, jdbcType = VARCHAR}, 
+			#{e_username}
+		)
+	</insert>
+	
+	<update id="update" parameterType="EncycVO">
+		UPDATE tbl_encyc SET
+			title = #{title},
+			description = #{description},
+			link = #{link},
+			thumbnail = #{thumbnail},
+			e_username = #{e_username}
+		WHERE e_seq = #{e_seq}
+	</update>
+	
+	<delete id="delete">
+		DELETE FROM tbl_encyc WHERE e_seq = #{e_seq}
+	</delete>
+	
+	<!-- CREATE TABLE IF NOT EXISTS tbl_encyc -->
+	<select id = "create_encyc_table">
+		CREATE TABLE tbl_encyc (
+			e_seq 		NUMBER			PRIMARY KEY,    
+            title	    nVARCHAR2(255)	NOT NULL,
+		    description	nVARCHAR2(2000),
+		    link	    nVARCHAR2(255),
+		    thumbnail   nVARCHAR2(125),
+		    e_username	VARCHAR2(20)	NOT NULL
+		)
+	</select>
+	
+	<select id="create_encyc_seq">
+ 			CREATE SEQUENCE seq_encyc
+			INCREMENT BY 1 START WITH 1
+ 	</select>
+</mapper>

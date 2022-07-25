@@ -52,5 +52,16 @@ public class HomeController {
 
 		return resString;
 	}
+	
+	/*	@ResponseBody
+		@RequestMapping(value = "/encyc/encyc_list", method = RequestMethod.POST)
+		public String e_home(String title, Model model) {
+			NaverMovieServiceEx naverService = new NaverMovieServiceEx();
+		
+			String queryString = naverService.queryString("ENCYC", title);
+			String resString = naverService.getJsonString(queryString);
+	
+			return resString;
+		}*/
 
 }

@@ -42,6 +42,12 @@ public class NaverController {
 			model.addAttribute("MOVIES", movieList);
 
 			return "naver/movie_search";
+		} else if (cat.equals("ENCYC")) {
+			queryString = naverService.queryString("ENCYC", search);
+			List<Object> encycList = naverService.getNaver(queryString);
+			model.addAttribute("ENCYCS", encycList);
+
+			return "naver/encyc_search";
 		}
 
 		List<Object> bookList = naverService.getNaver(queryString);
@@ -112,6 +118,27 @@ public class NaverController {
 		List<Object> movieList = naverService.getNaver(queryString);
 
 		return movieList.get(0);
+	}
+	
+	@RequestMapping(value = "/encyc", method = RequestMethod.GET)
+	public String encyc_search(String title, Model model) {
+		String queryString = naverService.queryString("ENCYC", title);
+
+		List<Object> encycList = naverService.getNaver(queryString);
+
+		model.addAttribute("ENCYCS", encycList);
+
+		return "naver/encyc_search";
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "/{title}/encyc", method = RequestMethod.GET, produces = NaverConfig.APP_JSON)
+	public Object encyc(@PathVariable("title") String title) {
+		String queryString = naverService.queryString("ENCYC", title);
+
+		List<Object> encycList = naverService.getNaver(queryString);
+
+		return encycList.get(0);
 	}
 
 }

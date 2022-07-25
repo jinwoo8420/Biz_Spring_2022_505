@@ -2,25 +2,48 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set value="${pageContext.request.contextPath}" var="rootPath" />
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<div class="student detail_body">
+	<div>학번 :</div>
+	<div class="student detail">${DETAIL.st_num}</div>
+</div>
 
-<title>Insert title here</title>
+<div class="student detail_body">
+	<div>이름 :</div>
+	<div class="student detail">${DETAIL.st_name}</div>
+</div>
 
-</head>
+<div class="student detail_body">
+	<div>학과 :</div>
+	<div class="student detail">${DETAIL.st_dept}</div>
+</div>
 
-<body>
-	<h1>${DETAIL.st_name} PAGE</h1>
+<div class="student detail_body">
+	<div>학년 :</div>
+	<div class="student detail">${DETAIL.st_grade}</div>
+</div>
 
-	<h4>학번 : ${DETAIL.st_num}</h4>
-	<h4>학과 : ${DETAIL.st_dept}</h4>
-	<h4>학년 : ${DETAIL.st_grade}</h4>
-	<h4>전화번호 : ${DETAIL.st_tel}</h4>
-	<h4>주소 : ${DETAIL.st_addr}</h4>
-</body>
+<div class="student detail_body">
+	<div>전화번호 :</div>
+	<div class="student detail">${DETAIL.st_tel}</div>
+</div>
 
-</html>
+<div class="student detail_body">
+	<div>주소 :</div>
+	<div class="student detail">${DETAIL.st_addr}</div>
+</div>
+
+<div>
+	<c:forEach items="${DETAIL.scoreList}" var="SCORE">
+		<div>${SCORE.sb_name}(${SCORE.sc_sbcode}) : ${SCORE.sc_score}</div>
+	</c:forEach>
+</div>
+
+<a href="${rootPath}/student">리스트</a>
+<a href="${rootPath}/student/update?st_num=${DETAIL.st_num}">수정</a>
+
+<%-- <c:forEach items="${SCORE}" var="SCORES">
+	<div class="student detail_body">
+		<div>${SCORES.sb_name}:</div>
+		<div class="student detail">${SCORES.sc_score}</div>
+	</div>
+</c:forEach> --%>

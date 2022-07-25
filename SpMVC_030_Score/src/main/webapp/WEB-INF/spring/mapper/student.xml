@@ -9,33 +9,8 @@
  		SELECT * FROM tbl_student
  	</select>
  	
- 	<!-- 
- 		id : PK 칼럼
- 		property : vo 클래스의 변수 이름
- 		column : table의 칼럼 이름
- 	 -->
- 	<resultMap type="StudentVO" id="findByIdAndScore">
- 		<id property="st_num" column="st_num"/>
- 		<collection property="scoreList" column="st_num" ofType="ScoreVO" select="findByIdScore"></collection>
- 	</resultMap>
- 	
- 	<!-- 
- 		중첩 Result
- 		1. findById가 실행되고 그 결과를 resultMap에 전달
- 		2. resultMap은 collection 항목의 코드를 실행
- 			- findByIdScore select 명령문을 실행
- 			- 그 결과를 List<ScoreVO> type의 데이터로 변환
- 			- StudentVO의 scoreList 변수에 저장
- 	 -->
- 	<select id="findById" resultMap="findByIdAndScore">
+ 	<select id="findById" resultType="StudentVO">
  		SELECT * FROM tbl_student WHERE st_num = #{st_num}
- 	</select>
- 	
- 	<select id="findByIdScore" resultType="ScoreVO">
- 		SELECT * FROM tbl_score
- 			left join tbl_subject
- 				on sc_sbcode = sb_code
- 		WHERE sc_stnum = #{sc_stnum}
  	</select>
  	
  	<insert id="insert" parameterType="StudentVO">
@@ -56,7 +31,7 @@
  		)
  	</insert>
  	
- 	<update id="update" parameterType="StudentVO">
+ 	<update id="update">
  		UPDATE tbl_student SET
  			st_name = #{st_name},
 			st_dept = #{st_dept},

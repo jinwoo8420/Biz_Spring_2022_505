@@ -1,8 +1,7 @@
 package com.callor.score.service;
 
-import com.callor.score.model.SubjectVO;
-import com.callor.score.persistance.GenericDao;
+import com.callor.score.persistance.SubjectDao;
 
-public interface SubjectService extends GenericDao<SubjectVO, String> {
+public interface SubjectService extends SubjectDao {
 
 }

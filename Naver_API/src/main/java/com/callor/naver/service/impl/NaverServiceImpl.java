@@ -25,6 +25,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.callor.naver.config.NaverConfig;
 import com.callor.naver.model.BookVO;
+import com.callor.naver.model.EncycVO;
 import com.callor.naver.model.MovieVO;
 import com.callor.naver.model.NaverParent;
 import com.callor.naver.model.ShoppingVO;
@@ -46,6 +47,8 @@ public class NaverServiceImpl implements NaverService {
 			queryString = NaverConfig.NAVER_SHOPPING_URL;
 		} else if (cat.equals("MOVIE")) {
 			queryString = NaverConfig.NAVER_MOVIE_URL;
+		} else if (cat.equals("ENCYC")) {
+			queryString = NaverConfig.NAVER_ENCYC_URL;
 		}
 
 		String encodeSearch = null;
@@ -157,6 +160,14 @@ public class NaverServiceImpl implements NaverService {
 
 			resData = restTemp.exchange(restURI, HttpMethod.GET, entity,
 					new ParameterizedTypeReference<NaverParent<MovieVO>>() {
+					});
+
+			return resData.getBody().items;
+		} else if (cat.equals("ENCYC")) {
+			ResponseEntity<NaverParent<EncycVO>> resData = null;
+
+			resData = restTemp.exchange(restURI, HttpMethod.GET, entity,
+					new ParameterizedTypeReference<NaverParent<EncycVO>>() {
 					});
 
 			return resData.getBody().items;

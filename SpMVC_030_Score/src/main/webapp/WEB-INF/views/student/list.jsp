@@ -15,6 +15,7 @@
 
 <body>
 
+
 	<ul class="student list">
 		<li class="student stnum">학번</li>
 		<li class="student stname">이름</li>
@@ -24,17 +25,21 @@
 		<li class="student staddr">주소</li>
 	</ul>
 
-	<c:forEach items="${STUDENTS}" var="ST">
-		<ul class="student list"
-			onclick="location.href = '${rootPath}/student/detail?st_num=${ST.st_num}';">
-			<li class="student stnum">${ST.st_num}</li>
-			<li class="student stname">${ST.st_name}</li>
-			<li class="student stdept">${ST.st_dept}</li>
-			<li class="student stgrade">${ST.st_grade}</li>
-			<li class="student sttel">${ST.st_tel}</li>
-			<li class="student staddr">${ST.st_addr}</li>
-		</ul>
-	</c:forEach>
+	<div class="student body">
+
+		<c:forEach items="${STUDENTS}" var="ST">
+			<ul class="student list" data-stnum="${ST.st_num}">
+				<%-- onclick="location.href = '${rootPath}/student/detail?st_num=${ST.st_num}';"> --%>
+				<li class="student stnum">${ST.st_num}</li>
+				<li class="student stname">${ST.st_name}</li>
+				<li class="student stdept">${ST.st_dept}</li>
+				<li class="student stgrade">${ST.st_grade}</li>
+				<li class="student sttel">${ST.st_tel}</li>
+				<li class="student staddr">${ST.st_addr}</li>
+			</ul>
+		</c:forEach>
+
+	</div>
 
 </body>
 
