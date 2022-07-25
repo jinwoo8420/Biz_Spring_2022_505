@@ -3,6 +3,7 @@ package com.callor.score.persistance;
 import java.util.List;
 
 public interface GenericDao<VO, PK> {
+
 	public List<VO> selectAll();
 
 	public VO findById(PK id);
@@ -12,4 +13,5 @@ public interface GenericDao<VO, PK> {
 	public int update(VO vo);
 
 	public int delete(PK id);
+
 }

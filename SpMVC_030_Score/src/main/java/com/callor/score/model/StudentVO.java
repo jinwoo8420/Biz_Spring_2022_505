@@ -11,9 +11,9 @@ import lombok.ToString;
 
 @Getter
 @Setter
+@ToString
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
 @Builder
 public class StudentVO {
 	private String st_num;
@@ -22,10 +22,11 @@ public class StudentVO {
 	private String st_grade;
 	private String st_tel;
 	private String st_addr;
-	
+
 	/*
 	 * 학생정보와 성적정보를 같이 묶어서 처리 할 경우
 	 * 한 학생의 여러 성적을 한꺼번에 관리하기 위하여 학생정보에 성적리스트 칼럼을 추가한다 
 	 */
 	private List<ScoreVO> scoreList;
+
 }

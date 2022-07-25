@@ -9,9 +9,9 @@ import lombok.ToString;
 
 @Getter
 @Setter
+@ToString
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
 @Builder
 public class SubjectVO {
 	private String sb_code;
