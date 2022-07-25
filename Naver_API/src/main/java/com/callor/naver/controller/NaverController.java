@@ -36,12 +36,14 @@ public class NaverController {
 			model.addAttribute("SHOPPINGS", shoppingList);
 
 			return "naver/shopping_search";
+
 		} else if (cat.equals("MOVIE")) {
 			queryString = naverService.queryString("MOVIE", search);
 			List<Object> movieList = naverService.getNaver(queryString);
 			model.addAttribute("MOVIES", movieList);
 
 			return "naver/movie_search";
+
 		} else if (cat.equals("ENCYC")) {
 			queryString = naverService.queryString("ENCYC", search);
 			List<Object> encycList = naverService.getNaver(queryString);
@@ -119,7 +121,7 @@ public class NaverController {
 
 		return movieList.get(0);
 	}
-	
+
 	@RequestMapping(value = "/encyc", method = RequestMethod.GET)
 	public String encyc_search(String title, Model model) {
 		String queryString = naverService.queryString("ENCYC", title);

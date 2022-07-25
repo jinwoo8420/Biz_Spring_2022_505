@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     title: 0,
     link: 1,
     thumbnail: 2,
-    description: 3,
+    description: 5,
   };
 
   const extractTextPattern = /(<([^>]+)>)/gi;
@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .replace(extractTextPattern, "")
         .replace(/(\s*)/g, "");
 
-      fetch(`${rootPath}/naver/${codes}/movies`)
+      fetch(`${rootPath}/naver/${codes}/encyc`)
         .then((res) => res.json())
         .then((result) => {
           inputs[input_index.title].value = result.title.replace(

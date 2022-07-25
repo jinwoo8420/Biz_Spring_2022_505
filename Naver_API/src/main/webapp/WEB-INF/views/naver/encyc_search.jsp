@@ -8,10 +8,10 @@
 
 	<table class="w3-table-all search-result">
 		<colgroup>
-			<col width="100px">
-			<col width="200px">
 			<col width="500px">
-			<col width="200px">
+			<col width="500px">
+			<col width="500px">
+			<col width="500px">
 		</colgroup>
 
 		<thead>

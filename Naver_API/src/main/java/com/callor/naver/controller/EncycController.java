@@ -104,7 +104,7 @@ public class EncycController {
 		encycVO.setE_username(userVO.getUsername());
 		model.addAttribute("E_USER", encycVO.getE_username());
 
-		model.addAttribute("MOVIE", encycVO);
+		model.addAttribute("ENCYC", encycVO);
 		model.addAttribute("LAYOUT", "ENCYC-INPUT");
 
 		return "home";

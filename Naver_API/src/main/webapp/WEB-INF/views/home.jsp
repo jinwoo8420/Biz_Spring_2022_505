@@ -26,7 +26,7 @@
 <script src="${rootPath}/static/js/input.js?ver=2022-07-15-002"></script>
 <script src="${rootPath}/static/js/shopping_input.js?ver=2022-07-20-003"></script>
 <script src="${rootPath}/static/js/movie_input.js?ver=2022-07-19-001"></script>
-<script src="${rootPath}/static/js/encyc_input.js?ver=2022-07-25-001"></script>
+<script src="${rootPath}/static/js/encyc_input.js?ver=2022-07-25-003"></script>
 
 </head>
 
