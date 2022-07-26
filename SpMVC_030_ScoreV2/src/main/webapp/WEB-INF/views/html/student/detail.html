@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout}">
+
+<th:block layout:fragment="content">
+	<div class="student detail_body">
+		<div>학번 :</div>
+		<div class="student detail" th:text="${DETAIL.st_num}"></div>
+	</div>
+
+	<div class="student detail_body">
+		<div>이름 :</div>
+		<div class="student detail" th:text="${DETAIL.st_name}"></div>
+	</div>
+
+	<div class="student detail_body">
+		<div>학과 :</div>
+		<div class="student detail" th:text="${DETAIL.st_dept}"></div>
+	</div>
+
+	<div class="student detail_body">
+		<div>학년 :</div>
+		<div class="student detail" th:text="${DETAIL.st_grade}"></div>
+	</div>
+
+	<div class="student detail_body">
+		<div>전화번호 :</div>
+		<div class="student detail" th:text="${DETAIL.st_tel}"></div>
+	</div>
+
+	<div class="student detail_body">
+		<div>주소 :</div>
+		<div class="student detail" th:text="${DETAIL.st_addr}"></div>
+	</div>
+
+	<div th:each="SCORE : ${DETAIL.scoreList}">
+		<div th:text="|${SCORE.sb_name} (${SCORE.sc_sbcode}): ${SCORE.sc_score}|"></div>
+	</div>
+
+	<div>
+		<a th:href="@{/student}">리스트</a>
+		<a th:href="@{/student/update(st_num=${DETAIL.st_num})}">수정</a>
+		<a th:href="@{/score/update(st_num=${DETAIL.st_num})}">성적 수정</a>
+	</div>
+</th:block>

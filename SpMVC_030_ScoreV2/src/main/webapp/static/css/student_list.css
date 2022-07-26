@@ -1,0 +1,36 @@
+@charset "UTF-8";
+
+tr.student {
+  list-style: none;
+  display: flex;
+  cursor: pointer;
+}
+
+tr.student:nth-of-type(even) {
+  background-color: #eee;
+  border-top: 1px solid #aaa;
+  border-bottom: 1px solid #aaa;
+}
+
+th.student,
+td.student {
+  padding: 12px 16px;
+  flex: 1;
+  user-select: none; /* 마우스 클릭 시 text에 선택 블럭이 생성되는 것 방지 */
+}
+
+th.student.stnum,
+td.student.stnum {
+  flex: 1;
+}
+
+th.student.staddr,
+td.student.staddr {
+  flex: 3;
+}
+
+tbody.student.body {
+  width: 100%;
+  max-width: 100%;
+  overflow: auto;
+}

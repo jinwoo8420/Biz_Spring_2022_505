@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head th:replace="~{include/include-head}">
+</head>
+
+<body>
+	<header th:replace="~{include/include-header :: header}"></header>
+	<header th:replace="~{include/include-header :: nav}"></header>
+
+	<section layout:fragment="content"></section>
+
+	<footer>
+		<address>CopyRight &copy; 1223wlsdn@naver.com</address>
+	</footer>
+</body>
+</html>

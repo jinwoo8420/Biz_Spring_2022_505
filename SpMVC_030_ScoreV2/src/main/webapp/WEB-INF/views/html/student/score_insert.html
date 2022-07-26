@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout}">
+
+<th:block layout:fragment="content">
+	<style>
+form.student.input {
+	width: 80%;
+	margin: 20px auto;
+}
+
+form.student.input div {
+	display: flex;
+}
+
+form.student.input input, form.student.input button {
+	flex: 1;
+	padding: 16px 12px;
+	margin: 5px;
+}
+</style>
+
+	<form method="POST" class="student input" th:object="${SCORES}">
+		<div>
+			<input th:field="*{sc_seq}" />
+		</div>
+
+		<div>
+			<input th:field="*{sc_stnum}" />
+		</div>
+
+		<div>
+			<input th:field="*{sc_sbcode}" />
+		</div>
+
+		<div th:each="SCORE : ${SCORE.scoreList}">
+			<div th:text="|${SCORES.sb_name} (${SCORES.sc_sbcode}):|"
+				th:field="${SCORES.sc_score}"></div>
+		</div>
+
+		<div>
+			<button>저장</button>
+		</div>
+	</form>
+</th:block>
