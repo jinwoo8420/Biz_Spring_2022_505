@@ -27,10 +27,10 @@ public class UserVO implements UserDetails {
 	
 	private String username;
 	private String password;
-	private boolean isEnabled;
-	private boolean isAccountNonExpired;
-	private boolean isAccountNonLocked;
-	private boolean isCredentialsNonExpired;
+	private boolean enabled;
+	private boolean accountNonExpired;
+	private boolean accountNonLocked;
+	private boolean credentialsNonExpired;
 	private Collection<? extends GrantedAuthority> authorities;
 	private String email;
 	private String tel;

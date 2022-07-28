@@ -1,10 +1,16 @@
 package com.callor.sec.service.auth;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import com.callor.sec.model.AuthorityVO;
 import com.callor.sec.model.UserVO;
 import com.callor.sec.persistance.UserDao;
 
@@ -37,6 +43,20 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 			// Spring Security에게 exception을 강제로 발생시켜 메시지 전달
 			throw new UsernameNotFoundException(username + " : 가입 필요");
 		}
+
+		// username에 해당하는 ROLE 정보를 tbl_authorities에서 가져오기
+		List<AuthorityVO> authoList = userDao.roleSelect(username);
+		
+		// Security의 grantList생성
+		List<GrantedAuthority> grantList = new ArrayList<>();
+
+		// ROLE 정보 문자열을 grant type으로 변경 후 List add
+		for (AuthorityVO author : authoList) {
+			grantList.add(new SimpleGrantedAuthority(author.getAuthority()));
+		}
+
+		// grantList UserVO.authorities에 저장
+		userVO.setAuthorities(grantList);
 
 		return userVO;
 	}

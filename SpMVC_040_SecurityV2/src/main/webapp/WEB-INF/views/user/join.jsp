@@ -33,7 +33,7 @@ form.join-form legend {
 form.join-form input, form.join-form button {
 	display: inline-block;
 	width: 80%;
-	margin: 5px;
+	margin: 5px auto;
 	padding: 8px;
 }
 </style>

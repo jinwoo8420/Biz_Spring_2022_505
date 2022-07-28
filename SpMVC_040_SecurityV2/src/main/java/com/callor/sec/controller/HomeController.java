@@ -12,4 +12,10 @@ public class HomeController {
 
 		return "home";
 	}
+
+	@RequestMapping(value = "/guest", method = RequestMethod.GET)
+	public String guest() {
+
+		return null;
+	}
 }
