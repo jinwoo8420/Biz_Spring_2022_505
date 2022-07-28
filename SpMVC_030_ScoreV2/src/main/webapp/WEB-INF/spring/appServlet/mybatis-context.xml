@@ -11,7 +11,7 @@
 		<property name="driverClassName"
 			value="com.mysql.cj.jdbc.Driver" />
 		<property name="url"
-			value="jdbc:mysql://localhost:3306/schooldb" />
+			value="jdbc:mysql://localhost:3306/schooldb?allowMultiQueries=true" />
 		<property name="username" value="jinwoo8420" />
 		<property name="password" value="!Korea8080" />
 	</bean>
