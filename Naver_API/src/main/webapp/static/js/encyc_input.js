@@ -9,7 +9,6 @@ document.addEventListener("DOMContentLoaded", () => {
     title: 0,
     link: 1,
     thumbnail: 2,
-    description: 5,
   };
 
   const extractTextPattern = /(<([^>]+)>)/gi;

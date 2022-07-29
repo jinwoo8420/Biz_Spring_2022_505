@@ -9,11 +9,14 @@
 	<div>
 		<input name="link" class="w3-input" placeholder="자세히보기" value="${ENCYC.link}" type="hidden">
 		<input name="thumbnail" class="w3-input" placeholder="이미지경로" value="${ENCYC.thumbnail}" type="hidden">
-		<input name="e_seq" type="hidden" value='<c:out value="${ENCYC.e_seq}" default ="0"/>'>
-		<input name="e_usename" class="w3-input" placeholder="작성자" value="${E_USER}" readonly="readonly" type="hidden">
 	</div>
 	
 	<textarea rows="5" cols="205" name="description">${ENCYC.description}</textarea>
+
+	<div>
+		<input name="e_seq" type="hidden" value='<c:out value="${ENCYC.e_seq}" default ="0"/>'>
+		<input name="e_usename" class="w3-input" placeholder="작성자" value="${E_USER}" readonly="readonly" type="hidden">
+	</div>
 
 	<button type="button" class="w3-button w3-indigo encyc-save">저장</button>
 </form>
