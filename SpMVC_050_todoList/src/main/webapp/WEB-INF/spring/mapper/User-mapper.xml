@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.callor.todo.persistance.UserDao">
+
+	<select id="selectAll" resultType="UserVO">
+		select * from tbl_users
+	</select>
+
+	<select id="findById" resultType="UserVO">
+		select * from tbl_users where username = #{username}
+	</select>
+	
+	<!-- 권한 정보 불러오기 -->	
+	<select id="select_auths" resultType="AuthorVO">
+		select * from tbl_authorities where username = #{username}
+	</select>
+
+	<insert id="insert" parameterType="UserVO">
+		
+	</insert>
+
+	<update id="update" parameterType="UserVO">
+		
+	</update>
+
+	<delete id="delete">
+			
+	</delete>
+
+	<select id="create_user_table">
+		create table if not exists tbl_users (
+			username				varchar(20)		primary key,
+			password				varchar(255)	not null,
+			enabled					boolean			default false,
+			accountNonExpired		boolean			default true,
+			accountNonLocked		boolean			default true,
+			credentialsNonExpired	boolean			default true,
+			email					varchar(30),
+			tel						varchar(15),
+			realname				varchar(20),
+			nickname				varchar(20)
+		)
+	</select>
+	
+	<select id="create_author_table">
+		create table if not exists tbl_authorities(
+			seq			bigint		auto_increment primary key,
+		    username	varchar(20),
+		    authority	varchar(20)
+		)
+	</select>
+
+</mapper> 
