@@ -1,7 +1,10 @@
 package com.callor.todo.service.auth;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -16,11 +19,11 @@ import com.callor.todo.persistance.UserDao;
  */
 
 @Service("userDetailsService")
-public class UserServiceImpl implements UserDetailsService {
+public class UserDetailsServiceImpl implements UserDetailsService {
 
 	private final UserDao userDao;
 
-	public UserServiceImpl(UserDao userDao) {
+	public UserDetailsServiceImpl(UserDao userDao) {
 		this.userDao = userDao;
 	}
 
@@ -45,6 +48,21 @@ public class UserServiceImpl implements UserDetailsService {
 		if (authos.size() < 1) {
 			throw new UsernameNotFoundException(String.format("[ %s ] 권한 X", username));
 		}
+
+		List<GrantedAuthority> grantList = new ArrayList<>();
+
+		/*
+		 * 사용자의 권한 정보를 문자열에서 GrantedAuthority 객체로 변환하기
+		 */
+		for (AuthorVO auth : authos) {
+			grantList.add(new SimpleGrantedAuthority(auth.getAuthority()));
+		}
+
+		/*
+		 * GrantedAuthority 객체로 변환된 ROLE 정보를
+		 * 사용자 정보에 setting
+		 */
+		userVO.setAuthorities(grantList);
 
 		return userVO;
 	}

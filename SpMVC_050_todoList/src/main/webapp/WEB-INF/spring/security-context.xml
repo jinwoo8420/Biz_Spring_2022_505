@@ -12,11 +12,30 @@
 
 	<!-- 일부 자동설정과 인증 할 때 함수 사용 가능하게함 -->
 	<sec:http auto-config="true" use-expressions="true">
+		<sec:intercept-url pattern="/user/join" access="permitAll" />
+		<sec:intercept-url pattern="/user/login" access="permitAll" />
+		<sec:intercept-url pattern="/admin/**"
+			access="isAuthenticated() AND hasRole('ROLE_ADMIN')" />
+		<sec:intercept-url pattern="/user/mypage"
+			access="isAuthenticated()" />
+		<sec:intercept-url pattern="/403" access="permitAll" />
 		<sec:intercept-url pattern="/" access="isAuthenticated()" />
+
+		<sec:access-denied-handler error-page="/403" />
+
 		<sec:form-login />
 		<sec:logout />
 	</sec:http>
 
+	<!-- 
+		로그인 절차가 시작되면 authenticationProvider 클래스에게 요청을 하여 로그인 수행
+		
+		AuthenticationProvider는 UserDetailsService에게
+		사용자 정보를 요청하여 DB로부터 데이터를 select한다
+		
+		정상적인 절차가 완료되면 user와 token이 담긴 객체를 return하여
+		Security에게 알려준다
+	 -->
 	<sec:authentication-manager>
 		<sec:authentication-provider
 			ref="authenticationProvider" />

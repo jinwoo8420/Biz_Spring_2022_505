@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <c:set value="${pageContext.request.contextPath}" var="rootPath" />
 
 <!DOCTYPE html>
@@ -16,16 +15,24 @@
 </head>
 
 <body>
-	<h1>hello</h1>
-	<sec:authorize access="isAuthenticated()">
-		<sec:authentication property="principal.username" />
-		<sec:authentication property="principal.email" />
-		<sec:authentication property="principal.realname" />
+	<h1>로그인 정보</h1>
+	<sec:authorize access="hasAnyRole('ROLE_USER','ROLE_ADMIN')">
+		<h3>
+			<sec:authentication property="principal.username" />
+		</h3>
+		<h3>
+			<sec:authentication property="principal.email" />
+		</h3>
+		<h3>
+			<sec:authentication property="principal.realname" />
+		</h3>
+		<h3>
+			<sec:authentication property="principal.nickname" />
+		</h3>
+		<h3>
+			<sec:authentication property="principal.authorities" />
+		</h3>
 	</sec:authorize>
-
-	<form:form class="logout" action="${rootPath}/logout">
-		<button>LOGOUT</button>
-	</form:form>
 </body>
 
 </html>
