@@ -13,6 +13,8 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import com.callor.todo.model.UserVO;
+
 @Service("authenticationProvider")
 public class AuthorProviderImpl implements AuthenticationProvider {
 
@@ -34,6 +36,9 @@ public class AuthorProviderImpl implements AuthenticationProvider {
 			throw new BadCredentialsException("PASSWORD 오류");
 		}
 
+		UserVO userVO = UserVO.builder().username(username).password(password).email("abc@abc.abc").realname("abc")
+				.nickname("1223wlsdn").build();
+
 		List<GrantedAuthority> grantList = new ArrayList<>();
 		grantList.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
 		grantList.add(new SimpleGrantedAuthority("ROLE_USER"));
@@ -42,8 +47,7 @@ public class AuthorProviderImpl implements AuthenticationProvider {
 		 * 사용자 이름과 비밀번호, 권한 리스트로 Token 발행
 		 */
 
-		UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(username, password,
-				grantList);
+		UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(userVO, null, grantList);
 
 		return token;
 	}
