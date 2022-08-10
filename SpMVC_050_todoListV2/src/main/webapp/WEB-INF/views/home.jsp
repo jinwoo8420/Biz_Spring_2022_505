@@ -27,14 +27,13 @@ a {
 
 	<sec:authorize access="isAnonymous()">
 		<h3>
-			<a href="${rootPath}/login">LOGIN</a>
+			<a href="${rootPath}/user/login">LOGIN</a>
 		</h3>
 
 		<h3>
 			<a href="${rootPath}/user/join">JOIN</a>
 		</h3>
 	</sec:authorize>
-
 
 	<sec:authorize access="isAuthenticated()">
 		<sec:authorize access="isAuthenticated() AND hasRole('ROLE_ADMIN')">

@@ -1,6 +1,7 @@
 package com.callor.todo.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -13,9 +14,10 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping(value = "/user")
 public class UserController {
 
+	// localhost:8080/context/user/login
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String login() {
-
+	public String login(String error, Model model) {
+		model.addAttribute("error", error);
 		return "user/login";
 	}
 
@@ -37,5 +39,4 @@ public class UserController {
 
 		return "user/mypage";
 	}
-
 }
