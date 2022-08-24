@@ -52,8 +52,19 @@ document.addEventListener("DOMContentLoaded", () => {
           inputs[input_index.mallName].value = result.mallName;
           inputs[input_index.maker].value = result.maker;
           inputs[input_index.brand].value = result.brand;
-          inputs[input_index.lprice].value = result.lprice;
-          inputs[input_index.hprice].value = result.hprice;
+
+          if (result.lprice === "") {
+            inputs[input_index.lprice].value = 0;
+          } else if (!(result.lprice === "")) {
+            inputs[input_index.lprice].value = result.lprice;
+          }
+
+          if (result.hprice === "") {
+            inputs[input_index.hprice].value = 0;
+          } else if (!(result.hprice === "")) {
+            inputs[input_index.hprice].value = result.hprice;
+          }
+
           inputs[input_index.link].value = result.link;
           inputs[input_index.image].value = result.image;
           modal_box.style.display = "none";

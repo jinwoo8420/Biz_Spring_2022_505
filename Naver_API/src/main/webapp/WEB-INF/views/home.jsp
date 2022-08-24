@@ -23,8 +23,8 @@
 	const rootPath = "${rootPath}"
 </script>
 
-<script src="${rootPath}/static/js/input.js?ver=2022-07-15-002"></script>
-<script src="${rootPath}/static/js/shopping_input.js?ver=2022-07-20-003"></script>
+<script src="${rootPath}/static/js/input.js?ver=2022-08-24-005"></script>
+<script src="${rootPath}/static/js/shopping_input.js?ver=2022-08-24-003"></script>
 <script src="${rootPath}/static/js/movie_input.js?ver=2022-07-19-001"></script>
 <script src="${rootPath}/static/js/encyc_input.js?ver=2022-07-29-002"></script>
 

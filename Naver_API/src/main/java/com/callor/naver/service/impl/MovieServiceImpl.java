@@ -3,6 +3,7 @@ package com.callor.naver.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import com.callor.naver.model.MovieVO;
@@ -36,22 +37,9 @@ public class MovieServiceImpl implements MovieService {
 		return movies;
 	}
 
-	@Autowired
-	@Override
+	@Bean
 	public void create_movie_table() {
-		try {
-			movieDao.create_movie_table();
-		} catch (Exception e) {
-		}
-	}
-	
-	@Autowired
-	@Override
-	public void create_movie_seq() {
-		try {
-			movieDao.create_movie_seq();
-		} catch (Exception e) {
-		}
+		movieDao.create_movie_table();
 	}
 
 	@Override

@@ -3,6 +3,7 @@ package com.callor.naver.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import com.callor.naver.model.ShoppingVO;
@@ -29,22 +30,9 @@ public class ShoppingServiceImpl implements ShoppingService {
 		return null;
 	}
 
-	@Autowired
-	@Override
+	@Bean
 	public void create_shopping_table() {
-		try {
-			shoppingDao.create_shopping_table();
-		} catch (Exception e) {
-		}
-	}
-	
-	@Autowired
-	@Override
-	public void create_shopping_seq() {
-		try {
-			shoppingDao.create_shopping_seq();
-		} catch (Exception e) {
-		}
+		shoppingDao.create_shopping_table();
 	}
 
 	@Override

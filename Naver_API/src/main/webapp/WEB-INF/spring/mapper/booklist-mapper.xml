@@ -25,8 +25,6 @@
 			title,
 			author,
 			publisher,
-			price,
-		    discount,
 		    description,
 		    pubdate,
 		    link,
@@ -37,8 +35,6 @@
 			#{title},
 			#{author},
 			#{publisher},		
-			#{price, jdbcType = VARCHAR},
-		    #{discount, jdbcType = VARCHAR},
 		    #{description, jdbcType = VARCHAR},
 		    #{pubdate, jdbcType = VARCHAR},
 		    #{link, jdbcType = VARCHAR},
@@ -62,8 +58,6 @@
 			title	= #{title},
 			author	= #{author},
 			publisher	= #{publisher},
-			price	= #{price},
-			discount	= #{discount},
 			description	= #{description},
 			pubdate	= #{pubdate},
 			link	= #{link},
@@ -79,18 +73,16 @@
 	<!-- MySQL CTREATE 명령문 -->
 	<!-- CREATE TABLE IF NOT EXISTS tbl_books -->
 	<select id = "create_book_table">
-		CREATE TABLE tbl_books (
-		    isbn	    VARCHAR2(13)    PRIMARY KEY,
-		    title	    nVARCHAR2(255)  NOT NULL,
-		    author	    nVARCHAR2(125)	NOT NULL,
-		    publisher	nVARCHAR2(125)	NOT NULL,
-		    price	    NUMBER,
-		    discount	NUMBER,
-		    description	nVARCHAR2(2000),
-		    pubdate	    VARCHAR2(10),
-		    link	    VARCHAR2(125),
-		    image	    VARCHAR2(125),
-		    b_username	VARCHAR2(20)	NOT NULL
+		CREATE TABLE IF NOT EXISTS tbl_books (
+		    isbn	    VARCHAR(13)		PRIMARY KEY,
+		    title	    VARCHAR(255)	NOT NULL,
+		    author	    VARCHAR(125)	NOT NULL,
+		    publisher	VARCHAR(125)	NOT NULL,
+		    description	VARCHAR(2000),
+		    pubdate	    VARCHAR(10),
+		    link	    VARCHAR(125),
+		    image	    VARCHAR(125),
+		    b_username	VARCHAR(20)		NOT NULL
 		)
 	</select>
 </mapper>

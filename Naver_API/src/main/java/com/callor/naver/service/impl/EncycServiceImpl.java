@@ -3,6 +3,7 @@ package com.callor.naver.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import com.callor.naver.model.EncycVO;
@@ -26,22 +27,9 @@ public class EncycServiceImpl implements EncycService {
 		return encyc;
 	}
 
-	@Autowired
-	@Override
+	@Bean
 	public void create_encyc_table() {
-		try {
-			encycDao.create_encyc_table();
-		} catch (Exception e) {
-		}
-	}
-	
-	@Autowired
-	@Override
-	public void create_encyc_seq() {
-		try {
-			encycDao.create_encyc_seq();
-		} catch (Exception e) {
-		}
+		encycDao.create_encyc_table();
 	}
 
 	@Override

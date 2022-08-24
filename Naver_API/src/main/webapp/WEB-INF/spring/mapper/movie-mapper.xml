@@ -18,10 +18,6 @@
 	<!-- 대문자 to 소문자 : ctrl + shift + y -->
 	<!-- 소문자 to 대문자 : ctrl + shift + x -->
 	<insert id="insert" parameterType="MovieVO">
-		<selectKey keyProperty="m_seq" resultType="String" order="BEFORE">
- 			SELECT seq_movie.NEXTVAL FROM DUAL	
- 		</selectKey>
- 		
 		INSERT INTO tbl_movie (
 			m_seq,
 			title,
@@ -67,22 +63,17 @@
 	
 	<!-- CREATE TABLE IF NOT EXISTS tbl_movie -->
 	<select id = "create_movie_table">
-		CREATE TABLE tbl_movie (
-			m_seq 		NUMBER			PRIMARY KEY,    
-            title	    nVARCHAR2(255)	NOT NULL,
-		    director	nVARCHAR2(255),
-		    actor		nVARCHAR2(255),
-		    subtitle	VARCHAR2(255),
-		    pubDate	    VARCHAR2(20),
-		    link	    nVARCHAR2(255),
-		    image	    nVARCHAR2(125),
-		    userRating	VARCHAR2(10),
-		    m_username	VARCHAR2(20)	NOT NULL
+		CREATE TABLE IF NOT EXISTS tbl_movie (
+			m_seq 		BIGINT 			PRIMARY KEY AUTO_INCREMENT,    
+            title	    VARCHAR(255)	NOT NULL,
+		    director	VARCHAR(255),
+		    actor		VARCHAR(255),
+		    subtitle	VARCHAR(255),
+		    pubDate	    VARCHAR(20),
+		    link	    VARCHAR(255),
+		    image	    VARCHAR(125),
+		    userRating	VARCHAR(10),
+		    m_username	VARCHAR(20)		NOT NULL
 		)
 	</select>
-	
-	<select id="create_movie_seq">
- 			CREATE SEQUENCE seq_movie
-			INCREMENT BY 1 START WITH 1
- 	</select>
 </mapper>

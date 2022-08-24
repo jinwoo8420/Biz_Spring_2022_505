@@ -4,18 +4,15 @@
 
 <form method="POST" class="w3-container">
 	<div>
-		<input name="isbn" id="isbn" class="w3-input" placeholder="ISBN" value="${BOOK.isbn}" 
-			<c:if test = "${not empty BOOK.isbn}">
+		<input name="isbn" id="isbn" class="w3-input" placeholder="ISBN" value="${BOOK.isbn}" <c:if test = "${not empty BOOK.isbn}">
 				readonly = "readonly"
-			</c:if>
-		>
+			</c:if>>
 		<input name="title" id="title" class="w3-input" placeholder="도서명" value="${BOOK.title}">
 	</div>
 	<div>
 		<input name="author" class="w3-input" placeholder="저자" value="${BOOK.author}">
 		<input name="publisher" class="w3-input" placeholder="출판사" value="${BOOK.publisher}">
 		<input name="pubdate" class="w3-input" placeholder="출판일" value="${BOOK.pubdate}">
-		<input name="price" class="w3-input" placeholder="가격" type="number" value="${BOOK.price}">
 	</div>
 	<div>
 		<input name="link" class="w3-input" placeholder="자세히보기" value="${BOOK.link}" type="hidden">

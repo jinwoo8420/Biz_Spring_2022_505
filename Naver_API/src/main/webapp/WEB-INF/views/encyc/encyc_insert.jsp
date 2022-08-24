@@ -14,7 +14,6 @@
 	<textarea rows="5" cols="205" name="description">${ENCYC.description}</textarea>
 
 	<div>
-		<input name="e_seq" type="hidden" value='<c:out value="${ENCYC.e_seq}" default ="0"/>'>
 		<input name="e_usename" class="w3-input" placeholder="작성자" value="${E_USER}" readonly="readonly" type="hidden">
 	</div>
 

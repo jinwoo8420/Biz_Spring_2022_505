@@ -3,6 +3,7 @@ package com.callor.naver.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -15,18 +16,13 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	protected UserDao userDao;
-	
+
 	@Autowired
 	protected PasswordEncoder passwordEncoder;
 
-	@Autowired
-	@Override
+	@Bean
 	public void create_user_table() {
-
-		try {
-			userDao.create_user_table();
-		} catch (Exception e) {
-		}
+		userDao.create_user_table();
 	}
 
 	@Override
@@ -82,7 +78,6 @@ public class UserServiceImpl implements UserService {
 
 		return null;
 	}
-
 
 	@Override
 	public int join(UserVO userVO) {

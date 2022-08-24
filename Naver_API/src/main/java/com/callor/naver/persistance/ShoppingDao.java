@@ -14,6 +14,4 @@ public interface ShoppingDao extends GenericDao<ShoppingVO, String> {
 	public List<ShoppingVO> findByUser(String username);
 
 	public void create_shopping_table();
-	
-	public void create_shopping_seq();
 }

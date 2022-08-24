@@ -11,9 +11,8 @@ document.addEventListener("DOMContentLoaded", () => {
     author: 2,
     publisher: 3,
     pubdate: 4,
-    price: 5,
-    link: 6,
-    image: 7,
+    link: 5,
+    image: 6,
   };
 
   const extractTextPattern = /(<([^>]+)>)/gi;
@@ -50,26 +49,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
       console.log(codes.length);
 
-      if (codes.length > 1) {
-        fetch(`${rootPath}/naver/${codes[1]}/book`)
-          .then((res) => res.json())
-          .then((result) => {
-            inputs[input_index.isbn].value = result.isbn
-              .replace(extractTextPattern, "")
-              .split(" ")[1];
-            inputs[input_index.title].value = result.title;
-            inputs[input_index.author].value = result.author;
-            inputs[input_index.publisher].value = result.publisher;
-            inputs[input_index.pubdate].value = result.pubdate;
-            inputs[input_index.price].value = result.price;
-            inputs[input_index.link].value = result.link;
-            inputs[input_index.image].value = result.image;
-            desc.value = result.description.replace(extractTextPattern, "");
-            modal_box.style.display = "none";
-          });
-      } else {
-        alert("ISBN 코드 찾을 수 없음");
-      }
+      fetch(`${rootPath}/naver/${codes}/book`)
+        .then((res) => res.json())
+        .then((result) => {
+          inputs[input_index.isbn].value = result.isbn.replace(
+            extractTextPattern,
+            ""
+          );
+          inputs[input_index.title].value = result.title;
+          inputs[input_index.author].value = result.author;
+          inputs[input_index.publisher].value = result.publisher;
+          inputs[input_index.pubdate].value = result.pubdate;
+          inputs[input_index.link].value = result.link;
+          inputs[input_index.image].value = result.image;
+          desc.value = result.description.replace(extractTextPattern, "");
+          modal_box.style.display = "none";
+        });
 
       alert(codes);
     }

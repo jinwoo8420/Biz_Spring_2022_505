@@ -3,6 +3,7 @@ package com.callor.naver.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import com.callor.naver.model.BookVO;
@@ -15,13 +16,9 @@ public class BookServiceImpl implements BookService {
 	@Autowired
 	private BookDao bookDao;
 
-	@Autowired
-	@Override
+	@Bean
 	public void create_book_table() {
-		try {
-			bookDao.create_book_table();
-		} catch (Exception e) {
-		}
+		bookDao.create_book_table();
 	}
 
 	@Override

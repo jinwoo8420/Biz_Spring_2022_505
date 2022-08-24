@@ -15,6 +15,4 @@ public interface MovieDao extends GenericDao<MovieVO, String> {
 	public List<MovieVO> findByUser(String username);
 
 	public void create_movie_table();
-
-	public void create_movie_seq();
 }

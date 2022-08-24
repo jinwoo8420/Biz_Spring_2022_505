@@ -11,6 +11,4 @@ public interface EncycDao extends GenericDao<EncycVO, String> {
 	public List<EncycVO> findByUser(String username);
 
 	public void create_encyc_table();
-
-	public void create_encyc_seq();
 }
